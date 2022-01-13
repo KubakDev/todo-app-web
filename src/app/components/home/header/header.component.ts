@@ -8,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class HeaderComponent implements OnInit {
   UserName:string | undefined;
   unfinishedTasks:number=0;
+  test:string="test";
 
   constructor() { }
 

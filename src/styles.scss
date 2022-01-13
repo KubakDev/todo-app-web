@@ -5,3 +5,200 @@
 html {
   font-family: "Baloo 2", cursive;
 }
+:root {
+  --color-success: #2dd36f;
+  --color-success-rgb: 45, 211, 111;
+  --color-success-contrast: #000000;
+  --color-success-contrast-rgb: 0, 0, 0;
+  --color-success-shade: #28ba62;
+  --color-success-tint: #42d77d;
+
+  --color-warning: #ffc409;
+  --color-warning-rgb: 255, 196, 9;
+  --color-warning-contrast: #000000;
+  --color-warning-contrast-rgb: 0, 0, 0;
+  --color-warning-shade: #e0ac08;
+  --color-warning-tint: #ffca22;
+
+  --color-danger: #eb445a;
+  --color-danger-rgb: 235, 68, 90;
+  --color-danger-contrast: #ffffff;
+  --color-danger-contrast-rgb: 255, 255, 255;
+  --color-danger-shade: #cf3c4f;
+  --color-danger-tint: #ed576b;
+}
+
+.main-theme {
+  --color-primary: #6d4afc;
+  --color-primary-rgb: 109, 74, 252;
+  --color-primary-contrast: #ffffff;
+  --color-primary-contrast-rgb: 255, 255, 255;
+  --color-primary-shade: #6041de;
+  --color-primary-tint: #7c5cfc;
+
+  --color-secondary: #f0ecff;
+  --color-secondary-rgb: 240, 236, 255;
+  --color-secondary-contrast: #000000;
+  --color-secondary-contrast-rgb: 0, 0, 0;
+  --color-secondary-shade: #d3d0e0;
+  --color-secondary-tint: #f2eeff;
+
+  --color-tertiary: #f778ba;
+  --color-tertiary-rgb: 247, 120, 186;
+  --color-tertiary-contrast: #000000;
+  --color-tertiary-contrast-rgb: 0, 0, 0;
+  --color-tertiary-shade: #d96aa4;
+  --color-tertiary-tint: #f886c1;
+
+  --color-quaternary: #eae4ff;
+  --color-quaternary-rgb: 234, 228, 255;
+  --color-quaternary-contrast: #000000;
+  --color-quaternary-contrast-rgb: 0, 0, 0;
+  --color-quaternary-shade: #cec9e0;
+  --color-quaternary-tint: #ece7ff;
+
+  --color-foreground: #000;
+  --color-foreground-rgb: 0, 0, 0;
+  --color-foreground-contrast: #ffffff;
+  --color-foreground-contrast-rgb: 255, 255, 255;
+  --color-foreground-shade: #000000;
+  --color-foreground-tint: #1a1a1a;
+
+  --color-background: #fff;
+  --color-background-rgb: 255, 255, 255;
+  --color-background-contrast: #000000;
+  --color-background-contrast-rgb: 0, 0, 0;
+  --color-background-shade: #e0e0e0;
+  --color-background-tint: #ffffff;
+}
+
+.pink-theme {
+  --color-primary: #f778ba;
+  --color-primary-rgb: 247, 120, 186;
+  --color-primary-contrast: #000000;
+  --color-primary-contrast-rgb: 0, 0, 0;
+  --color-primary-shade: #d96aa4;
+  --color-primary-tint: #f886c1;
+
+  --color-secondary: #55b4b2;
+  --color-secondary-rgb: 85, 180, 178;
+  --color-secondary-contrast: #000000;
+  --color-secondary-contrast-rgb: 0, 0, 0;
+  --color-secondary-shade: #4b9e9d;
+  --color-secondary-tint: #66bcba;
+
+  --color-tertiary: #ffc2e2;
+  --color-tertiary-rgb: 255, 194, 226;
+  --color-tertiary-contrast: #000000;
+  --color-tertiary-contrast-rgb: 0, 0, 0;
+  --color-tertiary-shade: #e0abc7;
+  --color-tertiary-tint: #ffc8e5;
+
+  --color-quaternary: #f4fffe;
+  --color-quaternary-rgb: 244, 255, 254;
+  --color-quaternary-contrast: #000000;
+  --color-quaternary-contrast-rgb: 0, 0, 0;
+  --color-quaternary-shade: #d7e0e0;
+  --color-quaternary-tint: #f5fffe;
+
+  --color-foreground: #000;
+  --color-foreground-rgb: 0, 0, 0;
+  --color-foreground-contrast: #ffffff;
+  --color-foreground-contrast-rgb: 255, 255, 255;
+  --color-foreground-shade: #000000;
+  --color-foreground-tint: #1a1a1a;
+
+  --color-background: #fff;
+  --color-background-rgb: 255, 255, 255;
+  --color-background-contrast: #000000;
+  --color-background-contrast-rgb: 0, 0, 0;
+  --color-background-shade: #e0e0e0;
+  --color-background-tint: #ffffff;
+}
+.blue-theme {
+  --color-primary: #353652;
+  --color-primary-rgb: 53, 54, 82;
+  --color-primary-contrast: #ffffff;
+  --color-primary-contrast-rgb: 255, 255, 255;
+  --color-primary-shade: #2f3048;
+  --color-primary-tint: #494a63;
+
+  --color-secondary: #849ac3;
+  --color-secondary-rgb: 132, 154, 195;
+  --color-secondary-contrast: #000000;
+  --color-secondary-contrast-rgb: 0, 0, 0;
+  --color-secondary-shade: #7488ac;
+  --color-secondary-tint: #90a4c9;
+
+  --color-tertiary: #d3e2ff;
+  --color-tertiary-rgb: 211, 226, 255;
+  --color-tertiary-contrast: #000000;
+  --color-tertiary-contrast-rgb: 0, 0, 0;
+  --color-tertiary-shade: #bac7e0;
+  --color-tertiary-tint: #d7e5ff;
+
+  --color-quaternary: #e9f0ff;
+  --color-quaternary-rgb: 233, 240, 255;
+  --color-quaternary-contrast: #000000;
+  --color-quaternary-contrast-rgb: 0, 0, 0;
+  --color-quaternary-shade: #cdd3e0;
+  --color-quaternary-tint: #ebf2ff;
+
+  --color-foreground: #fff;
+  --color-foreground-rgb: 255, 255, 255;
+  --color-foreground-contrast: #000000;
+  --color-foreground-contrast-rgb: 0, 0, 0;
+  --color-foreground-shade: #e0e0e0;
+  --color-foreground-tint: #ffffff;
+
+  --color-background: #353652;
+  --color-background-rgb: 53, 54, 82;
+  --color-background-contrast: #ffffff;
+  --color-background-contrast-rgb: 255, 255, 255;
+  --color-background-shade: #2f3048;
+  --color-background-tint: #494a63;
+}
+
+.dark-theme {
+  --color-primary: #000;
+  --color-primary-rgb: 0, 0, 0;
+  --color-primary-contrast: #ffffff;
+  --color-primary-contrast-rgb: 255, 255, 255;
+  --color-primary-shade: #000000;
+  --color-primary-tint: #1a1a1a;
+
+  --color-secondary: #373737;
+  --color-secondary-rgb: 55, 55, 55;
+  --color-secondary-contrast: #ffffff;
+  --color-secondary-contrast-rgb: 255, 255, 255;
+  --color-secondary-shade: #303030;
+  --color-secondary-tint: #4b4b4b;
+
+  --color-tertiary: #565656;
+  --color-tertiary-rgb: 86, 86, 86;
+  --color-tertiary-contrast: #ffffff;
+  --color-tertiary-contrast-rgb: 255, 255, 255;
+  --color-tertiary-shade: #4c4c4c;
+  --color-tertiary-tint: #676767;
+
+  --color-quaternary: #c5c5c5;
+  --color-quaternary-rgb: 197, 197, 197;
+  --color-quaternary-contrast: #000000;
+  --color-quaternary-contrast-rgb: 0, 0, 0;
+  --color-quaternary-shade: #adadad;
+  --color-quaternary-tint: #cbcbcb;
+
+  --color-foreground: #fff;
+  --color-foreground-rgb: 255, 255, 255;
+  --color-foreground-contrast: #000000;
+  --color-foreground-contrast-rgb: 0, 0, 0;
+  --color-foreground-shade: #e0e0e0;
+  --color-foreground-tint: #ffffff;
+
+  --color-background: #000;
+  --color-background-rgb: 0, 0, 0;
+  --color-background-contrast: #ffffff;
+  --color-background-contrast-rgb: 255, 255, 255;
+  --color-background-shade: #000000;
+  --color-background-tint: #1a1a1a;
+}

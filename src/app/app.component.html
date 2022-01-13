@@ -1,2 +1,8 @@
-<router-outlet></router-outlet>
+<div [class]="currentTheme">
+    <button type="button" (click)="onclick()">
+        change yheme
+    </button>
+
+    <router-outlet></router-outlet>
+</div>
 
