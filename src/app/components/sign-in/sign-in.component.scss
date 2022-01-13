@@ -1,8 +1,10 @@
-.login-div {
-  border-radius: 0 25% 25% 0;
-  background-image: url("../../../assets/Ellipse\ 110.svg");
-  background-repeat: no-repeat;
-}
-.login-div-parent {
-  border-radius: 0 22% 22% 0;
+@media only screen and (min-width: 768px) {
+  .login-div {
+    border-radius: 0 25% 25% 0;
+    background-image: url("../../../assets/Ellipse\ 110.svg");
+    background-repeat: no-repeat;
+  }
+  .login-div-parent {
+    border-radius: 0 22% 22% 0;
+  }
 }

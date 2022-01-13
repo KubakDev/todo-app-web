@@ -5,35 +5,21 @@ module.exports = {
   },
   darkMode: "class", // or 'media' or 'class'
   theme: {
-    fontSize: {
-      lg: '64px',
-      sm: '24px',
-      md: '30px'
-    },
-    borderRadius:{
-   lg:'250px',
-   sm:'40px'
-    },
     extend: {
       colors: {
-        'primary-color': '#6D4AFC',
-        'secondary-color': '#EAE4FF',
-        'light-secondary-color': '#F9F8FF',
-        'light-secondary-color2':'#F9F7FF',
-        'light-primary-color': '#967EF9',
-        'background-color': '#FFFFFF',
-        'heading-color': '#000000',
-        'btn-color':'#F778BA',
-        'dark-grey':'#B7B5B5',
-        'light-pink':'#e9e3ff',
-        'light-grey':'#d3cde6',
-        'light-yellow':'#EBEBEB',
-        'default':'#F0ECFF'
-
-        
-       
+        mainTodo: {
+          50: "#F0ECFF",
+          100: "#F9F7FF",
+          200: "#6D4AFC",
+          300: "#F778BA",
+          400: "#EAE4FF",
+          500: "#EBEBEB",
+          600: "#B7B5B5 ",
+          700: "#d3cde6 ",
+          800: "#e9e3ff ",
+          900: "#de6ca7 ",
+        },
       },
-      
     },
   },
   variants: {

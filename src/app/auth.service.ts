@@ -23,8 +23,8 @@ export class AuthService {
   auth0Client$ = (
     from(
       createAuth0Client({
-        domain: '{your-domain-id}',
-        client_id: '{your-client-id}',
+        domain: 'http://dev-lmrxa-v2.eu.auth0.com',
+        client_id: 'wnMlcJ2Cy414JOsjMLPjNTVEVpiFExCV',
         redirect_uri: `${window.location.origin}`,
         audience: 'http://localhost:5000',
       })
@@ -138,7 +138,7 @@ export class AuthService {
     this.auth0Client$.subscribe((client: Auth0Client) => {
       // Call method to log out
       client.logout({
-        client_id: '{your-client-id}',
+        client_id: 'wnMlcJ2Cy414JOsjMLPjNTVEVpiFExCV',
         returnTo: `${window.location.origin}`,
       });
     });

@@ -1,25 +1,35 @@
-<div class="bg-default h-screen grid grid-cols-2">
-  <div class="bg-light-pink login-div-parent">
+<div class="bg-mainTodo-50 h-screen grid grid-cols-1 md:grid-cols-2">
+  <div class="bg-mainTodo-800 login-div-parent">
     <div
-      class="bg-light-secondary-color2 flex flex-col justify-center items-center login-div h-screen mr-8"
+      class="bg-mainTodo-100 flex flex-col justify-center items-center login-div h-screen md:mr-8"
     >
-      <h1 class="text-primary-color text text-5xl font-bold py-6 text-center">
+      <h1 class="text-mainTodo-200 text-5xl font-bold py-6 text-center">
         We Are <br />
         What We Do
       </h1>
-      <h1 class="text-primary-color text text-3xl text-center">
+
+      <h1 class="text-mainTodo-200 text text-3xl text-center">
         Todo helps you remember <br />
         your important tasks
       </h1>
 
       <button
-        class="bg-secondary-color hover:bg-light-grey transition-all ease-in text-xl text-primary-color font-bold py-2 px-20 rounded my-6"
+        type="button"
+        (click)="onAuth()"
+        class="bg-mainTodo-300 hover:bg-mainTodo-900 transition-all ease-in text-xl text-white font-bold py-2 px-20 rounded my-8"
       >
         Get Started
       </button>
+      <!-- <button
+        type="button"
+        (click)="logout()"
+        class="bg-mainTodo-300 hover:bg-mainTodo-900 transition-all ease-in text-xl text-white font-bold py-2 px-20 rounded my-8"
+      >
+        Logout
+      </button> -->
     </div>
   </div>
-  <div class="bg-default flex justify-center items-center">
+  <div class="bg-mainTodo-50 md:flex justify-center items-center hidden">
     <img src="../../../assets/Group 1.svg" alt="" />
   </div>
 </div>
