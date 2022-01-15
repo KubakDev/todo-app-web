@@ -5,9 +5,5 @@
     "pathRewrite": {
       "^/api": ""
     }
-  },
-  "http://dev-lmrxa-v2.eu.auth0.com": {
-    "target": "https://dev-lmrxa-v2.eu.auth0.com",
-    "secure": true
   }
 }

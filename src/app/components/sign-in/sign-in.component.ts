@@ -1,4 +1,4 @@
-import { Component, Injectable, OnInit } from '@angular/core';
+import { Component, Injectable } from '@angular/core';
 import { AuthService } from 'src/app/auth.service';
 import { TodosService } from 'src/app/backend/services';
 
@@ -8,10 +8,8 @@ import { TodosService } from 'src/app/backend/services';
   styleUrls: ['./sign-in.component.scss'],
 })
 @Injectable()
-export class SignInComponent implements OnInit {
+export class SignInComponent {
   constructor(private auth: AuthService, private todos: TodosService) {}
-
-  ngOnInit(): void {}
 
   onAuth() {
     this.auth.login();

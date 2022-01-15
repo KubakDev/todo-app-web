@@ -11,6 +11,7 @@ import { HeaderComponent } from './components/home/header/header.component';
 import { CalenderComponent } from './components/home/calender/calender.component';
 import { TodayTasksComponent } from './components/home/today-tasks/today-tasks.component';
 import { CreateTaskComponent } from './components/home/create-task/create-task.component';
+import { SideNavComponent } from './components/side-nav/side-nav.component';
 
 
 
@@ -24,7 +25,8 @@ import { CreateTaskComponent } from './components/home/create-task/create-task.c
     TodayTasksComponent,
     CreateTaskComponent,
     AppComponent,
-     SignInComponent
+     SignInComponent,
+     SideNavComponent
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule],
   providers: [
