@@ -12,6 +12,8 @@ import { CalenderComponent } from './components/home/calender/calender.component
 import { TodayTasksComponent } from './components/home/today-tasks/today-tasks.component';
 import { CreateTaskComponent } from './components/home/create-task/create-task.component';
 import { SideNavComponent } from './components/side-nav/side-nav.component';
+import { ErrorPageComponent } from './components/error-page/error-page.component';
+import { ProfileComponent } from './components/profile/profile.component';
 
 
 
@@ -26,7 +28,9 @@ import { SideNavComponent } from './components/side-nav/side-nav.component';
     CreateTaskComponent,
     AppComponent,
      SignInComponent,
-     SideNavComponent
+     SideNavComponent,
+     ErrorPageComponent,
+     ProfileComponent
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule],
   providers: [
