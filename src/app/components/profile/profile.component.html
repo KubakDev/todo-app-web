@@ -1,14 +1,40 @@
 <div class="bg-white p-7">
   <div
-    class="grid grid-cols-2 justify-center gap-10 items-center w-full h-screen bg-mainTodo-400 profile-container rounded-lg pr-6"
+    class="grid grid-cols-1 md:grid-cols-2 justify-center gap-10 items-center w-full h-full bg-mainTodo-400 profile-container rounded-lg p-2 md:p-0 md:pr-6"
   >
     <div
-      class="flex flex-col justify-evenly gap-3 h-full profile-left-container bg-mainTodo-100 py-12 px-8"
+      class="flex flex-col justify-evenly gap-3 h-full profile-left-container rounded-3xl bg-mainTodo-100 py-12 px-8"
     >
       <h1 class="text-6xl font-bold text-mainTodo-200">Hello, User</h1>
       <div
         class="flex flex-col gap-3 py-7 justify-between items-center bg-mainTodo-400 rounded-3xl"
       >
+        <button
+          *ngIf="!editMode"
+          type="button"
+          (click)="onEdit()"
+          class="flex items-center justify-end w-full pr-7"
+        >
+          <span class="material-icons-outlined">edit</span>
+        </button>
+
+        <div
+          *ngIf="editMode"
+          type="button"
+          class="flex items-center justify-between w-full px-7"
+        >
+          <button
+            (click)="onEdit()"
+            class="bg-mainTodo-600 text-black px-8 py-3 rounded-full"
+          >
+            Cancel
+          </button>
+          <button
+            class="bg-mainTodo-200 text-mainTodo-50 px-8 py-3 rounded-full"
+          >
+            Save
+          </button>
+        </div>
         <img
           class="inline object-cover w-16 h-16 mr-2 rounded-full"
           src="https://images.pexels.com/photos/2589653/pexels-photo-2589653.jpeg?auto=compress&cs=tinysrgb&h=650&w=940"
@@ -41,31 +67,13 @@
       </div>
     </div>
     <div class="flex flex-col justify-center bg-white rounded-3xl py-8">
-      <div class="flex justify-between items-center px-6">
+      <div class="flex justify-between items-center px-10 py-3">
         <h1 class="font-bold text-black text-2xl">Previous Tasks</h1>
-        <span class="material-icons">delete</span>
+        <button type="button">
+          <span class="material-icons text-3xl">delete_outline</span>
+        </button>
       </div>
       <div class="flex flex-col justify-center items-center my-2 gap-2">
-        <div
-          class="flex items-center gap-4 bg-mainTodo-400 py-4 w-11/12 rounded-full px-4 font-bold text-xl"
-        >
-          <span
-            class="material-icons text-white bg-mainTodo-200 rounded-full p-1"
-            >done</span
-          >
-
-          Check Mail
-        </div>
-        <div
-          class="flex items-center gap-4 bg-mainTodo-400 py-4 w-11/12 rounded-full px-4 font-bold text-xl"
-        >
-          <span
-            class="material-icons text-white bg-mainTodo-200 rounded-full p-1"
-            >done</span
-          >
-
-          Check Mail
-        </div>
         <div
           class="flex items-center gap-4 bg-mainTodo-400 py-4 w-11/12 rounded-full px-4 font-bold text-xl"
         >

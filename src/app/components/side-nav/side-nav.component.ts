@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AuthService } from 'src/app/auth.service';
 
 @Component({
   selector: 'app-side-nav',
@@ -6,5 +7,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./side-nav.component.scss'],
 })
 export class SideNavComponent {
-  constructor() {}
+  constructor(private auth: AuthService) {}
+
+  onLogout() {
+    this.auth.logout();
+  }
 }

@@ -14,8 +14,7 @@ import { CreateTaskComponent } from './components/home/create-task/create-task.c
 import { SideNavComponent } from './components/side-nav/side-nav.component';
 import { ErrorPageComponent } from './components/error-page/error-page.component';
 import { ProfileComponent } from './components/profile/profile.component';
-
-
+import { ToggleComponent } from './components/shared/toggle/toggle.component';
 
 @NgModule({
   declarations: [
@@ -27,10 +26,11 @@ import { ProfileComponent } from './components/profile/profile.component';
     TodayTasksComponent,
     CreateTaskComponent,
     AppComponent,
-     SignInComponent,
-     SideNavComponent,
-     ErrorPageComponent,
-     ProfileComponent
+    SignInComponent,
+    SideNavComponent,
+    ErrorPageComponent,
+    ProfileComponent,
+    ToggleComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule],
   providers: [
@@ -38,7 +38,8 @@ import { ProfileComponent } from './components/profile/profile.component';
       provide: HTTP_INTERCEPTORS,
       useClass: InterceptorService,
       multi: true,
-    }],
+    },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

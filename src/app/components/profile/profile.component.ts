@@ -3,13 +3,14 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
-  styleUrls: ['./profile.component.scss']
+  styleUrls: ['./profile.component.scss'],
 })
-export class ProfileComponent implements OnInit {
+export class ProfileComponent {
+  editMode?: boolean = false;
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit(): void {
+  onEdit() {
+    this.editMode = !this.editMode;
   }
-
 }
