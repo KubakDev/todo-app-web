@@ -1,5 +1,6 @@
 import { Component, OnInit, SimpleChanges } from '@angular/core';
 import { FormControl } from '@angular/forms';
+import { TodoService } from 'src/app/todo.service';
 
 @Component({
   selector: 'app-create-task',
@@ -9,7 +10,11 @@ import { FormControl } from '@angular/forms';
 export class CreateTaskComponent implements OnInit {
   public innerWidth: any;
   startAdding: boolean = false;
-  constructor() {
+  task: string = '';
+  notes: string = '';
+  date: string = '';
+  time: string = '';
+  constructor(private todoservice: TodoService) {
     console.log(this.innerWidth);
   }
   ngOnInit(): void {
@@ -20,6 +25,23 @@ export class CreateTaskComponent implements OnInit {
     this.startAdding = true;
   }
   onSubmit() {
-    console.log('yes');
+    this.todoservice.tasks.push({
+      name: this.task,
+      isCompleted: false,
+      notes: this.notes,
+      date: this.date,
+      time: this.time,
+    });
+    this.date = '';
+    this.task = '';
+    this.time = '';
+    this.notes = '';
+  }
+  onClick() {
+    this.date = '';
+    this.task = '';
+    this.time = '';
+    this.notes = '';
+    this.startAdding = false;
   }
 }

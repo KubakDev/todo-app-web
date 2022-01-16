@@ -14,6 +14,7 @@ import { CreateTaskComponent } from './components/home/create-task/create-task.c
 import { SettingComponent } from './components/setting/setting.component';
 import { TaskComponent } from './components/home/today-tasks/task/task.component';
 import { ToggleComponent } from './components/toggle/toggle.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,7 @@ import { ToggleComponent } from './components/toggle/toggle.component';
     TaskComponent,
     ToggleComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule],
+  imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
   providers: [
     {
       provide: HTTP_INTERCEPTORS,

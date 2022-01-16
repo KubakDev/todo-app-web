@@ -7,17 +7,22 @@
           <div class="pb-32 centering">
             
             <input 
+            [(ngModel)]="task"
               type="text" 
               class="h-28 w-11/12 inputs" 
               placeholder="What is on your Mind....." 
               (click)="onClickInput()"
               required
+              name="task"
+             
             >
             <div class="w-full centering mt-10 " *ngIf="startAdding">
               <input 
+             [(ngModel)]="notes"
               type="text" 
               class="w-11/12 inputs" 
               placeholder="Notes....." 
+              name="notes"
             >
             <div class="w-full centering mt-10">
                 <div class="w-11/12 h-32 flex">
@@ -30,7 +35,15 @@
                         </div>
                     </div>
                     <div class="w-10/12  ml-10 inputs flex justify-between items-center">
-                       <input class="input placeholder:text-sm placeholder:font-bold placeholder:text-primaryColor" placeholder="Date" type="text" onfocus="(this.type='date')" required>
+                       <input 
+                       [(ngModel)]="date"
+                       class="input placeholder:text-sm placeholder:font-bold placeholder:text-primaryColor" 
+                       placeholder="Date" 
+                       type="text" 
+                       onfocus="(this.type='date')" 
+                       required
+                       name="date"
+                       >
                         <app-toggle toggleName="date" class="mr-10"></app-toggle>
                     </div>
                 
@@ -45,8 +58,16 @@
                       >
                     </div>
                   
-                    <div class="w-10/12  ml-10 inputs flex justify-between items-center">
-                        <input class="input placeholder:text-sm placeholder:font-bold placeholder:text-primaryColor" placeholder="Time" type="text" onfocus="(this.type='time')">
+                    <div class="w-10/12  ml-10 inputs flex justify-between items-center" (click)="timeInput.click()">
+                        <input 
+                        #timeInput
+                        [(ngModel)]="time"
+                        class="input placeholder:text-sm placeholder:font-bold placeholder:text-primaryColor" 
+                        placeholder="Time" 
+                        type="text" 
+                        onfocus="(this.type='time')"
+                        name="time"
+                        >
                         <app-toggle toggleName="time" class="mr-10"></app-toggle>
                     </div>
                 </div>
@@ -54,8 +75,9 @@
 
             <div class="w-full centering " >
                  <div class="flex justify-center flex-wrap">
-                    <button class="btn mr-5 lg:mr-10 bg-foregroundColorTint text-foregroundColorText mb-6" type="button">Cancle</button>
+                    <button class="btn mr-5 lg:mr-10 bg-foregroundColorTint text-foregroundColorText mb-6" type="button" (click)="onClick()">Cancle</button>
                     <button class="btn mr-5 bg-primaryColor text-white " type="submit">Save</button>
+                 
                 </div>
                 
             </div>
