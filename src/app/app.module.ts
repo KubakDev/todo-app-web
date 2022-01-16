@@ -15,6 +15,7 @@ import { SideNavComponent } from './components/side-nav/side-nav.component';
 import { ErrorPageComponent } from './components/error-page/error-page.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { ToggleComponent } from './components/shared/toggle/toggle.component';
+import { AuthModule } from '@auth0/auth0-angular';
 
 @NgModule({
   declarations: [
@@ -26,13 +27,20 @@ import { ToggleComponent } from './components/shared/toggle/toggle.component';
     TodayTasksComponent,
     CreateTaskComponent,
     AppComponent,
-    SignInComponent,
     SideNavComponent,
     ErrorPageComponent,
     ProfileComponent,
     ToggleComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    HttpClientModule,
+    AuthModule.forRoot({
+      domain: 'dev-lmrxa-v2.eu.auth0.com',
+      clientId: 'wnMlcJ2Cy414JOsjMLPjNTVEVpiFExCV',
+    }),
+  ],
   providers: [
     {
       provide: HTTP_INTERCEPTORS,

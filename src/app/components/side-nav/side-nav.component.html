@@ -37,7 +37,11 @@
     </li>
   </ul>
 
+  <ng-template #division><div class="h-12"></div> </ng-template>
+
   <a
+    *ngIf="loggedIn | async; else division"
+    (click)="onLogout()"
     class="flex flex-row items-center cursor-pointer gap-3 h-12 transform hover:translate-x-2 transition-transform ease-in duration-200 text-black hover:text-mainTodo-200"
   >
     <i class="material-icons text-xl">logout</i>

@@ -5,7 +5,9 @@
     <div
       class="flex flex-col justify-evenly gap-3 h-full profile-left-container rounded-3xl bg-mainTodo-100 py-12 px-8"
     >
-      <h1 class="text-6xl font-bold text-mainTodo-200">Hello, User</h1>
+      <h1 class="text-4xl font-bold text-mainTodo-200">
+        Hello, {{ user?.name ? user?.name : "" }}
+      </h1>
       <div
         class="flex flex-col gap-3 py-7 justify-between items-center bg-mainTodo-400 rounded-3xl"
       >
@@ -13,7 +15,7 @@
           *ngIf="!editMode"
           type="button"
           (click)="onEdit()"
-          class="flex items-center justify-end w-full pr-7"
+          class="flex items-center justify-end w-full py-3 pr-7"
         >
           <span class="material-icons-outlined">edit</span>
         </button>
@@ -40,8 +42,10 @@
           src="https://images.pexels.com/photos/2589653/pexels-photo-2589653.jpeg?auto=compress&cs=tinysrgb&h=650&w=940"
           alt="Profile image"
         />
-        <h1 class="text-2xl font-bold">Username User</h1>
-        <h1 class="text-lg font-bold">Job Title</h1>
+        <h1 class="text-2xl font-bold">{{ user?.name ? user?.name : "" }}</h1>
+        <h1 class="text-lg font-bold">
+          {{ user?.nickname ? user?.nickname : "" }}
+        </h1>
         <p class="text-center text-mainTodo-200">
           Lorem ipsum dolor sit amet, consectetur <br />
           adipiscing elit. Ornare pretium placerat ut platea.
@@ -57,12 +61,12 @@
         <h1
           class="text-lg font-bold bg-mainTodo-100 w-11/12 py-4 pl-5 m-4 rounded-3xl"
         >
-          User Name
+          {{ user?.name ? user?.name : "" }}
         </h1>
         <h1
           class="text-lg font-bold bg-mainTodo-100 w-11/12 py-4 pl-5 m-4 rounded-3xl"
         >
-          Email
+          {{ user?.email ?? "" }}
         </h1>
       </div>
     </div>
