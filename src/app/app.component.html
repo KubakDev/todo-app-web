@@ -1,7 +1,5 @@
-<div [class]="currentTheme">
-    <button type="button" (click)="onclick()">
-        change yheme
-    </button>
+<div class="{{currentTheme | async}} bg-backgroundColor">
+
 
     <router-outlet></router-outlet>
 </div>

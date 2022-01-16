@@ -11,8 +11,9 @@ import { HeaderComponent } from './components/home/header/header.component';
 import { CalenderComponent } from './components/home/calender/calender.component';
 import { TodayTasksComponent } from './components/home/today-tasks/today-tasks.component';
 import { CreateTaskComponent } from './components/home/create-task/create-task.component';
-
-
+import { SettingComponent } from './components/setting/setting.component';
+import { TaskComponent } from './components/home/today-tasks/task/task.component';
+import { ToggleComponent } from './components/toggle/toggle.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,10 @@ import { CreateTaskComponent } from './components/home/create-task/create-task.c
     TodayTasksComponent,
     CreateTaskComponent,
     AppComponent,
-     SignInComponent
+    SignInComponent,
+    SettingComponent,
+    TaskComponent,
+    ToggleComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule],
   providers: [
@@ -32,7 +36,8 @@ import { CreateTaskComponent } from './components/home/create-task/create-task.c
       provide: HTTP_INTERCEPTORS,
       useClass: InterceptorService,
       multi: true,
-    }],
+    },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

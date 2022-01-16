@@ -1,0 +1,11 @@
+<button class="h-16 w-full lg:w-11/12 bg-secondaryColor rounded-xsm flex items-center mb-10">
+    <div class="w-10 h-10  ml-5 rounded-sm border-solid border-2 border-primaryColor "*ngIf="!task.isCompleted">
+  
+    </div>
+    <div class="w-10 h-10  ml-5 rounded-sm  bg-quaternaryColorTint" *ngIf="task.isCompleted">
+  
+  </div>
+    <h1 class="text-md ml-10 {{task.isCompleted?'text-quaternaryColorTint line-through ':'text-primaryColor'}}  " >{{task.name}}</h1>
+   
+</button>
+ 
