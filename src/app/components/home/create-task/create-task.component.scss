@@ -1,0 +1,33 @@
+.inputs {
+  @apply rounded-xsm text-sm pl-10 placeholder:text-primaryColorTint h-20 bg-white;
+}
+.btn {
+  @apply h-12 w-52 rounded-xsm font-bold;
+}
+.input {
+  height: 100%;
+  width: 100%;
+}
+input {
+  border: none;
+}
+input[type="date"]::-webkit-calendar-picker-indicator {
+  //   color: rgba(0, 0, 0, 0);
+  //   opacity: 1;
+  //   display: block;
+  //   background: url(https://mywildalberta.ca/images/GFX-MWA-Parks-Reservations.png)
+  //     no-repeat;
+  //   width: 80%;
+  //   height: 100%;
+  //   border-width: thin;
+}
+input[type="time"]::-webkit-calendar-picker-indicator {
+  //   color: rgba(0, 0, 0, 0);
+  //   opacity: 1;
+  //   display: block;
+  //   background: url(https://mywildalberta.ca/images/GFX-MWA-Parks-Reservations.png)
+  //     no-repeat;
+  //   width: 80%;
+  //   height: 100%;
+  //   border-width: thin;
+}

@@ -1,6 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
+import { Observable } from 'rxjs';
 import { AuthService } from './auth.service';
+import { ThemesService } from './themes.service';
+import '@themesberg/flowbite';
 
 @Component({
   selector: 'app-root',
@@ -8,10 +11,17 @@ import { AuthService } from './auth.service';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  constructor(public auth: AuthService, private http: HttpClient) {}
+  constructor(
+    public auth: AuthService,
+    private http: HttpClient,
+    private themeservice: ThemesService
+  ) {}
   title = 'todoAppWeb';
 
   weatherItems: any = [];
+  get currentTheme(): Observable<string> {
+    return this.themeservice.themeName$;
+  }
 
   ngOnInit() {
     this.http
@@ -20,4 +30,5 @@ export class AppComponent {
         this.weatherItems = reply;
       });
   }
+  onclick() {}
 }
