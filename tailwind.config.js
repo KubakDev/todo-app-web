@@ -1,3 +1,5 @@
+
+
 module.exports = {
   plugins: [
     require('@themesberg/flowbite/plugin')
@@ -29,7 +31,7 @@ module.exports = {
         themes:{
           main:"#6D4AFC",
           pink:"#55B4B2",
-          blue:"#849AC3",
+          blue:"#353652",
           dark:"#000000"
         },
         // //   50: "#F0ECFF",
@@ -46,25 +48,39 @@ module.exports = {
         // test:
         //   " var(--test)"
 
-        successColor: "var(--color-success)",
-        warningColor: "var(--color-warning)",
-        dangerColor: "var(--color-danger)",
-        primaryColor: "var(--color-primary)",
-        primaryColorShade: "var(--color-primary-shade)",
-        primaryColorTint: "var(--color-primary-tint)",
-        secondaryColor: "var(--color-secondary)",
-        secondaryColorShade: "var(--color-secondary-shade)",
-        secondaryColorTint: "var(--color-secondary-tint)",
-        tertiaryColor: "var(--color-tertiary)",
-        tertiaryColorShade: "var(--color-tertiary-shade)",
-        tertiaryColorTint: "var(--color-tertiary-tint)",
-        quaternaryColor: "var(--color-quaternary)",
-        quaternaryColorShade: "var(--color-quaternary-shade)",
-        quaternaryColorTint: "var(--color-quaternary-tint)",
-        backgroundColor: "var(--color-background)",
-        foregroundColor: "var(--color-foreground)",
-        foregroundColorTint:"var(--color-foreground-tint)",
-        foregroundColorText:"var(--color-foreground-contrast)"
+        // successColor: "var(--color-success)",
+        // warningColor: "var(--color-warning)",
+        // dangerColor: "var(--color-danger)",
+        // primaryColor: "var(--color-primary)",
+        // primaryColorShade: "var(--color-primary-shade)",
+        // primaryColorTint: "var(--color-primary-tint)",
+        // secondaryColor: "var(--color-secondary)",
+        // secondaryColorShade: "var(--color-secondary-shade)",
+        // secondaryColorTint: "var(--color-secondary-tint)",
+        // tertiaryColor: "var(--color-tertiary)",
+        // tertiaryColorShade: "var(--color-tertiary-shade)",
+        // tertiaryColorTint: "var(--color-tertiary-tint)",
+        // quaternaryColor: "var(--color-quaternary)",
+        // quaternaryColorShade: "var(--color-quaternary-shade)",
+        // quaternaryColorTint: "var(--color-quaternary-tint)",
+        // backgroundColor: "var(--color-background)",
+        // foregroundColor: "var(--color-foreground)",
+        // foregroundColorTint:"var(--color-foreground-tint)",
+        // foregroundColorText:"var(--color-foreground-contrast)"
+     
+        primaryColor:"var(--color-primary)",
+        secondaryColor:"var(--color-secondary)",
+        backgroundColor:"var(--color-background)",
+        quatenaryColor:"var(--color-quatenary)",
+        lightPrimaryColor:"var(--color-light-primary)",
+        lightColor:"var(--color-light)",
+        cardBackgroundColor:"var( --color-card-background)",
+        TextBoldColor:"var(--color-text-bold)",
+        btnLightBgColor:"var(--color-btn-light-bg)",
+        textPrimaryColor:"var(--color-text-primary)"
+
+        
+        
         
       },
     },

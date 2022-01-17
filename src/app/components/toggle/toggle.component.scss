@@ -2,5 +2,5 @@ input:checked ~ .dot {
   transform: translateX(100%);
 }
 input:checked ~ .dot-bg {
-  background-color: #6d4afc;
+  background-color: var(--color-text-bold);
 }
