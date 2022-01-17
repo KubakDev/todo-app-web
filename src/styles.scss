@@ -1,7 +1,65 @@
 @import "tailwindcss/base";
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
+@import "~material-icons/iconfont/material-icons.css";
 
+.button-style {
+  @apply bg-quatenaryColor w-10/12 h-16 rounded-xsm text-xsm font-bold mb-3;
+}
+.both {
+  @apply bg-TextBoldColor w-10/12 h-16 rounded-xsm text-xsm font-bold mb-3 text-textPrimaryColor;
+}
+.centering {
+  @apply flex flex-col justify-center items-center;
+}
 html {
   font-family: "Baloo 2", cursive;
+}
+:root {
+  --color-success: #2dd36f;
+  --color-success-rgb: 45, 211, 111;
+  --color-success-contrast: #000000;
+  --color-success-contrast-rgb: 0, 0, 0;
+  --color-success-shade: #28ba62;
+  --color-success-tint: #42d77d;
+
+  --color-warning: #ffc409;
+  --color-warning-rgb: 255, 196, 9;
+  --color-warning-contrast: #000000;
+  --color-warning-contrast-rgb: 0, 0, 0;
+  --color-warning-shade: #e0ac08;
+  --color-warning-tint: #ffca22;
+
+  --color-danger: #eb445a;
+  --color-danger-rgb: 235, 68, 90;
+  --color-danger-contrast: #ffffff;
+  --color-danger-contrast-rgb: 255, 255, 255;
+  --color-danger-shade: #cf3c4f;
+  --color-danger-tint: #ed576b;
+}
+
+.main-theme {
+  --color-primary: #6d4afc;
+  --color-secondary: #f778ba;
+  --color-background: #fff;
+  --color-quatenary: #f0ecff;
+  --color-light-primary: #967ef9;
+  --color-light: #f9f8ff;
+  --color-card-background: #eae4ff;
+  --color-text-bold: #6d4afc;
+  --color-btn-light-bg: #f9f8ff;
+  --color-text-primary: #000;
+}
+
+.blue-theme {
+  --color-primary: #ffffff;
+  --color-secondary: #849ac3;
+  --color-background: #353652;
+  --color-quatenary: #e9f0ff;
+  --color-light-primary: #667797;
+  --color-light: #849ac3;
+  --color-card-background: #849ac3;
+  --color-text-bold: #353652;
+  --color-btn-light-bg: #818999;
+  --color-text-primary: #fff;
 }
