@@ -8,10 +8,9 @@ import { TodosService } from 'src/app/backend/services';
   styleUrls: ['./sign-in.component.scss'],
 })
 @Injectable()
-export class SignInComponent implements OnInit {
+export class SignInComponent {
+  currentImage = localStorage.getItem('themeName');
   constructor(private auth: AuthService, private todos: TodosService) {}
-
-  ngOnInit(): void {}
 
   onAuth() {
     this.auth.login();

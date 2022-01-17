@@ -1,10 +1,10 @@
 <div class="flex flex-col justify-center items-center ">
-    <div class="h-auto w-full flex justify-center mb-10 "> 
-      <div class=" w-11/12 bg-secondaryColor rounded-sm shadow-lg">
+    <div class="h-auto w-full flex justify-center  mb-10"> 
+      <div class=" w-11/12 bg-cardBackgroundColor rounded-sm shadow-lg">
           <h1 class="text-md font-bold ml-10 mt-10 text-primaryColor mb-10">Create a new Task</h1>
           <form class="w-full" (ngSubmit)="onSubmit()">
 
-          <div class="pb-32 centering">
+          <div class="pb-20 centering">
             
             <input 
             [(ngModel)]="task"
@@ -29,7 +29,7 @@
                     <div class="h-20 w-20 bg-white rounded-lg">
                         <div class="h-20 w-20 bg-white rounded-lg centering">
                             <span
-                            class="material-icons text-primaryColorTint  rounded-full p-1 px-2 text-xmd"
+                            class="material-icons text-lightPrimaryColor  rounded-full p-1 px-2 text-xmd"
                             >calendar_month</span
                           >
                         </div>
@@ -37,7 +37,7 @@
                     <div class="w-10/12  ml-10 inputs flex justify-between items-center">
                        <input 
                        [(ngModel)]="date"
-                       class="input placeholder:text-sm placeholder:font-bold placeholder:text-primaryColor" 
+                       class="input placeholder:text-sm placeholder:font-bold placeholder:text-TextBoldColor" 
                        placeholder="Date" 
                        type="text" 
                        onfocus="(this.type='date')" 
@@ -53,7 +53,7 @@
                 <div class="w-11/12 h-32 flex">
                     <div class="h-20 w-20 bg-white rounded-lg centering">
                         <span
-                        class="material-icons text-primaryColorTint  rounded-full p-1 px-2 text-xmd"
+                        class="material-icons text-lightPrimaryColor  rounded-full p-1 px-2 text-xmd"
                         >access_time</span
                       >
                     </div>
@@ -62,8 +62,8 @@
                         <input 
                         #timeInput
                         [(ngModel)]="time"
-                        class="input placeholder:text-sm placeholder:font-bold placeholder:text-primaryColor" 
-                        placeholder="Timeee" 
+                        class="input placeholder:text-sm placeholder:font-bold placeholder:text-TextBoldColor" 
+                        placeholder="Time" 
                         type="text" 
                         onfocus="(this.type='time')"
                         name="time"
@@ -75,8 +75,8 @@
 
             <div class="w-full centering " >
                  <div class="flex justify-center flex-wrap">
-                    <button class="btn mr-5 lg:mr-10 bg-foregroundColorTint text-foregroundColorText mb-6" type="button" (click)="onClick()">Cancle</button>
-                    <button class="btn mr-5 bg-primaryColor text-white " type="submit">Save</button>
+                    <button class="btn mr-5 lg:mr-10 bg-btnLightBgColor text-foregroundColorText mb-6" type="button" (click)="onClick()">Cancle</button>
+                    <button class="btn mr-5 bg-TextBoldColor text-white " type="submit">Save</button>
                  
                 </div>
                 
