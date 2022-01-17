@@ -7,19 +7,13 @@ import { TodoService } from 'src/app/todo.service';
   templateUrl: './create-task.component.html',
   styleUrls: ['./create-task.component.scss'],
 })
-export class CreateTaskComponent implements OnInit {
-  public innerWidth: any;
+export class CreateTaskComponent {
   startAdding: boolean = false;
   task: string = '';
   notes: string = '';
   date: string = '';
   time: string = '';
-  constructor(private todoservice: TodoService) {
-    console.log(this.innerWidth);
-  }
-  ngOnInit(): void {
-    this.innerWidth = window.innerWidth;
-  }
+  constructor(private todoservice: TodoService) {}
 
   onClickInput() {
     this.startAdding = true;
