@@ -8,8 +8,9 @@ import { TodoService } from 'src/app/todo.service';
   styleUrls: ['./today-tasks.component.scss'],
 })
 export class TodayTasksComponent implements OnInit {
-  tasks: any = '';
+  tasks: [] | any;
   isOpen: boolean = false;
+
   constructor(private taskService: TodoService) {}
 
   ngOnInit(): void {
@@ -17,5 +18,16 @@ export class TodayTasksComponent implements OnInit {
   }
   openFilter() {
     this.isOpen = !this.isOpen;
+  }
+  both() {
+    this.tasks = this.taskService.tasks;
+    this.isOpen = false;
+  }
+  filtter(condition: boolean) {
+    this.tasks = this.taskService.tasks.filter((Complete: any) => {
+      return Complete.isCompleted === condition;
+    });
+
+    this.isOpen = false;
   }
 }
