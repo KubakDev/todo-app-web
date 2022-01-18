@@ -16,6 +16,7 @@ import { ErrorPageComponent } from './components/error-page/error-page.component
 import { ProfileComponent } from './components/profile/profile.component';
 import { ToggleComponent } from './components/shared/toggle/toggle.component';
 import { AuthModule } from '@auth0/auth0-angular';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { AuthModule } from '@auth0/auth0-angular';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    ReactiveFormsModule,
     AuthModule.forRoot({
       domain: 'dev-lmrxa-v2.eu.auth0.com',
       clientId: 'wnMlcJ2Cy414JOsjMLPjNTVEVpiFExCV',
