@@ -12,7 +12,7 @@ import { TodosService } from 'src/app/backend/services';
 })
 export class ProfileComponent implements OnInit, OnDestroy {
   editMode?: boolean = false;
-  todos?: Todo[];
+  todos?: [] | any;
   prevTodos?: string[] = [];
   subscription?: Observable<Todo[]> | Subscription;
   profileFrom?: FormGroup;
@@ -35,6 +35,8 @@ export class ProfileComponent implements OnInit, OnDestroy {
   }
 
   async ngOnInit(): Promise<void> {
+    this.todoService.apiTodosGet$Json;
+
     this.authService.user$.subscribe((u) => {
       this.user = {
         email: u?.email ?? '',
@@ -46,6 +48,12 @@ export class ProfileComponent implements OnInit, OnDestroy {
     if (this.prevTodos) {
       this.prevTodos = ['Check Mail', 'Coding', 'Have Dinner'];
     }
+
+    this.todos = this.todoService
+      .apiTodosGet$Json$Response()
+      .subscribe((element: any) => {
+        console.log(element);
+      });
     // this.subscription = this.todoService
     //   .apiTodosGet$Json()
     //   .subscribe((todos: Todo[]) => {
