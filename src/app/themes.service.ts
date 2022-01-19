@@ -6,15 +6,15 @@ import { ThemeName } from './models/theme.model';
   providedIn: 'root',
 })
 export class ThemesService {
-  localTheme = localStorage.getItem('themeName');
+  localTheme = localStorage.getItem('themeName')
+    ? localStorage.getItem('themeName')
+    : 'main-theme';
 
   private themeName = new BehaviorSubject<any>('main-theme');
 
   themeName$ = this.themeName.asObservable();
   constructor() {
-    if (this.localTheme !== '') {
-      this.themeName.next(this.localTheme);
-    }
+    this.themeName.next(this.localTheme);
   }
 
   changeTheme(theme: ThemeName): void {
