@@ -95,4 +95,5 @@ module.exports = {
   variants: {
     extend: {},
   },
+  plugins: [require("@themesberg/flowbite/plugin")],
 };
