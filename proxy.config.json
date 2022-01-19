@@ -1,9 +1,9 @@
 {
-  "/auth": {
-    "target": "http://dev-lmrxa-v2.eu.auth0.com/",
+  "/api": {
+    "target": "https://6ea0-62-201-232-11.ngrok.io",
     "secure": true,
     "pathRewrite": {
-      "^/auth": "http://dev-lmrxa-v2.eu.auth0.com/"
+      "^/api": ""
     }
   }
 }

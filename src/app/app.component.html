@@ -1,4 +1,4 @@
-<div class="md:flex bg-mainTodo-100">
+<div class="md:flex {{currentTheme | async}} bg-backgroundColor ">
   <app-side-nav></app-side-nav>
   <div class="w-screen">
     <router-outlet></router-outlet>

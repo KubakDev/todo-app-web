@@ -1,22 +1,22 @@
-<div class="flex justify-center mt-16 ">
-<div class="grid lg:grid-cols-2 grid-col-1 bg-secondary-color w-11/12 rounded-b-sm rounded-tr-sm sm:h-64 lg:h-auto">
+<div class="flex justify-center pt-5 ">
+<div class="grid lg:grid-cols-2 grid-col-1 bg-quatenaryColor w-11/12 rounded-b-sm rounded-tr-sm h-40 lg:h-auto">
 
     <div
-        class="grid grid-col-4 bg-light-secondary-color rounded-bl-lg rounded-tr-lg flex justify-center content-center">
+        class="grid grid-col-4 bg-lightColor rounded-bl-lg rounded-tr-lg flex justify-center content-center">
 
         <div>
-            <h1 class="text-lg font-bold text-primary-color ">
-                Hello, Przha
+            <h1 class="sm:text-md lg:text-lg font-bold text-primaryColor ">
+                Hello, {{UserName}}
             </h1>
-            <p class="text-sm text-primary-color" *ngIf="unfinishedTasks">
+            <p class="sm:text-xsm lg:text-sm text-primaryColor" *ngIf="unfinishedTasks">
                 you have {{unfinishedTasks}} unfinished tasks
             </p>
 
         </div>
     </div>
-    <div class="grid grid-cols-3 flex items-center sm:hidden lg:flex">
-        <img src="./assets/images/note.png " class="xl:-ml-40 lg:-ml-28">
-        <p class="text-md text-light-primary-color font-bold col-span-2 mr-20" >“All our dreams can come true, if we have the courage to pursue them.</p>
+    <div class="grid grid-cols-3 flex items-center hidden lg:flex ">
+        <img src="./assets/images/note.png " class="xl:-ml-40 lg:-ml-28 w-1/4">
+        <p class="text-md text-lightPrimaryColor font-bold col-span-2 mr-20" >“All our dreams can come true, if we have the courage to pursue them.</p>
      </div>
 </div>
 </div>

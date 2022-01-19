@@ -8,7 +8,7 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "lint": "ng lint",
-    "pull-swagger": "ng-openapi-gen -i https://09c6-62-201-232-11.ngrok.io/swagger/v1/swagger.json -o src/app/backend"
+    "pull-swagger": "ng-openapi-gen -i https://6ea0-62-201-232-11.ngrok.io/swagger/v1/swagger.json -o src/app/backend"
   },
   "private": true,
   "dependencies": {
@@ -24,6 +24,7 @@
     "@auth0/auth0-spa-js": "^1.19.3",
     "@ngneat/tailwind": "^7.0.3",
     "@themesberg/flowbite": "^1.3.0",
+    "@themesberg/tailwind-datepicker": "^1.1.0",
     "material-icons": "^1.10.6",
     "ng-openapi-gen": "^0.20.0",
     "rxjs": "~7.4.0",
@@ -35,7 +36,7 @@
     "@angular-eslint/builder": "13.0.1",
     "@angular-eslint/eslint-plugin": "13.0.1",
     "@angular-eslint/eslint-plugin-template": "13.0.1",
-    "@angular-eslint/schematics": "13.0.1",
+    "@angular-eslint/schematics": "^13.0.1",
     "@angular-eslint/template-parser": "13.0.1",
     "@angular/cli": "~13.1.2",
     "@angular/compiler-cli": "~13.1.0",
