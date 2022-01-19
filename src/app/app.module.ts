@@ -16,6 +16,7 @@ import { ErrorPageComponent } from './components/error-page/error-page.component
 import { ProfileComponent } from './components/profile/profile.component';
 import { ToggleComponent } from './components/shared/toggle/toggle.component';
 import { AuthModule } from '@auth0/auth0-angular';
+import { ToastrModule } from 'ngx-toastr';
 
 import { ToastrModule } from 'ngx-toastr';
 
