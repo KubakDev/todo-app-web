@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '@auth0/auth0-angular';
+import { TodosService } from 'src/app/backend/services';
 
 @Component({
   selector: 'app-profile',
@@ -17,7 +18,10 @@ export class ProfileComponent implements OnInit {
         picture: string;
       }
     | undefined;
-  constructor(private authService: AuthService) {}
+  constructor(
+    private authService: AuthService,
+    private todoService: TodosService
+  ) {}
 
   async ngOnInit(): Promise<void> {
     this.authService.user$.subscribe((u) => {
@@ -28,6 +32,9 @@ export class ProfileComponent implements OnInit {
         picture: u?.picture ?? '',
       };
     });
+    setTimeout(() => {
+      this.todoService.todosGet().subscribe((todo) => console.log(todo));
+    }, 3000);
   }
 
   onEdit() {

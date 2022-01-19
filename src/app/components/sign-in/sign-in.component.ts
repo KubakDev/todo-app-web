@@ -18,14 +18,14 @@ export class SignInComponent implements OnInit, OnDestroy {
   get currentTheme(): Observable<string> {
     return this.themeservice.themeName$;
   }
-  
+
   constructor(
     private auth: AuthService,
     private todos: TodosService,
-    private router: Router, 
+    private router: Router,
     private themeservice: ThemesService
   ) {}
-  
+
   ngOnDestroy(): void {
     this.destroy.next(undefined);
     this.destroy.complete();
@@ -38,11 +38,8 @@ export class SignInComponent implements OnInit, OnDestroy {
   }
 
   async onAuth() {
-    await this.auth.loginWithPopup();}
-
-  
-
-
+    await this.auth.loginWithRedirect({ audience: 'http://localhost:5000' });
+  }
 
   logout(): void {
     this.auth.logout();

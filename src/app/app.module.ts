@@ -19,6 +19,7 @@ import { AuthModule } from '@auth0/auth0-angular';
 import { ErrorPageComponent } from './components/error-page/error-page.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { SideNavComponent } from './components/side-nav/side-nav.component';
+import { ApiModule } from './backend/api.module';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { SideNavComponent } from './components/side-nav/side-nav.component';
     SideNavComponent,
     ErrorPageComponent,
     ProfileComponent,
-    ToggleComponent,SignInComponent,
+    ToggleComponent,
+    SignInComponent,
     SettingComponent,
     TaskComponent,
     ToggleComponent,
@@ -47,9 +49,11 @@ import { SideNavComponent } from './components/side-nav/side-nav.component';
     AuthModule.forRoot({
       domain: 'dev-lmrxa-v2.eu.auth0.com',
       clientId: 'wnMlcJ2Cy414JOsjMLPjNTVEVpiFExCV',
+      audience: 'http://localhost:5000',
     }),
+    ApiModule.forRoot({ rootUrl: '/api' }),
   ],
-    
+
   providers: [
     {
       provide: HTTP_INTERCEPTORS,

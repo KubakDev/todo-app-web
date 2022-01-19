@@ -7,32 +7,42 @@
   <ul class="flex flex-col justify-around gap-5 py-4 px-10">
     <li>
       <a
-        class="flex flex-row items-center gap-3 cursor-pointer h-12 transform hover:translate-x-2 transition-transform ease-in duration-200 text-black hover:text-mainTodo-200"
+        routerLink="/home"
+        class="flex flex-row items-center gap-3 cursor-pointer h-12 transform hover:translate-x-2 transition-transform ease-in duration-200 text-black hover:text-primaryColor"
       >
-        <i class="material-icons text-xl">home</i>
+        <i routerLinkActive="text-primaryColor" class="material-icons text-xl"
+          >home</i
+        >
 
-        <span class="text-xl font-medium">Home</span>
+        <span routerLinkActive="text-primaryColor" class="text-xl font-medium"
+          >Home</span
+        >
       </a>
     </li>
     <li>
       <a
         routerLink="/profile"
-        class="flex flex-row items-center gap-3 cursor-pointer h-12 transform hover:translate-x-2 transition-transform ease-in duration-200 text-black hover:text-mainTodo-200"
+        class="flex flex-row items-center gap-3 cursor-pointer h-12 transform hover:translate-x-2 transition-transform ease-in duration-200 text-black hover:text-primaryColor"
       >
-        <i routerLinkActive="text-mainTodo-200" class="material-icons text-xl"
+        <i routerLinkActive="text-primaryColor" class="material-icons text-xl"
           >account_circle</i
         >
-        <span routerLinkActive="text-mainTodo-200" class="text-xl font-medium"
+        <span routerLinkActive="text-primaryColor" class="text-xl font-medium"
           >Profile</span
         >
       </a>
     </li>
     <li>
       <a
-        class="flex flex-row items-center gap-3 cursor-pointer h-12 transform hover:translate-x-2 transition-transform ease-in duration-200 text-black hover:text-mainTodo-200"
+        routerLink="/settings"
+        class="flex flex-row items-center gap-3 cursor-pointer h-12 transform hover:translate-x-2 transition-transform ease-in duration-200 text-black hover:text-primaryColor"
       >
-        <i class="material-icons text-xl">settings</i>
-        <span class="text-xl font-medium">Settings</span>
+        <i routerLinkActive="text-primaryColor" class="material-icons text-xl"
+          >settings</i
+        >
+        <span routerLinkActive="text-primaryColor" class="text-xl font-medium"
+          >Settings</span
+        >
       </a>
     </li>
   </ul>
@@ -42,7 +52,7 @@
   <a
     *ngIf="loggedIn | async; else division"
     (click)="onLogout()"
-    class="flex flex-row items-center cursor-pointer gap-3 h-12 transform hover:translate-x-2 transition-transform ease-in duration-200 text-black hover:text-mainTodo-200"
+    class="flex flex-row items-center cursor-pointer gap-3 h-12 transform hover:translate-x-2 transition-transform ease-in duration-200 text-black hover:text-primaryColor"
   >
     <i class="material-icons text-xl">logout</i>
     <span class="text-xl font-medium">Logout</span>
@@ -54,29 +64,32 @@
     data-dropdown-toggle="dropdownDivider"
     type="button"
   >
-    <span class="material-icons p-6 text-3xl text-mainTodo-200">menu</span>
+    <span class="material-icons p-6 text-3xl text-primaryColor">menu</span>
   </button>
 
   <div
     id="dropdownDivider"
-    class="hidden z-10 w-full md:w-1/2 text-base list-none bg-white rounded divide-y divide-gray-100 shadow"
+    class="hidden z-10 w-full lg:w-1/2 text-base list-none bg-white rounded divide-y divide-gray-100 shadow"
   >
     <ul class="py-1" aria-labelledby="dropdownDividerButton">
       <li>
         <a
-          class="block cursor-pointer py-2 px-4 text-lg text-black hover:bg-mainTodo-400 hover:text-mainTodo-200"
+          routerLink=""
+          class="block cursor-pointer py-2 px-4 text-xl text-black hover:bg-mainTodo-400 hover:text-primaryColor"
           >Home</a
         >
       </li>
       <li>
         <a
-          class="block cursor-pointer py-2 px-4 text-lg text-black hover:bg-mainTodo-400 hover:text-mainTodo-200"
+          routerLink="/profile"
+          class="block cursor-pointer py-2 px-4 text-xl text-black hover:bg-mainTodo-400 hover:text-primaryColor"
           >Profile</a
         >
       </li>
       <li>
         <a
-          class="block cursor-pointer py-2 px-4 text-lg text-black hover:bg-mainTodo-400 hover:text-mainTodo-200"
+          routerLink="/settings"
+          class="block cursor-pointer py-2 px-4 text-xl text-black hover:bg-mainTodo-400 hover:text-primaryColor"
           >Settings</a
         >
       </li>
@@ -84,7 +97,7 @@
     <div class="py-1">
       <a
         (click)="onLogout()"
-        class="block cursor-pointer py-2 px-4 text-lg text-black hover:bg-mainTodo-400 hover:text-mainTodo-200"
+        class="block cursor-pointer py-2 px-4 text-xl text-black hover:bg-mainTodo-400 hover:text-primaryColor"
         >Logout</a
       >
     </div>

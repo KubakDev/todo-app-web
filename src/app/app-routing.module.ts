@@ -8,7 +8,7 @@ import { SettingComponent } from './components/setting/setting.component';
 import { SignInComponent } from './components/sign-in/sign-in.component';
 
 const routes: Routes = [
-  { path: '', component: SignInComponent },
+  { path: '', component: SignInComponent, pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
   { path: '404', component: ErrorPageComponent },
   { path: 'profile', component: ProfileComponent, canActivate: [] },

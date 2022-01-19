@@ -1,15 +1,15 @@
-<div class="bg-white p-7">
+<div class="bg-backgroundColor p-7">
   <div
-    class="grid grid-cols-1 md:grid-cols-2 justify-center gap-10 items-center w-full h-full bg-mainTodo-400 profile-container rounded-lg p-2 md:p-0 md:pr-6"
+    class="grid grid-cols-1 md:grid-cols-2 justify-center gap-10 items-center w-full h-full bg-cardBackgroundColor profile-container rounded-xl p-2 md:p-0 md:pr-6"
   >
     <div
-      class="flex flex-col justify-evenly gap-3 h-full profile-left-container rounded-3xl bg-mainTodo-100 py-12 px-8"
+      class="flex flex-col justify-evenly gap-3 h-full profile-left-container rounded-3xl bg-quatenaryColor py-12 px-8"
     >
-      <h1 class="text-4xl font-bold text-mainTodo-200">
+      <h1 class="text-4xl font-bold text-primaryColor">
         Hello, {{ user?.name ? user?.name : "" }}
       </h1>
       <div
-        class="flex flex-col gap-3 py-7 justify-between items-center bg-mainTodo-400 rounded-3xl"
+        class="flex flex-col gap-3 py-7 justify-between items-center bg-cardBackgroundColor rounded-3xl"
       >
         <button
           *ngIf="!editMode"
@@ -27,12 +27,12 @@
         >
           <button
             (click)="onEdit()"
-            class="bg-mainTodo-600 text-black px-8 py-3 rounded-full"
+            class="bg-quatenaryColor text-black px-8 py-3 rounded-full"
           >
             Cancel
           </button>
           <button
-            class="bg-mainTodo-200 text-mainTodo-50 px-8 py-3 rounded-full"
+            class="bg-primaryColor text-lightColor px-8 py-3 rounded-full"
           >
             Save
           </button>
@@ -43,28 +43,28 @@
           alt="Profile image"
         />
         <h1 class="text-2xl font-bold">{{ user?.name ? user?.name : "" }}</h1>
-        <h1 class="text-lg font-bold">
+        <h1 class="text-xl font-bold">
           {{ user?.nickname ? user?.nickname : "" }}
         </h1>
-        <p class="text-center text-mainTodo-200">
+        <p class="text-center text-textPrimaryColor">
           Lorem ipsum dolor sit amet, consectetur <br />
           adipiscing elit. Ornare pretium placerat ut platea.
         </p>
       </div>
       <div
-        class="flex flex-col justify-between items-center bg-mainTodo-400 rounded-3xl py-5"
+        class="flex flex-col justify-between items-center bg-cardBackgroundColor rounded-3xl py-5"
       >
         <div class="flex items-start w-10/12">
           <h1 class="text-2xl font-bold text-black">Personal Information</h1>
         </div>
 
         <h1
-          class="text-lg font-bold bg-mainTodo-100 w-11/12 py-4 pl-5 m-4 rounded-3xl"
+          class="text-xl font-bold bg-quatenaryColor w-11/12 py-4 pl-5 m-4 rounded-3xl"
         >
           {{ user?.name ? user?.name : "" }}
         </h1>
         <h1
-          class="text-lg font-bold bg-mainTodo-100 w-11/12 py-4 pl-5 m-4 rounded-3xl"
+          class="text-xl font-bold bg-quatenaryColor w-11/12 py-4 pl-5 m-4 rounded-3xl"
         >
           {{ user?.email ?? "" }}
         </h1>
@@ -79,30 +79,30 @@
       </div>
       <div class="flex flex-col justify-center items-center my-2 gap-2">
         <div
-          class="flex items-center gap-4 bg-mainTodo-400 py-4 w-11/12 rounded-full px-4 font-bold text-xl"
+          class="flex items-center gap-4 bg-quatenaryColor py-4 w-11/12 rounded-full px-4 font-bold text-xl"
         >
           <span
-            class="material-icons text-white bg-mainTodo-200 rounded-full p-1"
+            class="material-icons text-lightColor bg-primaryColor rounded-full p-1"
             >done</span
           >
 
           Check Mail
         </div>
         <div
-          class="flex items-center gap-4 bg-mainTodo-400 py-4 w-11/12 rounded-full px-4 font-bold text-xl"
+          class="flex items-center gap-4 bg-quatenaryColor py-4 w-11/12 rounded-full px-4 font-bold text-xl"
         >
           <span
-            class="material-icons text-white bg-mainTodo-200 rounded-full p-1"
+            class="material-icons text-lightColor bg-primaryColor rounded-full p-1"
             >done</span
           >
 
           Check Mail
         </div>
         <div
-          class="flex items-center gap-4 bg-mainTodo-400 py-4 w-11/12 rounded-full px-4 font-bold text-xl"
+          class="flex items-center gap-4 bg-quatenaryColor py-4 w-11/12 rounded-full px-4 font-bold text-xl"
         >
           <span
-            class="material-icons text-white bg-mainTodo-200 rounded-full p-1"
+            class="material-icons text-lightColor bg-primaryColor rounded-full p-1"
             >done</span
           >
 
