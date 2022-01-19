@@ -28,48 +28,12 @@
     class="bg-mainTodo-50 md:flex flex-col justify-center items-center hidden"
   >
     <img src="../../../assets/Group 1.svg" alt="" />
-    <div class="flex flex-col rounded-2xl bg-mainTodo-400 p-6 w-full">
-      <div
-        class="flex items-center justify-start text-4xl text-mainTodo-200 font-bold"
-      >
-        Edit Task
-      </div>
-      <input
-        type="text"
-        style="color: #6d4afc"
-        class="bg-mainTodo-100 text-xl p-3 py-4 rounded-2xl my-2"
-        placeholder="My Task"
-      />
-      <input
-        type="text"
-        style="color: #6d4afc"
-        class="bg-mainTodo-100 p-3 rounded-xl my-2 focus:border-mainTodo-200"
-        placeholder="Notes on my task..."
-      />
-      <div class="flex items-center gap-3 my-3">
-        <span
-          class="material-icons-outlined text-mainTodo-200 bg-mainTodo-100 rounded-full p-1 px-2 text-4xl"
-          >calendar_month</span
-        >
-        <div
-          class="flex items-center justify-between w-full bg-mainTodo-100 rounded-2xl p-3 px-6"
-        >
-          <h1 class="text-mainTodo-200 text-2xl font-bold">23 Jan 2022</h1>
-          <app-toggle toggleName="date"></app-toggle>
-        </div>
-      </div>
-      <div class="flex items-center gap-3 my-3">
-        <span
-          class="material-icons text-mainTodo-200 bg-mainTodo-100 rounded-full p-1 px-2 text-4xl"
-          >access_time</span
-        >
-        <div
-          class="flex items-center justify-between w-full bg-mainTodo-100 rounded-2xl p-3 px-6"
-        >
-          <h1 class="text-mainTodo-200 text-2xl font-bold">7:14 AM</h1>
-          <app-toggle toggleName="time"></app-toggle>
-        </div>
-      </div>
-    </div>
+    <button
+      type="button"
+      (click)="showSuccess()"
+      class="bg-mainTodo-200 text-white px-9 py-3 rounded-2xl"
+    >
+      Show Success
+    </button>
   </div>
 </div>

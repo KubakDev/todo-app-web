@@ -4,6 +4,7 @@ import { Auth0Client } from '@auth0/auth0-spa-js';
 import { concatMap, from, Subject, takeUntil, tap } from 'rxjs';
 import { TodosService } from 'src/app/backend/services';
 import { AuthService } from '@auth0/auth0-angular';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-sign-in',
@@ -16,7 +17,8 @@ export class SignInComponent implements OnInit, OnDestroy {
   constructor(
     private auth: AuthService,
     private todos: TodosService,
-    private router: Router
+    private router: Router,
+    private toastr: ToastrService
   ) {}
   ngOnDestroy(): void {
     this.destroy.next(undefined);
@@ -39,5 +41,8 @@ export class SignInComponent implements OnInit, OnDestroy {
 
   private async navigateToProfile(): Promise<void> {
     this.router.navigateByUrl('/profile');
+  }
+  showSuccess() {
+    this.toastr.success('Hello world!', 'Toastr fun!');
   }
 }
