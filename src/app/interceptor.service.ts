@@ -5,7 +5,7 @@ import {
   HttpEvent,
   HttpInterceptor,
 } from '@angular/common/http';
-import { AuthService } from './auth.service';
+import { AuthService } from '@auth0/auth0-angular';
 import { Observable, throwError } from 'rxjs';
 import { mergeMap, catchError } from 'rxjs/operators';
 
@@ -19,11 +19,12 @@ export class InterceptorService implements HttpInterceptor {
     req: HttpRequest<any>,
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
-    return this.auth.getTokenSilently$().pipe(
+    return this.auth.getAccessTokenSilently().pipe(
       mergeMap((token) => {
         const tokenReq = req.clone({
           setHeaders: { Authorization: `Bearer ${token}` },
         });
+        console.log(req.url);
         return next.handle(tokenReq);
       }),
       catchError((err) => throwError(err))

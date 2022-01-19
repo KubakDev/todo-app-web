@@ -1,0 +1,10 @@
+@media (min-width: 768px) {
+  .profile-left-container {
+    border-radius: 0 12% 0 12%;
+  }
+}
+@media only screen and (min-width: 768px) {
+  .profile-container {
+    height: calc(100vh - 64px);
+  }
+}

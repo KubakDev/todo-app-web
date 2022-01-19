@@ -1,0 +1,92 @@
+<div
+  class="xl:flex flex-col items-center justify-between w-44 py-10 bg-mainTodo-100 overflow-hidden min-h-screen hidden"
+>
+  <div class="flex items-center justify-center h-20 my-6">
+    <img src="../../../assets/Group 111.png" alt="" class="h-16" />
+  </div>
+  <ul class="flex flex-col justify-around gap-5 py-4 px-10">
+    <li>
+      <a
+        class="flex flex-row items-center gap-3 cursor-pointer h-12 transform hover:translate-x-2 transition-transform ease-in duration-200 text-black hover:text-mainTodo-200"
+      >
+        <i class="material-icons text-xl">home</i>
+
+        <span class="text-xl font-medium">Home</span>
+      </a>
+    </li>
+    <li>
+      <a
+        routerLink="/profile"
+        class="flex flex-row items-center gap-3 cursor-pointer h-12 transform hover:translate-x-2 transition-transform ease-in duration-200 text-black hover:text-mainTodo-200"
+      >
+        <i routerLinkActive="text-mainTodo-200" class="material-icons text-xl"
+          >account_circle</i
+        >
+        <span routerLinkActive="text-mainTodo-200" class="text-xl font-medium"
+          >Profile</span
+        >
+      </a>
+    </li>
+    <li>
+      <a
+        class="flex flex-row items-center gap-3 cursor-pointer h-12 transform hover:translate-x-2 transition-transform ease-in duration-200 text-black hover:text-mainTodo-200"
+      >
+        <i class="material-icons text-xl">settings</i>
+        <span class="text-xl font-medium">Settings</span>
+      </a>
+    </li>
+  </ul>
+
+  <ng-template #division><div class="h-12"></div> </ng-template>
+
+  <a
+    *ngIf="loggedIn | async; else division"
+    (click)="onLogout()"
+    class="flex flex-row items-center cursor-pointer gap-3 h-12 transform hover:translate-x-2 transition-transform ease-in duration-200 text-black hover:text-mainTodo-200"
+  >
+    <i class="material-icons text-xl">logout</i>
+    <span class="text-xl font-medium">Logout</span>
+  </a>
+</div>
+<div class="flex justify-start items-center w-full xl:hidden">
+  <button
+    id="dropdownDividerButton"
+    data-dropdown-toggle="dropdownDivider"
+    type="button"
+  >
+    <span class="material-icons p-6 text-3xl text-mainTodo-200">menu</span>
+  </button>
+
+  <div
+    id="dropdownDivider"
+    class="hidden z-10 w-full md:w-1/2 text-base list-none bg-white rounded divide-y divide-gray-100 shadow"
+  >
+    <ul class="py-1" aria-labelledby="dropdownDividerButton">
+      <li>
+        <a
+          class="block cursor-pointer py-2 px-4 text-lg text-black hover:bg-mainTodo-400 hover:text-mainTodo-200"
+          >Home</a
+        >
+      </li>
+      <li>
+        <a
+          class="block cursor-pointer py-2 px-4 text-lg text-black hover:bg-mainTodo-400 hover:text-mainTodo-200"
+          >Profile</a
+        >
+      </li>
+      <li>
+        <a
+          class="block cursor-pointer py-2 px-4 text-lg text-black hover:bg-mainTodo-400 hover:text-mainTodo-200"
+          >Settings</a
+        >
+      </li>
+    </ul>
+    <div class="py-1">
+      <a
+        (click)="onLogout()"
+        class="block cursor-pointer py-2 px-4 text-lg text-black hover:bg-mainTodo-400 hover:text-mainTodo-200"
+        >Logout</a
+      >
+    </div>
+  </div>
+</div>

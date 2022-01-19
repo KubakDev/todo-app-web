@@ -7,4 +7,15 @@
   .login-div-parent {
     border-radius: 0 22% 22% 0;
   }
+  .sign-in-container {
+    height: calc(100vh - 84px);
+  }
+}
+
+.sign-in-container {
+  height: 100vh;
+}
+
+::placeholder {
+  color: #6d4afc;
 }
