@@ -2,8 +2,12 @@
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
 @import "~material-icons/iconfont/material-icons.css";
-
+@import "animate.css";
 html {
   font-family: "Baloo 2", cursive;
   --test: #fff;
+}
+
+:root {
+  --animate-delay: 0.5s;
 }
