@@ -7,7 +7,7 @@
   @apply bg-quatenaryColor w-10/12 h-16 rounded-xsm text-xsm font-bold mb-3;
 }
 .both {
-  @apply bg-TextBoldColor w-10/12 h-16 rounded-xsm text-xsm font-bold mb-3 text-textPrimaryColor;
+  @apply bg-TextBoldColor w-10/12 h-16 rounded-xsm text-xsm font-bold mb-3 text-white;
 }
 .centering {
   @apply flex flex-col justify-center items-center;

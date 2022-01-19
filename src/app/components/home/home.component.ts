@@ -6,8 +6,19 @@ import { ThemesService } from 'src/app/themes.service';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
 })
-export class HomeComponent implements OnInit {
-  constructor() {}
+export class HomeComponent {
+  task = {
+    name: '',
+    isCompleted: false,
+    notes: '',
+    date: '',
+    time: '',
+  };
+  index = 0;
 
-  ngOnInit(): void {}
+  constructor() {}
+  onTaskSelected(task: any) {
+    this.task = task.task;
+    this.index = task.index;
+  }
 }
