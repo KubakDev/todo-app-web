@@ -18,6 +18,11 @@ import { ToggleComponent } from './components/shared/toggle/toggle.component';
 import { AuthModule } from '@auth0/auth0-angular';
 import { ToastrModule } from 'ngx-toastr';
 
+import { ToastrModule } from 'ngx-toastr';
+
+import { ReactiveFormsModule } from '@angular/forms';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -37,7 +42,11 @@ import { ToastrModule } from 'ngx-toastr';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+
     ToastrModule.forRoot(),
+
+    ReactiveFormsModule,
+
     AuthModule.forRoot({
       domain: 'dev-lmrxa-v2.eu.auth0.com',
       clientId: 'wnMlcJ2Cy414JOsjMLPjNTVEVpiFExCV',

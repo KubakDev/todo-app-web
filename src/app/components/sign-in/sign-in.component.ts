@@ -18,7 +18,9 @@ export class SignInComponent implements OnInit, OnDestroy {
     private auth: AuthService,
     private todos: TodosService,
     private router: Router,
-    private toaster: ToastrService
+
+    private toastr: ToastrService
+
   ) {}
   ngOnDestroy(): void {
     this.destroy.next(undefined);
@@ -43,7 +45,8 @@ export class SignInComponent implements OnInit, OnDestroy {
     this.router.navigateByUrl('/profile');
   }
 
-  onSuccess() {
-    this.toaster.success('Holaaa Senor', 'Hollaa Mistorr');
+  showSuccess() {
+    this.toastr.success('Hello world!', 'Toastr fun!');
+
   }
 }

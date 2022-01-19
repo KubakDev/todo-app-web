@@ -1,0 +1,14 @@
+// @import 'animate.css'
+::ng-deep router-outlet + *,
+::ng-deep router-outlet > * {
+  animation: fade 1s !important;
+  display: block;
+}
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
