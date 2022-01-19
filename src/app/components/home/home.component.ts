@@ -7,5 +7,18 @@ import { ThemesService } from 'src/app/themes.service';
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent {
+  task = {
+    name: '',
+    isCompleted: false,
+    notes: '',
+    date: '',
+    time: '',
+  };
+  index = 0;
+
   constructor() {}
+  onTaskSelected(task: any) {
+    this.task = task.task;
+    this.index = task.index;
+  }
 }

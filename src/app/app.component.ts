@@ -19,6 +19,7 @@ export class AppComponent {
   title = 'todoAppWeb';
 
   weatherItems: any = [];
+
   get currentTheme(): Observable<string> {
     return this.themeservice.themeName$;
   }
