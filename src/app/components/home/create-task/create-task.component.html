@@ -1,7 +1,7 @@
 <div class="flex flex-col justify-center items-center ">
     <div class="h-auto w-full flex lg:justify-end justify-center mb-10"> 
       <div class=" w-11/12 bg-cardBackgroundColor rounded-sm shadow-lg">
-          <h1 class="text-md font-bold ml-10 mt-10 text-primaryColor mb-10">{{editTask.name?"Edit  a new Task":"Create a new Task"}}</h1>
+          <h1 class="text-md font-bold ml-10 mt-10 text-primaryColor mb-10">{{editTask.title?"Edit  a new Task":"Create a new Task"}}</h1>
           <form class="w-full" (ngSubmit)="onSubmit()">
 
           <div class="pb-20 centering">
@@ -76,7 +76,7 @@
             <div class="w-full centering " >
                  <div class="flex justify-center flex-wrap">
                     <button class="btn mr-5 lg:mr-10 bg-btnLightBgColor text-foregroundColorText mb-6" type="button" (click)="onClick()">Cancel</button>
-                    <button class="btn mr-5 bg-TextBoldColor text-white " type="submit">{{editTask.name?"Update Task":"Save"}}</button>
+                    <button class="btn mr-5 bg-TextBoldColor text-white " type="submit">{{editTask.title?"Update Task":"Save"}}</button>
                  
                 </div>
                 

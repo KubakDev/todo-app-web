@@ -9,17 +9,19 @@ import { TodoService } from 'src/app/todo.service';
 })
 export class HomeComponent {
   task = {
-    name: '',
-    isCompleted: false,
-    notes: '',
+    title: '',
+    isComplete: false,
+    note: '',
     date: '',
     time: '',
+    id: '',
+    isTimeAvailable: false,
+    userId: '',
   };
   index = 0;
 
   constructor(private taskservice: TodoService) {}
   onTaskSelected(task: any) {
     this.task = task.task;
-    this.index = task.index;
   }
 }

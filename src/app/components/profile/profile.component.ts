@@ -9,6 +9,7 @@ import { TodosService } from 'src/app/backend/services';
 })
 export class ProfileComponent implements OnInit {
   editMode?: boolean = false;
+  tasks: any;
 
   user:
     | {
@@ -31,6 +32,9 @@ export class ProfileComponent implements OnInit {
         nickname: u?.nickname ?? '',
         picture: u?.picture ?? '',
       };
+    });
+    this.todoService.todosGet({ IsComplete: true }).subscribe((data) => {
+      this.tasks = data;
     });
   }
 

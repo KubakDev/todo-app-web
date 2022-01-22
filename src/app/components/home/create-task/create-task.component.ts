@@ -1,4 +1,6 @@
 import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { firstValueFrom } from 'rxjs';
+import { TodosService } from 'src/app/backend/services';
 import { TodoService } from 'src/app/todo.service';
 
 @Component({
@@ -9,66 +11,57 @@ import { TodoService } from 'src/app/todo.service';
 export class CreateTaskComponent implements OnChanges {
   @Input() index = 0;
   @Input() editTask = {
-    name: '',
-    isCompleted: false,
-    notes: '',
+    title: '',
+    isComplete: false,
+    note: '',
     date: '',
     time: '',
+    id: '',
+    isTimeAvailable: false,
+    userId: '',
   };
   startAdding: boolean = false;
   task: string = '';
   notes: string = '';
   date: string = '';
   time: string = '';
-  tasks: any = [];
-  constructor(private todoservice: TodoService) {
-    this.todoservice.AllTasks$.subscribe((data) => {
-      this.tasks = data;
-    });
-  }
+  constructor(private todosService: TodosService) {}
 
   onClickInput() {
     this.startAdding = true;
   }
-  onSubmit() {
-    if (!this.editTask.name) {
-      this.todoservice.Tasks.next([
-        ...this.tasks,
-        {
-          id: 4,
-          name: this.task,
-          isCompleted: false,
-          notes: this.notes,
-          date: this.date,
-          time: this.time,
-        },
-      ]);
-      this.date = '';
-      this.task = '';
-      this.time = '';
-      this.notes = '';
-    } else {
-      this.tasks[this.index] = {
-        id: 4,
-        name: this.task,
-        isCompleted: false,
-        notes: this.notes,
-        date: this.date,
-        time: this.time,
-      };
-      this.todoservice.Tasks.next(this.tasks);
-      this.editTask = {
-        name: '',
-        isCompleted: false,
-        notes: '',
-        date: '',
-        time: '',
-      };
-      this.date = '';
-      this.task = '';
-      this.time = '';
-      this.notes = '';
+  async onSubmit() {
+    if (!this.editTask.title) {
+      const response = await firstValueFrom(
+        this.todosService.todosPost({
+          body: {
+            date: this.date,
+            isTimeAvailable: false,
+            note: this.notes,
+            title: this.task,
+            isComplete: false,
+          },
+        })
+      );
     }
+    if (this.editTask.title) {
+      const response = await firstValueFrom(
+        this.todosService.todosIdPut({
+          id: this.editTask.id,
+          body: {
+            date: this.date,
+            isComplete: this.editTask.isComplete,
+            isTimeAvailable: this.editTask.isTimeAvailable,
+            note: this.notes,
+            title: this.task,
+          },
+        })
+      );
+    }
+    this.date = '';
+    this.task = '';
+    this.time = '';
+    this.notes = '';
   }
   onClick() {
     this.date = '';
@@ -79,9 +72,9 @@ export class CreateTaskComponent implements OnChanges {
     this.task = '';
   }
   ngOnChanges(): void {
-    if (this.editTask.name) {
-      this.task = this.editTask.name;
-      this.notes = this.editTask.notes;
+    if (this.editTask.title) {
+      this.task = this.editTask.title;
+      this.notes = this.editTask.note;
       this.date = this.editTask.date;
       this.time = this.editTask.time;
     }
