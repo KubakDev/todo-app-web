@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { TodosService } from 'src/app/backend/services';
 import { TodoService } from 'src/app/todo.service';
 
 @Component({
@@ -11,7 +12,7 @@ export class TaskComponent {
   @Input() task: any;
   @Input() index: number = 0;
   @Output() editEvent = new EventEmitter<string>();
-  constructor(private taskService: TodoService) {}
+  constructor(private taskService: TodosService) {}
   complete() {
     // this.taskService.tasks[this.index].isCompleted =
     //   !this.taskService.tasks[this.index].isCompleted;

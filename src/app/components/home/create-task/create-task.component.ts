@@ -43,7 +43,6 @@ export class CreateTaskComponent implements OnChanges {
           time: this.time,
         },
       ]);
-      console.log(this.todoservice.Tasks);
       this.date = '';
       this.task = '';
       this.time = '';

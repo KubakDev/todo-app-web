@@ -32,9 +32,6 @@ export class ProfileComponent implements OnInit {
         picture: u?.picture ?? '',
       };
     });
-    setTimeout(() => {
-      this.todoService.todosGet().subscribe((todo) => console.log(todo));
-    }, 3000);
   }
 
   onEdit() {

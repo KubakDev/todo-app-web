@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ThemesService } from 'src/app/themes.service';
+import { TodoService } from 'src/app/todo.service';
 
 @Component({
   selector: 'app-home',
@@ -16,7 +17,7 @@ export class HomeComponent {
   };
   index = 0;
 
-  constructor() {}
+  constructor(private taskservice: TodoService) {}
   onTaskSelected(task: any) {
     this.task = task.task;
     this.index = task.index;
