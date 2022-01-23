@@ -1,5 +1,5 @@
-import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
-import { TodosService } from 'src/app/backend/services';
+import { Component, OnInit } from '@angular/core';
+import { Todo } from 'src/app/backend/models';
 import { TodoService } from 'src/app/todo.service';
 
 @Component({
@@ -8,7 +8,7 @@ import { TodoService } from 'src/app/todo.service';
   styleUrls: ['./today-tasks.component.scss'],
 })
 export class TodayTasksComponent implements OnInit {
-  tasks: any = '';
+  tasks: Todo[] | undefined = undefined;
   isOpen: boolean = false;
   constructor(private taskService: TodoService) {}
 

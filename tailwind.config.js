@@ -84,6 +84,7 @@ module.exports = {
         backgroundColor: "var(--color-background)",
         quatenaryColor: "var(--color-quatenary)",
         lightPrimaryColor: "var(--color-light-primary)",
+        lightSecondaryColor: "var(--color-light-secondary)",
         lightColor: "var(--color-light)",
         cardBackgroundColor: "var( --color-card-background)",
         TextBoldColor: "var(--color-text-bold)",

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '@auth0/auth0-angular';
+import { firstValueFrom } from 'rxjs';
+import { Todo } from 'src/app/backend/models';
 import { TodosService } from 'src/app/backend/services';
 
 @Component({
@@ -9,6 +11,7 @@ import { TodosService } from 'src/app/backend/services';
 })
 export class ProfileComponent implements OnInit {
   editMode?: boolean = false;
+  prevTodos: Todo[] = [];
 
   user:
     | {
@@ -32,9 +35,8 @@ export class ProfileComponent implements OnInit {
         picture: u?.picture ?? '',
       };
     });
-    setTimeout(() => {
-      this.todoService.todosGet().subscribe((todo) => console.log(todo));
-    }, 3000);
+
+    this.prevTodos = await firstValueFrom(this.todoService.todosGet());
   }
 
   onEdit() {
