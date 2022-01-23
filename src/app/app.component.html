@@ -1,5 +1,5 @@
 <div class="md:flex {{ currentTheme | async }} bg-backgroundColor">
-  <app-side-nav></app-side-nav>
+  <app-side-nav *ngIf="user | async"></app-side-nav>
   <div class="w-screen">
     <router-outlet></router-outlet>
   </div>

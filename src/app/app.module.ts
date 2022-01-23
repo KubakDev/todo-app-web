@@ -50,6 +50,7 @@ import { ApiModule } from './backend/api.module';
       domain: 'dev-lmrxa-v2.eu.auth0.com',
       clientId: 'wnMlcJ2Cy414JOsjMLPjNTVEVpiFExCV',
       audience: 'http://localhost:5000',
+      useRefreshTokens: true,
     }),
     ApiModule.forRoot({ rootUrl: '/api' }),
   ],

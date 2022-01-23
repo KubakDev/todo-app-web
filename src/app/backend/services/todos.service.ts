@@ -37,12 +37,14 @@ export class TodosService extends BaseService {
   todosGet$Response(params?: {
     From?: string;
     To?: string;
+    IsComplete?: boolean;
   }): Observable<StrictHttpResponse<Array<Todo>>> {
 
     const rb = new RequestBuilder(this.rootUrl, TodosService.TodosGetPath, 'get');
     if (params) {
       rb.query('From', params.From, {});
       rb.query('To', params.To, {});
+      rb.query('IsComplete', params.IsComplete, {});
     }
 
     return this.http.request(rb.build({
@@ -65,6 +67,7 @@ export class TodosService extends BaseService {
   todosGet(params?: {
     From?: string;
     To?: string;
+    IsComplete?: boolean;
   }): Observable<Array<Todo>> {
 
     return this.todosGet$Response(params).pipe(

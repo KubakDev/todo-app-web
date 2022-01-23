@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ThemesService } from './themes.service';
 import '@themesberg/flowbite';
+import { AuthService } from '@auth0/auth0-angular';
 
 @Component({
   selector: 'app-root',
@@ -9,10 +10,12 @@ import '@themesberg/flowbite';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  constructor(private themeservice: ThemesService) {}
-  title = 'todoAppWeb';
+  get user(): Observable<boolean> {
+    return this.auth.isAuthenticated$;
+  }
+  constructor(private themeservice: ThemesService, private auth: AuthService) {}
+  title = 'Todo App';
 
-  weatherItems: any = [];
   get currentTheme(): Observable<string> {
     return this.themeservice.themeName$;
   }
