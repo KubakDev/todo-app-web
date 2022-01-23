@@ -6,6 +6,6 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class TodoService {
   public Tasks = new BehaviorSubject<Array<any>>([]);
-  AllTasks$ = this.Tasks.asObservable();
+  allTasks$ = this.Tasks.asObservable();
   constructor() {}
 }

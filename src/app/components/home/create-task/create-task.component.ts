@@ -22,7 +22,7 @@ export class CreateTaskComponent implements OnChanges {
   time: string = '';
   tasks: any = [];
   constructor(private todoservice: TodoService) {
-    this.todoservice.AllTasks$.subscribe((data) => {
+    this.todoservice.allTasks$.subscribe((data) => {
       this.tasks = data;
     });
   }
