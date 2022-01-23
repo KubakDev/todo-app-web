@@ -20,7 +20,7 @@ export class InterceptorService implements HttpInterceptor {
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
     console.log(req.url);
-    if (req.url === '/assets/svg/sign-in.svg') {
+    if (req.url.startsWith('/assets/')) {
       return next.handle(req);
     }
     return this.auth.getAccessTokenSilently().pipe(
