@@ -1,1 +1,73 @@
-<p>create-task works!</p>
+<div class="flex flex-col justify-center items-center ">
+    <div class="h-auto w-full flex lg:justify-end justify-center mb-10"> 
+      <div class=" w-11/12 bg-cardBackgroundColor rounded-sm shadow-lg">
+          <h1 class="text-md font-bold ml-10 mt-10 text-primaryColor mb-10">{{editTask?.title?"Edit  a new Task":"Create a new Task"}}</h1>
+          <form class="w-full" (ngSubmit)="onSubmit()">
+
+          <div class="pb-20 centering">
+            
+            <input 
+            [(ngModel)]="title"
+              type="text" 
+              class="h-28 w-11/12 inputs" 
+              placeholder="What is on your Mind....." 
+              (click)="onClickInput()"
+              required
+              name="task"
+             
+            >
+            <div class="w-full centering mt-10 " *ngIf="startAdding">
+              <input 
+             [(ngModel)]="notes"
+              type="text" 
+              class="w-11/12 inputs" 
+              placeholder="Notes....." 
+              name="notes"
+            >
+            <div class="w-full centering mt-10">
+                <div class="w-11/12 h-32 flex">
+                    <div class="h-20 w-20 bg-white rounded-lg">
+                        <div class="h-20 w-20 bg-white rounded-lg centering">
+                            <span
+                            class="material-icons text-lightPrimaryColor  rounded-full p-1 px-2 text-xmd"
+                            >calendar_month</span
+                          >
+                        </div>
+                    </div>
+                    <div class="w-10/12  ml-10 inputs flex justify-between items-center">
+                       <input 
+                       [(ngModel)]="date"
+                       class="input placeholder:text-sm placeholder:font-bold placeholder:text-TextBoldColor placeholder:text-center rounded-sm" 
+                       placeholder="Date" 
+                       type="text" 
+                       onfocus="(this.type='date')" 
+                       required
+                       name="date"
+                       >
+                    </div>
+                
+                </div>
+            </div>
+          
+
+            <div class="w-full centering " >
+                 <div class="flex justify-center flex-wrap">
+                    <button class="btn mr-5 lg:mr-10 bg-btnLightBgColor text-foregroundColorText mb-6" type="button" (click)="onClick()">Cancel</button>
+                    <button class="btn mr-5 bg-TextBoldColor text-white " type="submit">{{ editMode ? "Update Task":"Save"}}</button>
+                 
+                </div>
+                
+            </div>
+
+          </div>
+        </div>
+    </form>
+           
+      </div>
+      
+    </div>
+
+    <div  *ngIf="!startAdding" class="w-full flex justify-center">
+        <img src="assets/images/todo.png" class="h-3/4 w-3/4">
+    </div>
+</div>
