@@ -1,0 +1,4 @@
+<!-- <svg width="453" height="446">
+  <use xlink:href="/assets/svg/sign-in.svg#img"></use>
+</svg> -->
+<div *ngIf="innerHtml?.length" [innerHTML]="innerHtml ?? '' | safeHtml"></div>

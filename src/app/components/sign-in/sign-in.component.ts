@@ -13,13 +13,13 @@ export class SignInComponent implements OnInit, OnDestroy {
   private destroy = new Subject<undefined>();
 
   get currentTheme(): Observable<string> {
-    return this.themeservice.themeName$;
+    return this.themeService.themeName$;
   }
 
   constructor(
     private auth: AuthService,
-    private router: Router,
-    private themeservice: ThemesService
+    private themeService: ThemesService,
+    private router: Router
   ) {}
 
   ngOnDestroy(): void {
