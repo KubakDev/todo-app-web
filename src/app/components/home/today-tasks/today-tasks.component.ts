@@ -1,5 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import { Todo } from 'src/app/backend/models';
+
+import { formatDate } from '@angular/common';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { filter, Observable } from 'rxjs';
+import { TodosService } from 'src/app/backend/services';
+
 import { TodoService } from 'src/app/todo.service';
 
 @Component({
@@ -8,14 +12,39 @@ import { TodoService } from 'src/app/todo.service';
   styleUrls: ['./today-tasks.component.scss'],
 })
 export class TodayTasksComponent implements OnInit {
-  tasks: Todo[] | undefined = undefined;
+
+  tasks: Array<any> = [];
   isOpen: boolean = false;
-  constructor(private taskService: TodoService) {}
+
+  @Output() selectedTask = new EventEmitter<any>();
+
+  constructor(private todoService: TodosService) {}
+  // get getTasks(): Observable<Array<any>> {
+  //   return this.taskService.AllTasks$;
+  // }
 
   ngOnInit(): void {
-    this.tasks = this.taskService.tasks;
+    this.todoService.todosGet().subscribe((data) => {
+      this.tasks = data;
+    });
   }
   openFilter() {
     this.isOpen = !this.isOpen;
+  }
+  both() {
+    this.todoService.todosGet().subscribe((data) => {
+      this.tasks = data;
+    });
+    this.isOpen = false;
+  }
+  filtter(condition: boolean) {
+    this.tasks = this.tasks.filter((t) => {
+      return t.isComplete === condition;
+    });
+
+    this.isOpen = false;
+  }
+  addEdit(task: any) {
+    this.selectedTask.emit({ task: task, index: task.id });
   }
 }
