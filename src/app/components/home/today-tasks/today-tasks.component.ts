@@ -1,7 +1,9 @@
+
 import { formatDate } from '@angular/common';
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { filter, Observable } from 'rxjs';
 import { TodosService } from 'src/app/backend/services';
+
 import { TodoService } from 'src/app/todo.service';
 
 @Component({
@@ -10,6 +12,7 @@ import { TodoService } from 'src/app/todo.service';
   styleUrls: ['./today-tasks.component.scss'],
 })
 export class TodayTasksComponent implements OnInit {
+
   tasks: Array<any> = [];
   isOpen: boolean = false;
 
