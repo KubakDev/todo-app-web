@@ -10,11 +10,17 @@
         routerLink=""
         class="flex flex-row items-center gap-3 text-lightPrimaryColor cursor-pointer h-12 transform hover:translate-x-2 transition-transform ease-in duration-200 text-black hover:text-primaryColor"
       >
-        <i routerLinkActive="text-primaryColor" class="material-icons text-xl"
+        <i
+          [routerLinkActiveOptions]="{ exact: true }"
+          routerLinkActive="text-primaryColor"
+          class="material-icons text-xl"
           >home</i
         >
 
-        <span routerLinkActive="text-primaryColor" class="text-xl font-medium"
+        <span
+          [routerLinkActiveOptions]="{ exact: true }"
+          routerLinkActive="text-primaryColor"
+          class="text-xl font-medium"
           >Home</span
         >
       </a>

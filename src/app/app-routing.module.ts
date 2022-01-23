@@ -15,9 +15,9 @@ const routes: Routes = [
     pathMatch: 'full',
   },
   { path: 'sign-in', component: SignInComponent },
-  { path: '404', component: ErrorPageComponent },
   { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
   { path: 'settings', component: SettingComponent, canActivate: [AuthGuard] },
+  { path: '**', component: ErrorPageComponent, pathMatch: 'full' },
 ];
 
 @NgModule({
