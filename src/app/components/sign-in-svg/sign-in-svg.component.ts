@@ -16,7 +16,7 @@ export class SignInSvgComponent {
       .pipe(
         map((themeName) => {
           this.http
-            .get(`/assets/svg/login/${themeName}.svg`, { responseType: 'text' })
+            .get(`/assets/svg/${themeName}.svg`, { responseType: 'text' })
             .subscribe((e: any) => {
               this.innerHtml = e;
             });
