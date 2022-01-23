@@ -2,7 +2,7 @@
 /* eslint-disable */
 export interface CreateTodo {
   date?: string;
-  isTimeAvailable?: boolean;
+  isComplete?: boolean;
   note?: null | string;
   title?: null | string;
 }
