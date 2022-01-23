@@ -37,6 +37,7 @@ export class ProfileComponent implements OnInit {
     });
 
     this.prevTodos = await firstValueFrom(this.todoService.todosGet());
+
   }
 
   onEdit() {

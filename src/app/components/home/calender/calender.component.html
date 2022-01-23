@@ -1,5 +1,35 @@
 <div class="h-auto w-full  centering">
-<div class="bg-cardBackgroundColor h-72 w-11/12 rounded-sm shadow-lg">
+    <div class="bg-calenderBackgroundColor h-72 w-full rounded-sm shadow-lg">
+        <div class="centering mt-3">
+            <button class="text-textPrimaryColor text-xmd font-bold"
+                (click)="openCalender()">{{SelectedMonth}}</button>
+        </div>
+        <div class="month " *ngIf="isOpen" (click)="isOpen=false">
+                <div
+                    class="absolute w-80 h-auto bg-cardBackgroundColor  rounded-sm shadow-lg flex flex-col justify-around items-center ">
+                    <h1 class="text-md mt-5 mb-5">Select a Month</h1>
+                    <div class="w-full flex flex-wrap ml-5">
+                        <button class=" h-16 w-16 rounded-lg mb-3 mr-3 flex justify-center items-center hover:bg-TextBoldColor hover:text-white
+                                   {{thisMonth===month?'bg-TextBoldColor text-white':'bg-calenderBackgroundColor'}}"
+                            *ngFor="let month of Months" (click)="changeMonth(month)">
+                            <h1 class="font-bold text-xsm">{{month}}</h1>
+                        </button>
+                    </div>
+                </div>
 
-</div>
+        </div>
+        <div class="mt-4 flex overflow-auto" >
+            <div class="mr-3 " *ngFor="let day of Calender;let index=index">
+                <button [id]="index+''"
+                    class=" w-20 h-36 rounded-lg flex flex-col justify-center items-center {{day.date===currentDate?'bg-primaryColor text-white':'bg-DayBackgroundColor'}}">
+                    <h1 class="text-md font-bold">{{day.day}}</h1>
+                    <h1 class="text-xsm">{{day.week}}</h1>
+                </button>
+                <div class="centering mt-3">
+                    <div class="bg-primaryColor h-2 w-2 rounded-lg" *ngIf="day.isTask">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

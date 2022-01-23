@@ -1,11 +1,11 @@
-<button class="h-16 w-full lg:w-11/12 bg-cardBackgroundColor rounded-xsm flex items-center mb-5">
-    <div class="w-10 h-10  ml-5 rounded-sm border-solid border-2 border-primaryColor "*ngIf="!task.isCompleted">
+<button class="h-16 w-full bg-cardBackgroundColor rounded-xsm flex items-center mb-3" (click)="editTask()">
+    <div class="w-10 h-10  ml-5 rounded-sm border-solid border-2 border-primaryColor "*ngIf="!task.isCompleted" (click)="complete()">
   
     </div>
-    <div class="w-10 h-10  ml-5 rounded-sm  bg-lightPrimaryColor" *ngIf="task.isCompleted">
+    <div class="w-10 h-10  ml-5 rounded-sm  bg-lightPrimaryColor" *ngIf="task.isCompleted" (click)="complete()">
   
   </div>
-    <h1 class="text-md ml-10 {{task.isCompleted?'text-lightPrimaryColor line-through ':'text-primaryColor'}}  " >{{task.name}}</h1>
+    <h1 class="text-md ml-10 {{task.isCompleted?'text-lightPrimaryColor line-through ':'text-primaryColor'}}  " >{{task.title}}</h1>
    
 </button>
  
