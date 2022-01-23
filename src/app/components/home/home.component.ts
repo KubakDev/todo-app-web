@@ -19,9 +19,12 @@ export class HomeComponent {
     userId: '',
   };
   index = 0;
-
-  constructor(private taskservice: TodoService) {}
+  date: any;
+  constructor(private taskService: TodoService) {}
   onTaskSelected(task: any) {
     this.task = task.task;
+  }
+  getMontheTasks(day: any) {
+    this.date = day.day;
   }
 }

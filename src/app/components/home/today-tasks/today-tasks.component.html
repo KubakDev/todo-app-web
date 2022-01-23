@@ -6,7 +6,6 @@
         <button>
 
             <div class="bg-cardBackgroundColor h-16 w-16 rounded-lg flex justify-center items-center " (click)="openFilter()">
-               <!-- <img src="./assets/images/fillter.png " class="h-5 w-5 lg:h-10 lg:w-10"> -->
                <span class="material-icons text-xmd text-primaryColor">filter_list</span>
             </div>
          
@@ -21,5 +20,15 @@
     </div>
 </div>
 <div class="mt-5">
-    <app-task  *ngFor="let task of tasks ; let i=index;" [task]='task ' [index]='i' (editEvent)="addEdit(task)"></app-task>
+    <app-task  *ngFor="let task of tasks ; let i=index;" [task]='task' [index]='i' (editEvent)="addEdit(task)"></app-task>
+    <div *ngIf="CheckTask && isLoading===false"  class="w-full h-60 bg-calenderBackgroundColor rounded-sm flex justify-center items-center">
+        <h1 class="text-md text-primaryColor">You dont have any Task this Day</h1>
+    </div>
+    <div class=" flex justify-center mt-3"  >
+        <div *ngIf="isLoading" class="lds-dual-ring">
+          
+        </div>
+
+    </div>
 </div>
+
