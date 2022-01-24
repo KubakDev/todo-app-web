@@ -4,11 +4,11 @@
 
    <app-header></app-header>
  
-  <div class="grid sm:grid-cols-1 lg:grid-cols-2 mt-10">
+  <div class="grid grid-cols-1 lg:grid-cols-2 mt-10">
      <div>
-    <app-calender></app-calender>
+    <app-calender (getMontheTasks)="getMontheTasks($event)"></app-calender>
     <div class="mt-20 flex justify-center ">
-       <app-today-tasks class="w-full" (selectedTask)="onTaskSelected($event)"></app-today-tasks>
+       <app-today-tasks class="w-full" (selectedTask)="onTaskSelected($event)" [date]="date" ></app-today-tasks>
     </div>
      </div>
      <div >
