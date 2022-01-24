@@ -9,4 +9,4 @@ COPY . .
 RUN npm run build
 
 FROM nginx as runtime
-COPY --from=build /app/dist/todoAppWeb /usr/share/nginx/html
+COPY --from=build /app/dist/todo-app-web /usr/share/nginx/html
