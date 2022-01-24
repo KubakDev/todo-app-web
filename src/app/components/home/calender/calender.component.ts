@@ -43,7 +43,6 @@ export class CalenderComponent implements OnInit {
     this.isOpen = !this.isOpen;
   }
   scrollToCurrentDate(index?: number) {
-    console.log(this.thisMonth == +formatDate(new Date(), 'MM', 'en-US'));
     if (
       index == undefined &&
       this.thisMonth == +formatDate(new Date(), 'MM', 'en-US')
@@ -55,6 +54,12 @@ export class CalenderComponent implements OnInit {
     setTimeout(() => {
       if (index && index > -1) {
         document.getElementById(`${index}`)?.scrollIntoView({
+          behavior: 'smooth',
+          block: 'nearest',
+          inline: 'start',
+        });
+      } else {
+        document.getElementById(`${0}`)?.scrollIntoView({
           behavior: 'smooth',
           block: 'nearest',
           inline: 'start',
@@ -71,14 +76,11 @@ export class CalenderComponent implements OnInit {
     if (thismonth === formatDate(new Date(), 'MM', 'en-US')) {
       this.scrollToCurrentDate(0);
     }
-    this.ischangeMonth = true;
-    if (this.ischangeMonth) {
-      let date = new Date(`${2022}-${this.thisMonth}-${1}`);
-      this.currentDate = formatDate(date, 'dd/MM/YYYY', 'en-US');
-      this.getMontheTasks.emit({ day: date });
+    let date = new Date(`${2022}-${this.thisMonth}-${1}`);
+    this.currentDate = formatDate(date, 'dd/MM/YYYY', 'en-US');
 
-      this.scrollToCurrentDate();
-    }
+    this.getMontheTasks.emit({ day: date });
+
     this.scrollToCurrentDate();
   }
   calenderSetup() {

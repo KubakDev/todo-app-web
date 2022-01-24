@@ -1,4 +1,5 @@
 import { formatDate } from '@angular/common';
+import { HttpErrorResponse } from '@angular/common/http';
 import {
   Component,
   EventEmitter,
@@ -22,6 +23,7 @@ export class TodayTasksComponent implements OnChanges {
   currentDate: Date | undefined = new Date();
   isCompleteCondition: boolean | undefined;
   CheckTask: boolean = false;
+  activeButton: number = 0;
   @Output() selectedTask = new EventEmitter<any>();
   @Input() date: Date = new Date();
   constructor(
@@ -39,8 +41,16 @@ export class TodayTasksComponent implements OnChanges {
   both() {
     this.getData(this.isCompleteCondition);
     this.isOpen = false;
+    this.activeButton = 0;
   }
   filtter(condition: boolean) {
+    if (condition === false) {
+      this.activeButton = 1;
+    }
+    if (condition === true) {
+      this.activeButton = 2;
+    }
+
     this.getData(condition);
     this.isOpen = false;
   }
@@ -48,6 +58,7 @@ export class TodayTasksComponent implements OnChanges {
     this.selectedTask.emit({ task });
   }
   ngOnChanges(): void {
+    this.activeButton = 0;
     this.getData(this.isCompleteCondition);
   }
   getData(isComplete: boolean | undefined) {
@@ -65,7 +76,7 @@ export class TodayTasksComponent implements OnChanges {
     const day = date.getDate();
     const fromDate = new Date(`${year}-${month + 1}-${day}`);
     const toDate = new Date(`${year}-${month + 1}-${day}`);
-    this.todoService
+    const response = this.todoService
       .todosGet({
         From: fromDate.toJSON(),
         To: toDate.toJSON(),

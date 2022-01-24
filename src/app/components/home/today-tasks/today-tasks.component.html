@@ -1,4 +1,4 @@
-<div class="w-full flex justify-between">
+<div class="w-full flex justify-between mb-6">
 
     <h1 class="text-md lg:text-lg ml-5 text-textPrimaryColor">Today's Tasks</h1>
     <div>
@@ -12,9 +12,9 @@
         </button>
         
         <div class="flex flex-col justify-center items-center absolute -ml-60 lg:-ml-32 w-80 h-80 bg-lightColor  mt-5 rounded-sm shadow-lg" *ngIf="isOpen">
-            <button class="button-style" (click)="filtter(true)">Show Finished Tasks</button>
-            <button class="button-style" (click)="filtter(false)">Show UnFinished Tasks</button>
-            <button class="button-style both" (click)="both()">Show Both </button>
+            <button class="button-style {{activeButton===2?'both':''}}" (click)="filtter(true)">Show Finished Tasks</button>
+            <button class="button-style {{activeButton===1?'both':''}}" (click)="filtter(false)">Show UnFinished Tasks</button>
+            <button class="button-style {{activeButton===0?'both':''}}" (click)="both()">Show Both </button>
     
         </div>
     </div>

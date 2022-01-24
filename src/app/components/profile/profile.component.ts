@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '@auth0/auth0-angular';
 import { TodosService } from 'src/app/backend/services';
+import { TodoService } from 'src/app/todo.service';
 
 @Component({
   selector: 'app-profile',
@@ -33,6 +34,7 @@ export class ProfileComponent implements OnInit {
         picture: u?.picture ?? '',
       };
     });
+
     this.todoService.todosGet({ IsComplete: true }).subscribe((data) => {
       this.tasks = data;
     });
