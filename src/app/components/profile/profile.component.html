@@ -11,32 +11,9 @@
       <div
         class="flex flex-col gap-3 py-7 justify-between items-center bg-cardBackgroundColor rounded-3xl"
       >
-        <button
-          *ngIf="!editMode"
-          type="button"
-          (click)="onEdit()"
-          class="flex items-center justify-end w-full py-3 pr-7"
-        >
-          <span class="material-icons-outlined">edit</span>
-        </button>
+        
 
-        <div
-          *ngIf="editMode"
-          type="button"
-          class="flex items-center justify-between w-full px-7"
-        >
-          <button
-            (click)="onEdit()"
-            class="bg-quatenaryColor text-black px-8 py-3 rounded-full"
-          >
-            Cancel
-          </button>
-          <button
-            class="bg-primaryColor text-lightColor px-8 py-3 rounded-full"
-          >
-            Save
-          </button>
-        </div>
+        
         <img
           class="inline object-cover w-16 h-16 mr-2 rounded-full"
           src="https://images.pexels.com/photos/2589653/pexels-photo-2589653.jpeg?auto=compress&cs=tinysrgb&h=650&w=940"
@@ -73,9 +50,7 @@
     <div class="flex flex-col justify-center bg-white rounded-3xl py-8">
       <div class="flex justify-between items-center px-10 py-3">
         <h1 class="font-bold text-black text-2xl">Tasks</h1>
-        <button type="button">
-          <span class="material-icons text-3xl">delete_outline</span>
-        </button>
+        
       </div>
       <div class="flex flex-col justify-center items-center my-2 gap-2">
         <div
@@ -84,10 +59,7 @@
           class="flex items-center gap-4 bg-quatenaryColor py-4 w-11/12 rounded-full px-4"
 
         >
-          <span
-            class="material-icons text-lightColor bg-primaryColor rounded-full p-1"
-            >done</span
-          >
+          
 
           <span
             [ngClass]="{ 'line-through': todo.isComplete }"
