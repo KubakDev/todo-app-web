@@ -64,8 +64,9 @@
     <span class="text-xl font-medium">Logout</span>
   </a>
 </div>
-<div class="flex justify-start items-center w-full xl:hidden">
+<div class="flex flex-col justify-start items-center w-full xl:hidden">
   <button
+    (click)="onOpenNav()"
     id="dropdownDividerButton"
     data-dropdown-toggle="dropdownDivider"
     type="button"
@@ -74,8 +75,9 @@
   </button>
 
   <div
+    *ngIf="isOpen"
     id="dropdownDivider"
-    class="hidden z-10 w-full lg:w-1/2 text-base list-none bg-white rounded divide-y divide-gray-100 shadow"
+    class="z-10 w-full lg:w-1/2 text-base list-none bg-white rounded divide-y divide-gray-100 shadow"
   >
     <ul class="py-1" aria-labelledby="dropdownDividerButton">
       <li>
