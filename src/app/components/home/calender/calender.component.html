@@ -2,21 +2,30 @@
     <div class="bg-calenderBackgroundColor h-72 w-full rounded-sm shadow-lg">
         <div class="centering mt-3">
             <button class="text-textPrimaryColor text-xmd font-bold"
-                (click)="openCalender()">{{SelectedMonth}}</button>
+                (click)="openCalender()">{{SelectedMonth }} ,{{currentYear}}</button>
         </div>
         <div class="month " *ngIf="isOpen" (click)="isOpen=false">
-                <div
-                    class="absolute w-80 h-auto bg-cardBackgroundColor  rounded-sm shadow-lg flex flex-col justify-around items-center ">
-                    <h1 class="text-md mt-5 mb-5">Select a Month</h1>
-                    <div class="w-full flex flex-wrap ml-5">
-                        <button class=" h-16 w-16 rounded-lg mb-3 mr-3 flex justify-center items-center hover:bg-TextBoldColor hover:text-white
-                                   {{thisMonth===month?'bg-TextBoldColor text-white':'bg-calenderBackgroundColor'}}"
-                            *ngFor="let month of Months" (click)="changeMonth(month)">
-                            <h1 class="font-bold text-xsm">{{month}}</h1>
-                        </button>
-                    </div>
-                </div>
+            
+            
+        </div>
+        <div *ngIf="isOpen" class=" flex justify-end ">
 
+            <div 
+                class="absolute w-80 h-auto bg-cardBackgroundColor  rounded-sm shadow-lg flex flex-col justify-around items-center ">
+                <div class="flex justify-around w-full">
+                <button (click)="changeYear('sub')"><span class="material-icons">aarrow_back_ios</span></button>
+    
+                <h1 class="text-md mt-5 mb-5">{{currentYear}}</h1>
+                <button (click)="changeYear('add')"><span class="material-icons">arrow_forward_ios</span></button>
+                </div>
+                <div class="w-full flex flex-wrap ml-5">
+                    <button class=" h-16 w-16 rounded-lg mb-3 mr-3 flex justify-center items-center hover:bg-TextBoldColor hover:text-white
+                               {{thisMonth===month?'bg-TextBoldColor text-white':'bg-calenderBackgroundColor'}}"
+                        *ngFor="let month of Months" (click)="changeMonth(month)">
+                        <h1 class="font-bold text-xsm">{{month}}</h1>
+                    </button>
+                </div>
+            </div>
         </div>
         <div class="mt-4 flex overflow-auto " >
             <div class="mr-3 w-full" *ngFor="let day of Calender;let index=index">

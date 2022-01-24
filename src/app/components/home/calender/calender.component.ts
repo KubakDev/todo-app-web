@@ -29,7 +29,7 @@ export class CalenderComponent implements OnInit {
   ];
   thisMonth = +formatDate(new Date(), 'MM', 'en-US');
   current = +formatDate(new Date(), 'MM', 'en-US');
-
+  currentYear = 2022;
   SelectedMonth = this.monthNames[+formatDate(new Date(), 'MM', 'en-US') - 1];
   currentDate = formatDate(new Date(), 'dd/MM/YYYY', 'en-US');
   numberOfDayPerMonth = 0;
@@ -76,7 +76,7 @@ export class CalenderComponent implements OnInit {
     if (thismonth === formatDate(new Date(), 'MM', 'en-US')) {
       this.scrollToCurrentDate(0);
     }
-    let date = new Date(`${2022}-${this.thisMonth}-${1}`);
+    let date = new Date(`${this.currentYear}-${this.thisMonth}-${1}`);
     this.currentDate = formatDate(date, 'dd/MM/YYYY', 'en-US');
 
     this.getMontheTasks.emit({ day: date });
@@ -87,17 +87,21 @@ export class CalenderComponent implements OnInit {
     let monthDays = [];
     let day = formatDate(new Date(), 'dd', 'en-us');
     this.thisDay = day;
-    this.numberOfDayPerMonth = new Date(2022, this.thisMonth, 0).getDate();
+    this.numberOfDayPerMonth = new Date(
+      this.currentYear,
+      this.thisMonth,
+      0
+    ).getDate();
     for (let i = 1; i <= this.numberOfDayPerMonth; i++) {
       let weekday = formatDate(
-        '2022-' + this.thisMonth + '-' + i,
+        this.currentYear + '-' + this.thisMonth + '-' + i,
         'EEE',
         'en-US'
       );
-      let date = new Date(`${2022}-${this.thisMonth}-${i}`);
+      let date = new Date(`${this.currentYear}-${this.thisMonth}-${i}`);
 
       let selectedDate = formatDate(
-        '2022-' + this.thisMonth + '-' + i,
+        this.currentYear + '-' + this.thisMonth + '-' + i,
         'dd/MM/YYYY',
         'en-US'
       );
@@ -110,6 +114,10 @@ export class CalenderComponent implements OnInit {
       });
     }
     this.Calender = monthDays;
+  }
+  changeYear(condition: string) {
+    if (condition == 'add') this.currentYear++;
+    if (condition == 'sub') this.currentYear--;
   }
   changeAchtiveMonth(day: any) {
     this.currentDate = day.selectedDate;
