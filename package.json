@@ -4,11 +4,12 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve --proxy-config proxy.config.json --configuration development",
-    "build": "ng build",
+    "build": "ng build --configuration production",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "lint": "ng lint",
     "pull-swagger": "ng-openapi-gen -i https://kubak-todo.loca.lt/swagger/v1/swagger.json -o src/app/backend"
+
   },
   "private": true,
   "dependencies": {

@@ -37,7 +37,6 @@ import { ToastrModule } from 'ngx-toastr';
     SideNavComponent,
     ErrorPageComponent,
     ProfileComponent,
-    ToggleComponent,
     SignInComponent,
     SettingComponent,
     TaskComponent,
