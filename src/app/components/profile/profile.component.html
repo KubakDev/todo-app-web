@@ -6,7 +6,10 @@
       class="flex flex-col justify-evenly gap-3 h-full profile-left-container rounded-3xl bg-quatenaryColor py-12 px-8"
     >
       <h1 class="text-4xl font-bold text-primaryColor">
-        Hello, {{ user?.name ? user?.name : "" }}
+        Hello
+        <ng-container *ngIf="user?.name"
+          >, {{ user?.name ? user?.name : "" }}</ng-container
+        >
       </h1>
       <div
         class="flex flex-col gap-3 py-7 justify-between items-center bg-cardBackgroundColor rounded-3xl"
@@ -15,18 +18,19 @@
 
         
         <img
+          *ngIf="!editMode"
           class="inline object-cover w-16 h-16 mr-2 rounded-full"
-          src="https://images.pexels.com/photos/2589653/pexels-photo-2589653.jpeg?auto=compress&cs=tinysrgb&h=650&w=940"
+          src="{{ user?.picture }}"
           alt="Profile image"
         />
-        <h1 class="text-2xl font-bold">{{ user?.name ? user?.name : "" }}</h1>
-        <h1 class="text-xl font-bold">
+
+        <h1 *ngIf="!editMode" class="text-2xl font-bold">
+          {{ user?.name ? user?.name : "" }}
+        </h1>
+        <h1 *ngIf="!editMode" class="text-lg font-bold">
+
           {{ user?.nickname ? user?.nickname : "" }}
         </h1>
-        <p class="text-center text-textPrimaryColor">
-          Lorem ipsum dolor sit amet, consectetur <br />
-          adipiscing elit. Ornare pretium placerat ut platea.
-        </p>
       </div>
       <div
         class="flex flex-col justify-between items-center bg-cardBackgroundColor rounded-3xl py-5"
@@ -38,7 +42,7 @@
         <h1
           class="text-xl font-bold bg-quatenaryColor w-11/12 py-4 pl-5 m-4 rounded-3xl"
         >
-          {{ user?.name ? user?.name : "" }}
+          {{ user?.name ? user?.name : " " }}
         </h1>
         <h1
           class="text-xl font-bold bg-quatenaryColor w-11/12 py-4 pl-5 m-4 rounded-3xl"
@@ -54,21 +58,28 @@
       </div>
       <div class="flex flex-col justify-center items-center my-2 gap-2">
         <div
-
+          *ngIf="prevTodos?.length === 0"
+          class="flex items-center gap-4 bg-mainTodo-400 py-4 w-11/12 rounded-full px-4 font-bold text-xl"
+        >
+          <h1>No Previously Added Todos</h1>
+        </div>
+        <div
           *ngFor="let todo of prevTodos"
-          class="flex items-center gap-4 bg-quatenaryColor py-4 w-11/12 rounded-full px-4"
-
+          class="flex items-center gap-4 bg-mainTodo-400 py-4 w-11/12 rounded-full px-4 font-bold text-xl"
         >
           
 
+      
           <span
             [ngClass]="{ 'line-through': todo.isComplete }"
             class="font-bold text-xl"
             >{{ todo.title }}</span
           >
+
+
+          {{ todo }}
+
         </div>
-      
-       
       </div>
     </div>
   </div>
