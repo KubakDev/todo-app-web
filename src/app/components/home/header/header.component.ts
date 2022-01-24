@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '@auth0/auth0-angular';
+import { firstValueFrom } from 'rxjs';
 import { TodosService } from 'src/app/backend/services';
+import { TodoService } from 'src/app/todo.service';
 
 @Component({
   selector: 'app-header',
@@ -11,14 +13,25 @@ export class HeaderComponent {
   userName: string | undefined;
   unfinishedTasks: number = 0;
 
-  constructor(authService: AuthService, todoService: TodosService) {
+  constructor(
+    authService: AuthService,
+    private todoService: TodosService,
+    private tasks: TodoService
+  ) {
     authService.user$.subscribe((u) => {
       this.userName = u?.name;
     });
-    todoService.todosGet({ IsComplete: false }).subscribe((data) => {
-      for (let i = 0; i < data.length; i++) {
-        this.unfinishedTasks++;
-      }
+
+    this.updateUnfinishedTasks();
+
+    this.tasks.AllTasks$.subscribe(async () => {
+      this.updateUnfinishedTasks();
     });
+  }
+
+  private async updateUnfinishedTasks(): Promise<void> {
+    this.unfinishedTasks = (
+      await firstValueFrom(this.todoService.todosGet({ IsComplete: false }))
+    ).length;
   }
 }
