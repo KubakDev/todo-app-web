@@ -20,7 +20,9 @@ import { TodoService } from 'src/app/todo.service';
 export class TodayTasksComponent implements OnChanges {
   isLoading: boolean = false;
   tasks: Todo[] | undefined;
+
   errorOccur: boolean = false;
+
   isOpen: boolean = false;
   currentDate: Date | undefined = new Date();
   isCompleteCondition: boolean | undefined;
@@ -79,6 +81,7 @@ export class TodayTasksComponent implements OnChanges {
     const fromDate = new Date(`${year}-${month + 1}-${day}`);
     const toDate = new Date(`${year}-${month + 1}-${day}`);
 
+
     this.todoService
       .todosGet({
         From: fromDate.toJSON(),
@@ -103,5 +106,6 @@ export class TodayTasksComponent implements OnChanges {
           this.errorOccur = true;
         }
       );
+
   }
 }
