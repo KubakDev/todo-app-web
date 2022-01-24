@@ -32,7 +32,7 @@ export class CalenderComponent implements OnInit {
   currentYear = 2022;
   SelectedMonth = this.monthNames[+formatDate(new Date(), 'MM', 'en-US') - 1];
   currentDate = formatDate(new Date(), 'dd/MM/YYYY', 'en-US');
-  numberOfDayPerMonth = 0
+  numberOfDayPerMonth = 0;
   ischangeMonth: boolean = false;
   constructor(private taskService: TodoService) {}
 
@@ -123,6 +123,7 @@ export class CalenderComponent implements OnInit {
     if (event.deltaY > 0)
       document.getElementById('container')!.scrollLeft += 400;
     else document.getElementById('container')!.scrollLeft -= 400;
+  }
   changeYear(condition: string) {
     if (condition == 'add') this.currentYear++;
     if (condition == 'sub') this.currentYear--;
