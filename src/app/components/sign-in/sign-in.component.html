@@ -1,16 +1,16 @@
 <div
-  class="bg-mainTodo-50 h-full grid grid-cols-1 md:grid-cols-2 sign-in-container"
+  class="bg-quatenaryColor h-full grid grid-cols-1 md:grid-cols-2 sign-in-container"
 >
-  <div class="bg-mainTodo-800 login-div-parent">
+  <div class="bg-cardBackgroundColor login-div-parent">
     <div
-      class="bg-mainTodo-100 flex flex-col justify-center items-center login-div h-full md:mr-8"
+      class="bg-lightColor flex flex-col justify-center items-center login-div h-full md:mr-8"
     >
-      <h1 class="text-mainTodo-200 text-5xl font-bold py-6 text-center">
+      <h1 class="text-primaryColor text-5xl font-bold py-6 text-center">
         We Are <br />
         What We Do
       </h1>
 
-      <h1 class="text-mainTodo-200 text text-3xl text-center">
+      <h1 class="text-primaryColor text-3xl text-center">
         Todo helps you remember <br />
         your important tasks
       </h1>
@@ -18,7 +18,7 @@
       <button
         type="button"
         (click)="onAuth()"
-        class="bg-mainTodo-300 hover:bg-mainTodo-900 transition-all ease-in text-xl text-white font-bold py-2 px-20 rounded my-8"
+        class="bg-secondaryColor hover:bg-lightSecondaryColor transition-all ease-in text-xl text-lightColor font-bold py-2 px-20 rounded-2xl my-8"
       >
         Get Started
       </button>
@@ -27,49 +27,6 @@
   <div
     class="bg-mainTodo-50 md:flex flex-col justify-center items-center hidden"
   >
-    <img src="../../../assets/Group 1.svg" alt="" />
-    <div class="flex flex-col rounded-2xl bg-mainTodo-400 p-6 w-full">
-      <div
-        class="flex items-center justify-start text-4xl text-mainTodo-200 font-bold"
-      >
-        Edit Task
-      </div>
-      <input
-        type="text"
-        style="color: #6d4afc"
-        class="bg-mainTodo-100 text-xl p-3 py-4 rounded-2xl my-2"
-        placeholder="My Task"
-      />
-      <input
-        type="text"
-        style="color: #6d4afc"
-        class="bg-mainTodo-100 p-3 rounded-xl my-2 focus:border-mainTodo-200"
-        placeholder="Notes on my task..."
-      />
-      <div class="flex items-center gap-3 my-3">
-        <span
-          class="material-icons-outlined text-mainTodo-200 bg-mainTodo-100 rounded-full p-1 px-2 text-4xl"
-          >calendar_month</span
-        >
-        <div
-          class="flex items-center justify-between w-full bg-mainTodo-100 rounded-2xl p-3 px-6"
-        >
-          <h1 class="text-mainTodo-200 text-2xl font-bold">23 Jan 2022</h1>
-          <app-toggle toggleName="date"></app-toggle>
-        </div>
-      </div>
-      <div class="flex items-center gap-3 my-3">
-        <span
-          class="material-icons text-mainTodo-200 bg-mainTodo-100 rounded-full p-1 px-2 text-4xl"
-          >access_time</span
-        >
-        <div
-          class="flex items-center justify-between w-full bg-mainTodo-100 rounded-2xl p-3 px-6"
-        >
-          <h1 class="text-mainTodo-200 text-2xl font-bold">7:14 AM</h1>
-          <app-toggle toggleName="time"></app-toggle>
-        </div>
-      </div>
-    </div>
+    <app-sign-in-svg></app-sign-in-svg>
   </div>
 </div>

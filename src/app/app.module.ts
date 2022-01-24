@@ -11,12 +11,19 @@ import { HeaderComponent } from './components/home/header/header.component';
 import { CalenderComponent } from './components/home/calender/calender.component';
 import { TodayTasksComponent } from './components/home/today-tasks/today-tasks.component';
 import { CreateTaskComponent } from './components/home/create-task/create-task.component';
-import { SideNavComponent } from './components/side-nav/side-nav.component';
+import { SettingComponent } from './components/setting/setting.component';
+import { TaskComponent } from './components/home/today-tasks/task/task.component';
+import { ToggleComponent } from './components/toggle/toggle.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AuthModule } from '@auth0/auth0-angular';
 import { ErrorPageComponent } from './components/error-page/error-page.component';
 import { ProfileComponent } from './components/profile/profile.component';
-import { ToggleComponent } from './components/shared/toggle/toggle.component';
-import { AuthModule } from '@auth0/auth0-angular';
-import { ReactiveFormsModule } from '@angular/forms';
+
+import { SignInSvgComponent } from './components/sign-in-svg/sign-in-svg.component';
+import { SafeHtmlPipe } from './pipes/safeHtml.pipe';
+import { SideNavComponent } from './components/side-nav/side-nav.component';
+import { ApiModule } from './backend/api.module';
+
 
 @NgModule({
   declarations: [
@@ -31,18 +38,30 @@ import { ReactiveFormsModule } from '@angular/forms';
     SideNavComponent,
     ErrorPageComponent,
     ProfileComponent,
+    SignInComponent,
+    SettingComponent,
+    TaskComponent,
     ToggleComponent,
+    SignInSvgComponent,
+    SafeHtmlPipe,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
+
+    FormsModule,
+
     AuthModule.forRoot({
       domain: 'dev-lmrxa-v2.eu.auth0.com',
       clientId: 'wnMlcJ2Cy414JOsjMLPjNTVEVpiFExCV',
+      audience: 'http://localhost:5000',
+      useRefreshTokens: true,
     }),
+    ApiModule.forRoot({ rootUrl: '/api' }),
   ],
+
   providers: [
     {
       provide: HTTP_INTERCEPTORS,

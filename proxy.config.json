@@ -1,9 +1,12 @@
 {
-  "/auth": {
-    "target": "http://dev-lmrxa-v2.eu.auth0.com/",
+  "/api": {
+
+    "target": "https://kubak-todo.loca.lt",
+
+    "changeOrigin": true,
     "secure": true,
     "pathRewrite": {
-      "^/auth": "http://dev-lmrxa-v2.eu.auth0.com/"
+      "^/api": ""
     }
   }
 }

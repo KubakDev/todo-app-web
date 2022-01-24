@@ -1,0 +1,20 @@
+.inputs {
+  @apply rounded-xsm text-sm pl-10 placeholder:text-lightPrimaryColor h-16 bg-white;
+}
+.btn {
+  @apply h-12 w-52 rounded-xsm font-bold;
+}
+.input {
+  height: 100%;
+  width: 100%;
+}
+input {
+  border: none;
+}
+
+.saveBtn[disabled] {
+  @apply bg-greyBackgroundBtn  text-greyTextBtn;
+}
+input.ng-invalid.ng-touched {
+  @apply border-solid border-2 border-red-800;
+}

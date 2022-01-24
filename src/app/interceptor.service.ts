@@ -19,12 +19,15 @@ export class InterceptorService implements HttpInterceptor {
     req: HttpRequest<any>,
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
+    console.log(req.url);
+    if (req.url.startsWith('/assets/')) {
+      return next.handle(req);
+    }
     return this.auth.getAccessTokenSilently().pipe(
       mergeMap((token) => {
         const tokenReq = req.clone({
           setHeaders: { Authorization: `Bearer ${token}` },
         });
-        console.log(req.url);
         return next.handle(tokenReq);
       }),
       catchError((err) => throwError(err))

@@ -9,6 +9,7 @@ import { RequestBuilder } from '../request-builder';
 import { Observable } from 'rxjs';
 import { map, filter } from 'rxjs/operators';
 
+import { CreateTodo } from '../models/create-todo';
 import { Todo } from '../models/todo';
 
 @Injectable({
@@ -23,26 +24,32 @@ export class TodosService extends BaseService {
   }
 
   /**
-   * Path part for operation apiTodosGet
+   * Path part for operation todosGet
    */
-  static readonly ApiTodosGetPath = '/api/todos';
+  static readonly TodosGetPath = '/todos';
 
   /**
    * This method provides access to the full `HttpResponse`, allowing access to response headers.
-   * To access only the response body, use `apiTodosGet$Plain()` instead.
+   * To access only the response body, use `todosGet()` instead.
    *
    * This method doesn't expect any request body.
    */
-  apiTodosGet$Plain$Response(params?: {
+  todosGet$Response(params?: {
+    From?: string;
+    To?: string;
+    IsComplete?: boolean;
   }): Observable<StrictHttpResponse<Array<Todo>>> {
 
-    const rb = new RequestBuilder(this.rootUrl, TodosService.ApiTodosGetPath, 'get');
+    const rb = new RequestBuilder(this.rootUrl, TodosService.TodosGetPath, 'get');
     if (params) {
+      rb.query('From', params.From, {});
+      rb.query('To', params.To, {});
+      rb.query('IsComplete', params.IsComplete, {});
     }
 
     return this.http.request(rb.build({
-      responseType: 'text',
-      accept: 'text/plain'
+      responseType: 'json',
+      accept: 'application/json'
     })).pipe(
       filter((r: any) => r instanceof HttpResponse),
       map((r: HttpResponse<any>) => {
@@ -53,125 +60,44 @@ export class TodosService extends BaseService {
 
   /**
    * This method provides access to only to the response body.
-   * To access the full response (for headers, for example), `apiTodosGet$Plain$Response()` instead.
+   * To access the full response (for headers, for example), `todosGet$Response()` instead.
    *
    * This method doesn't expect any request body.
    */
-  apiTodosGet$Plain(params?: {
+  todosGet(params?: {
+    From?: string;
+    To?: string;
+    IsComplete?: boolean;
   }): Observable<Array<Todo>> {
 
-    return this.apiTodosGet$Plain$Response(params).pipe(
+    return this.todosGet$Response(params).pipe(
       map((r: StrictHttpResponse<Array<Todo>>) => r.body as Array<Todo>)
     );
   }
 
   /**
-   * This method provides access to the full `HttpResponse`, allowing access to response headers.
-   * To access only the response body, use `apiTodosGet$Json()` instead.
-   *
-   * This method doesn't expect any request body.
+   * Path part for operation todosPost
    */
-  apiTodosGet$Json$Response(params?: {
-  }): Observable<StrictHttpResponse<Array<Todo>>> {
+  static readonly TodosPostPath = '/todos';
 
-    const rb = new RequestBuilder(this.rootUrl, TodosService.ApiTodosGetPath, 'get');
+  /**
+   * This method provides access to the full `HttpResponse`, allowing access to response headers.
+   * To access only the response body, use `todosPost()` instead.
+   *
+   * This method sends `application/json` and handles request body of type `application/json`.
+   */
+  todosPost$Response(params?: {
+    body?: CreateTodo
+  }): Observable<StrictHttpResponse<Todo>> {
+
+    const rb = new RequestBuilder(this.rootUrl, TodosService.TodosPostPath, 'post');
     if (params) {
+      rb.body(params.body, 'application/json');
     }
 
     return this.http.request(rb.build({
       responseType: 'json',
-      accept: 'text/json'
-    })).pipe(
-      filter((r: any) => r instanceof HttpResponse),
-      map((r: HttpResponse<any>) => {
-        return r as StrictHttpResponse<Array<Todo>>;
-      })
-    );
-  }
-
-  /**
-   * This method provides access to only to the response body.
-   * To access the full response (for headers, for example), `apiTodosGet$Json$Response()` instead.
-   *
-   * This method doesn't expect any request body.
-   */
-  apiTodosGet$Json(params?: {
-  }): Observable<Array<Todo>> {
-
-    return this.apiTodosGet$Json$Response(params).pipe(
-      map((r: StrictHttpResponse<Array<Todo>>) => r.body as Array<Todo>)
-    );
-  }
-
-  /**
-   * Path part for operation apiTodosPost
-   */
-  static readonly ApiTodosPostPath = '/api/todos';
-
-  /**
-   * This method provides access to the full `HttpResponse`, allowing access to response headers.
-   * To access only the response body, use `apiTodosPost()` instead.
-   *
-   * This method sends `application/*+json` and handles request body of type `application/*+json`.
-   */
-  apiTodosPost$Response(params?: {
-    body?: Todo
-  }): Observable<StrictHttpResponse<void>> {
-
-    const rb = new RequestBuilder(this.rootUrl, TodosService.ApiTodosPostPath, 'post');
-    if (params) {
-      rb.body(params.body, 'application/*+json');
-    }
-
-    return this.http.request(rb.build({
-      responseType: 'text',
-      accept: '*/*'
-    })).pipe(
-      filter((r: any) => r instanceof HttpResponse),
-      map((r: HttpResponse<any>) => {
-        return (r as HttpResponse<any>).clone({ body: undefined }) as StrictHttpResponse<void>;
-      })
-    );
-  }
-
-  /**
-   * This method provides access to only to the response body.
-   * To access the full response (for headers, for example), `apiTodosPost$Response()` instead.
-   *
-   * This method sends `application/*+json` and handles request body of type `application/*+json`.
-   */
-  apiTodosPost(params?: {
-    body?: Todo
-  }): Observable<void> {
-
-    return this.apiTodosPost$Response(params).pipe(
-      map((r: StrictHttpResponse<void>) => r.body as void)
-    );
-  }
-
-  /**
-   * Path part for operation apiTodosIdGet
-   */
-  static readonly ApiTodosIdGetPath = '/api/todos/{id}';
-
-  /**
-   * This method provides access to the full `HttpResponse`, allowing access to response headers.
-   * To access only the response body, use `apiTodosIdGet$Plain()` instead.
-   *
-   * This method doesn't expect any request body.
-   */
-  apiTodosIdGet$Plain$Response(params: {
-    id: string;
-  }): Observable<StrictHttpResponse<Todo>> {
-
-    const rb = new RequestBuilder(this.rootUrl, TodosService.ApiTodosIdGetPath, 'get');
-    if (params) {
-      rb.path('id', params.id, {});
-    }
-
-    return this.http.request(rb.build({
-      responseType: 'text',
-      accept: 'text/plain'
+      accept: 'application/json'
     })).pipe(
       filter((r: any) => r instanceof HttpResponse),
       map((r: HttpResponse<any>) => {
@@ -182,37 +108,42 @@ export class TodosService extends BaseService {
 
   /**
    * This method provides access to only to the response body.
-   * To access the full response (for headers, for example), `apiTodosIdGet$Plain$Response()` instead.
+   * To access the full response (for headers, for example), `todosPost$Response()` instead.
    *
-   * This method doesn't expect any request body.
+   * This method sends `application/json` and handles request body of type `application/json`.
    */
-  apiTodosIdGet$Plain(params: {
-    id: string;
+  todosPost(params?: {
+    body?: CreateTodo
   }): Observable<Todo> {
 
-    return this.apiTodosIdGet$Plain$Response(params).pipe(
+    return this.todosPost$Response(params).pipe(
       map((r: StrictHttpResponse<Todo>) => r.body as Todo)
     );
   }
 
   /**
+   * Path part for operation todosIdGet
+   */
+  static readonly TodosIdGetPath = '/todos/{id}';
+
+  /**
    * This method provides access to the full `HttpResponse`, allowing access to response headers.
-   * To access only the response body, use `apiTodosIdGet$Json()` instead.
+   * To access only the response body, use `todosIdGet()` instead.
    *
    * This method doesn't expect any request body.
    */
-  apiTodosIdGet$Json$Response(params: {
+  todosIdGet$Response(params: {
     id: string;
   }): Observable<StrictHttpResponse<Todo>> {
 
-    const rb = new RequestBuilder(this.rootUrl, TodosService.ApiTodosIdGetPath, 'get');
+    const rb = new RequestBuilder(this.rootUrl, TodosService.TodosIdGetPath, 'get');
     if (params) {
       rb.path('id', params.id, {});
     }
 
     return this.http.request(rb.build({
       responseType: 'json',
-      accept: 'text/json'
+      accept: 'application/json'
     })).pipe(
       filter((r: any) => r instanceof HttpResponse),
       map((r: HttpResponse<any>) => {
@@ -223,39 +154,86 @@ export class TodosService extends BaseService {
 
   /**
    * This method provides access to only to the response body.
-   * To access the full response (for headers, for example), `apiTodosIdGet$Json$Response()` instead.
+   * To access the full response (for headers, for example), `todosIdGet$Response()` instead.
    *
    * This method doesn't expect any request body.
    */
-  apiTodosIdGet$Json(params: {
+  todosIdGet(params: {
     id: string;
   }): Observable<Todo> {
 
-    return this.apiTodosIdGet$Json$Response(params).pipe(
+    return this.todosIdGet$Response(params).pipe(
       map((r: StrictHttpResponse<Todo>) => r.body as Todo)
     );
   }
 
   /**
-   * Path part for operation apiTodosIdPut
+   * Path part for operation todosIdPut
    */
-  static readonly ApiTodosIdPutPath = '/api/todos/{id}';
+  static readonly TodosIdPutPath = '/todos/{id}';
 
   /**
    * This method provides access to the full `HttpResponse`, allowing access to response headers.
-   * To access only the response body, use `apiTodosIdPut()` instead.
+   * To access only the response body, use `todosIdPut()` instead.
    *
-   * This method sends `application/*+json` and handles request body of type `application/*+json`.
+   * This method sends `application/json` and handles request body of type `application/json`.
    */
-  apiTodosIdPut$Response(params: {
+  todosIdPut$Response(params: {
     id: string;
-    body?: Todo
-  }): Observable<StrictHttpResponse<void>> {
+    body?: CreateTodo
+  }): Observable<StrictHttpResponse<Todo>> {
 
-    const rb = new RequestBuilder(this.rootUrl, TodosService.ApiTodosIdPutPath, 'put');
+    const rb = new RequestBuilder(this.rootUrl, TodosService.TodosIdPutPath, 'put');
     if (params) {
       rb.path('id', params.id, {});
-      rb.body(params.body, 'application/*+json');
+      rb.body(params.body, 'application/json');
+    }
+
+    return this.http.request(rb.build({
+      responseType: 'json',
+      accept: 'application/json'
+    })).pipe(
+      filter((r: any) => r instanceof HttpResponse),
+      map((r: HttpResponse<any>) => {
+        return r as StrictHttpResponse<Todo>;
+      })
+    );
+  }
+
+  /**
+   * This method provides access to only to the response body.
+   * To access the full response (for headers, for example), `todosIdPut$Response()` instead.
+   *
+   * This method sends `application/json` and handles request body of type `application/json`.
+   */
+  todosIdPut(params: {
+    id: string;
+    body?: CreateTodo
+  }): Observable<Todo> {
+
+    return this.todosIdPut$Response(params).pipe(
+      map((r: StrictHttpResponse<Todo>) => r.body as Todo)
+    );
+  }
+
+  /**
+   * Path part for operation todosIdDelete
+   */
+  static readonly TodosIdDeletePath = '/todos/{id}';
+
+  /**
+   * This method provides access to the full `HttpResponse`, allowing access to response headers.
+   * To access only the response body, use `todosIdDelete()` instead.
+   *
+   * This method doesn't expect any request body.
+   */
+  todosIdDelete$Response(params: {
+    id: string;
+  }): Observable<StrictHttpResponse<void>> {
+
+    const rb = new RequestBuilder(this.rootUrl, TodosService.TodosIdDeletePath, 'delete');
+    if (params) {
+      rb.path('id', params.id, {});
     }
 
     return this.http.request(rb.build({
@@ -271,62 +249,15 @@ export class TodosService extends BaseService {
 
   /**
    * This method provides access to only to the response body.
-   * To access the full response (for headers, for example), `apiTodosIdPut$Response()` instead.
-   *
-   * This method sends `application/*+json` and handles request body of type `application/*+json`.
-   */
-  apiTodosIdPut(params: {
-    id: string;
-    body?: Todo
-  }): Observable<void> {
-
-    return this.apiTodosIdPut$Response(params).pipe(
-      map((r: StrictHttpResponse<void>) => r.body as void)
-    );
-  }
-
-  /**
-   * Path part for operation apiTodosIdDelete
-   */
-  static readonly ApiTodosIdDeletePath = '/api/todos/{id}';
-
-  /**
-   * This method provides access to the full `HttpResponse`, allowing access to response headers.
-   * To access only the response body, use `apiTodosIdDelete()` instead.
+   * To access the full response (for headers, for example), `todosIdDelete$Response()` instead.
    *
    * This method doesn't expect any request body.
    */
-  apiTodosIdDelete$Response(params: {
-    id: string;
-  }): Observable<StrictHttpResponse<void>> {
-
-    const rb = new RequestBuilder(this.rootUrl, TodosService.ApiTodosIdDeletePath, 'delete');
-    if (params) {
-      rb.path('id', params.id, {});
-    }
-
-    return this.http.request(rb.build({
-      responseType: 'text',
-      accept: '*/*'
-    })).pipe(
-      filter((r: any) => r instanceof HttpResponse),
-      map((r: HttpResponse<any>) => {
-        return (r as HttpResponse<any>).clone({ body: undefined }) as StrictHttpResponse<void>;
-      })
-    );
-  }
-
-  /**
-   * This method provides access to only to the response body.
-   * To access the full response (for headers, for example), `apiTodosIdDelete$Response()` instead.
-   *
-   * This method doesn't expect any request body.
-   */
-  apiTodosIdDelete(params: {
+  todosIdDelete(params: {
     id: string;
   }): Observable<void> {
 
-    return this.apiTodosIdDelete$Response(params).pipe(
+    return this.todosIdDelete$Response(params).pipe(
       map((r: StrictHttpResponse<void>) => r.body as void)
     );
   }

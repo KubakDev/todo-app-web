@@ -1,9 +1,12 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '@auth0/auth0-angular';
-import { Observable, Subscription } from 'rxjs';
+
+import { firstValueFrom } from 'rxjs';
 import { Todo } from 'src/app/backend/models';
 import { TodosService } from 'src/app/backend/services';
+import { TodoService } from 'src/app/todo.service';
+
 
 @Component({
   selector: 'app-profile',
@@ -16,6 +19,9 @@ export class ProfileComponent implements OnInit, OnDestroy {
   prevTodos?: string[] = [];
   subscription?: Observable<Todo[]> | Subscription;
   profileFrom?: FormGroup;
+
+  prevTodos: Todo[] = [];
+
 
   user:
     | {
@@ -30,9 +36,6 @@ export class ProfileComponent implements OnInit, OnDestroy {
     private todoService: TodosService
   ) {}
 
-  ngOnDestroy(): void {
-    if (!this.subscription) return;
-  }
 
   async ngOnInit(): Promise<void> {
     this.todoService.apiTodosGet$Json;
@@ -45,28 +48,12 @@ export class ProfileComponent implements OnInit, OnDestroy {
         picture: u?.picture ?? '',
       };
     });
-    if (this.prevTodos) {
-      this.prevTodos = ['Check Mail', 'Coding', 'Have Dinner'];
-    }
 
-    this.todos = this.todoService
-      .apiTodosGet$Json$Response()
-      .subscribe((element: any) => {
-        console.log(element);
-      });
-    // this.subscription = this.todoService
-    //   .apiTodosGet$Json()
-    //   .subscribe((todos: Todo[]) => {
-    //     this.todos = todos;
-    //     console.log('hey', todos);
-    //   });
-  }
 
-  onSubmit() {
-    if (!this.user) return;
-    this.user.name = this.profileFrom?.value.name;
-    this.user.nickname = this.profileFrom?.value.nickname;
-    this.editMode = !this.editMode;
+
+    this.prevTodos = await firstValueFrom(this.todoService.todosGet());
+
+
   }
 
   onEdit() {
