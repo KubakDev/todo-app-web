@@ -3,6 +3,7 @@
 @import "tailwindcss/utilities";
 @import "~material-icons/iconfont/material-icons.css";
 
+
 .button-style {
   @apply bg-quatenaryColor w-10/12 h-16 rounded-xsm text-xsm font-bold mb-3;
 }
@@ -12,6 +13,7 @@
 .centering {
   @apply flex flex-col justify-center items-center;
 }
+
 html {
   font-family: "Baloo 2", cursive;
   --test: #fff;
@@ -66,4 +68,8 @@ html {
   --color-text-primary: #fff;
   --color-day-background: #353652;
   --color-calender-background: #849ac3;
+}
+
+:root {
+  --animate-delay: 0.5s;
 }

@@ -18,10 +18,12 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AuthModule } from '@auth0/auth0-angular';
 import { ErrorPageComponent } from './components/error-page/error-page.component';
 import { ProfileComponent } from './components/profile/profile.component';
+
 import { SignInSvgComponent } from './components/sign-in-svg/sign-in-svg.component';
 import { SafeHtmlPipe } from './pipes/safeHtml.pipe';
 import { SideNavComponent } from './components/side-nav/side-nav.component';
 import { ApiModule } from './backend/api.module';
+
 
 @NgModule({
   declarations: [
@@ -48,7 +50,9 @@ import { ApiModule } from './backend/api.module';
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
+
     FormsModule,
+
     AuthModule.forRoot({
       domain: 'dev-lmrxa-v2.eu.auth0.com',
       clientId: 'wnMlcJ2Cy414JOsjMLPjNTVEVpiFExCV',

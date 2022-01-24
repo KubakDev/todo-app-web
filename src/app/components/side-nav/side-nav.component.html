@@ -7,8 +7,10 @@
   <ul class="flex flex-col justify-around gap-5 py-4 px-10">
     <li>
       <a
+
         routerLink=""
         class="flex flex-row items-center gap-3 text-lightPrimaryColor cursor-pointer h-12 transform hover:translate-x-2 transition-transform ease-in duration-200 text-black hover:text-primaryColor"
+
       >
         <i
           [routerLinkActiveOptions]="{ exact: true }"
@@ -41,13 +43,28 @@
     <li>
       <a
         routerLink="/settings"
+
         class="flex flex-row items-center gap-3 text-lightPrimaryColor cursor-pointer h-12 transform hover:translate-x-2 transition-transform ease-in duration-200 text-black hover:text-primaryColor"
+
       >
         <i routerLinkActive="text-primaryColor" class="material-icons text-xl"
           >settings</i
         >
         <span routerLinkActive="text-primaryColor" class="text-xl font-medium"
           >Settings</span
+        >
+      </a>
+    </li>
+    <li>
+      <a
+        routerLink="/404"
+        class="flex flex-row items-center gap-3 cursor-pointer h-12 transform hover:translate-x-2 transition-transform ease-in duration-200 text-black hover:text-mainTodo-200"
+      >
+        <i routerLinkActive="text-mainTodo-200" class="material-icons text-xl"
+          >error</i
+        >
+        <span routerLinkActive="text-mainTodo-200" class="text-xl font-medium"
+          >Error</span
         >
       </a>
     </li>
@@ -82,22 +99,28 @@
     <ul class="py-1" aria-labelledby="dropdownDividerButton">
       <li>
         <a
+
           routerLink=""
           class="block cursor-pointer py-2 px-4 text-xl text-black hover:bg-mainTodo-400 hover:text-lightPrimaryColor"
+
           >Home</a
         >
       </li>
       <li>
         <a
           routerLink="/profile"
-          class="block cursor-pointer py-2 px-4 text-xl text-black hover:bg-mainTodo-400 hover:text-lightPrimaryColor"
+
+          class="block cursor-pointer py-2 px-4 text-lg text-black hover:bg-mainTodo-400 hover:text-mainTodo-200"
+
           >Profile</a
         >
       </li>
       <li>
         <a
           routerLink="/settings"
+
           class="block cursor-pointer py-2 px-4 text-xl text-black hover:bg-mainTodo-400 hover:text-lightPrimaryColor"
+
           >Settings</a
         >
       </li>
