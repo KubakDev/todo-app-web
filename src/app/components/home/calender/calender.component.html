@@ -21,7 +21,8 @@
         <div class="mt-4 flex overflow-auto " >
             <div class="mr-3 w-full" *ngFor="let day of Calender;let index=index">
                 <button [id]="index+''" (click)="changeAchtiveMonth(day)"
-                    class=" w-20 h-36 rounded-lg flex flex-col justify-center items-center {{day.selectedDate===currentDate?'bg-lightPrimaryColor text-white':'bg-DayBackgroundColor'}}">
+                    class=" w-20 h-36 rounded-lg flex flex-col justify-center items-center {{day.selectedDate===currentDate?'bg-lightPrimaryColor text-white':'bg-DayBackgroundColor'}}
+                    hover:bg-lightPrimaryColor hover:text-white">
                  
 
                     <h1 class="text-md font-bold">{{day.day}}</h1>

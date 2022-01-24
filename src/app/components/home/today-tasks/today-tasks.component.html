@@ -12,9 +12,9 @@
         </button>
         
         <div class="flex flex-col justify-center items-center absolute -ml-60 lg:-ml-32 w-80 h-80 bg-lightColor  mt-5 rounded-sm shadow-lg" *ngIf="isOpen">
-            <button class="button-style {{activeButton===2?'both':''}}" (click)="filtter(true)">Show Finished Tasks</button>
-            <button class="button-style {{activeButton===1?'both':''}}" (click)="filtter(false)">Show UnFinished Tasks</button>
-            <button class="button-style {{activeButton===0?'both':''}}" (click)="both()">Show Both </button>
+            <button class="button-style {{activeButton===2?'both':''}} hover:bg-TextBoldColor hover:text-white" (click)="filtter(true)">Show Finished Tasks</button>
+            <button class="button-style {{activeButton===1?'both':''}} hover:bg-TextBoldColor hover:text-white" (click)="filtter(false)">Show UnFinished Tasks</button>
+            <button class="button-style {{activeButton===0?'both':''}} hover:bg-TextBoldColor hover:text-white  " (click)="both()">Show Both </button>
     
         </div>
     </div>
