@@ -4,6 +4,7 @@ module.exports = {
     content: ["./src/**/*.{html,js}"],
   },
   content: ["./node_modules/@themesberg/flowbite/**/*.js"],
+
   darkMode: "class", // or 'media' or 'class'
   theme: {
     fontSize: {
@@ -53,8 +54,10 @@ module.exports = {
         // //   700: "#d3cde6 ",
         // //   800: "#e9e3ff ",
         // //   900: "#de6ca7 ",
+
         // test:
         //   " var(--test)"
+
         // successColor: "var(--color-success)",
         // warningColor: "var(--color-warning)",
         // dangerColor: "var(--color-danger)",
@@ -74,24 +77,23 @@ module.exports = {
         // foregroundColor: "var(--color-foreground)",
         // foregroundColorTint:"var(--color-foreground-tint)",
         // foregroundColorText:"var(--color-foreground-contrast)"
+
         primaryColor: "var(--color-primary)",
         secondaryColor: "var(--color-secondary)",
         backgroundColor: "var(--color-background)",
         quatenaryColor: "var(--color-quatenary)",
         lightPrimaryColor: "var(--color-light-primary)",
-        lightSecondaryColor: "var(--color-light-secondary)",
         lightColor: "var(--color-light)",
         cardBackgroundColor: "var( --color-card-background)",
         TextBoldColor: "var(--color-text-bold)",
         btnLightBgColor: "var(--color-btn-light-bg)",
         textPrimaryColor: "var(--color-text-primary)",
-        DayBackgroundColor: "var(--color-day-background)",
-        calenderBackgroundColor: "var(--color-calender-background)",
       },
     },
   },
   variants: {
     extend: {},
   },
+
   plugins: [require("@themesberg/flowbite/plugin")],
 };
