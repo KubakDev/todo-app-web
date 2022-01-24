@@ -8,7 +8,7 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "lint": "ng lint",
-    "pull-swagger": "ng-openapi-gen -i http://82ca-62-201-232-11.ngrok.io/swagger/v1/swagger.json -o src/app/backend"
+    "pull-swagger": "ng-openapi-gen -i http://c380-62-201-232-11.ngrok.io/swagger/v1/swagger.json -o src/app/backend"
   },
   "private": true,
   "dependencies": {

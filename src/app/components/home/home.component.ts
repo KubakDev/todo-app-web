@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from '@auth0/auth0-angular';
 import { ThemesService } from 'src/app/themes.service';
 import { TodoService } from 'src/app/todo.service';
 
@@ -20,7 +21,8 @@ export class HomeComponent {
   };
   index = 0;
   date: any;
-  constructor(private taskService: TodoService) {}
+  userName: string | undefined;
+  constructor() {}
   onTaskSelected(task: any) {
     this.task = task.task;
   }

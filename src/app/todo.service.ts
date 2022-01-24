@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { AuthService } from '@auth0/auth0-angular';
 import { Subject } from 'rxjs';
 import { Todo } from './backend/models';
 import { TodosService } from './backend/services';
@@ -12,5 +13,5 @@ export class TodoService {
   setTask(tasks: Todo | undefined) {
     this.tasks.next(tasks);
   }
-  constructor(private todoservice: TodosService) {}
+  constructor() {}
 }
