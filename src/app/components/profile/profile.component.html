@@ -11,59 +11,9 @@
       <div
         class="flex flex-col gap-3 py-7 justify-between items-center bg-mainTodo-400 rounded-3xl"
       >
-        <div
-          *ngIf="!editMode"
-          type="button"
-          class="flex items-center justify-end w-full py-3 pr-7"
-        >
-          <span
-            (click)="onEdit()"
-            class="material-icons-outlined cursor-pointer"
-            >edit</span
-          >
-        </div>
+   
 
-        <form
-          *ngIf="profileFrom"
-          [formGroup]="profileFrom"
-          (ngSubmit)="onSubmit()"
-          class="flex flex-col items-center justify-center gap-3 w-full"
-        >
-          <div
-            *ngIf="editMode"
-            type="button"
-            class="flex items-center justify-between w-full px-7"
-          >
-            <button
-              (click)="onEdit()"
-              class="bg-mainTodo-600 text-black px-8 py-3 rounded-full"
-            >
-              Cancel
-            </button>
-            <button
-              type="submit"
-              class="bg-mainTodo-200 text-mainTodo-50 px-8 py-3 rounded-full"
-              [disabled]="!profileFrom.valid"
-            >
-              Save
-            </button>
-          </div>
-          <input
-            *ngIf="editMode"
-            class="bg-mainTodo-100 appearance-none border-2 rounded-2xl border-gray-200 w-1/2 py-2 px-4 text-mainTodo-200 leading-tight focus:outline-none focus:bg-mainTodo-100 focus:border-purple-500"
-            id="name"
-            type="text"
-            formControlName="name"
-          />
-
-          <input
-            *ngIf="editMode"
-            class="bg-mainTodo-100 appearance-none border-2 rounded-2xl border-gray-200 w-1/2 py-2 px-4 text-mainTodo-200 leading-tight focus:outline-none focus:bg-mainTodo-100 focus:border-purple-500"
-            id="nickname"
-            type="text"
-            formControlName="nickname"
-          />
-        </form>
+        
         <img
           *ngIf="!editMode"
           class="inline object-cover w-16 h-16 mr-2 rounded-full"
@@ -104,11 +54,8 @@
       <div class="flex justify-between items-center px-10 py-3">
         <h1 class="font-bold text-black text-2xl">Previous Tasks</h1>
         <div>
-          <span
-            (click)="onDeleteTodos()"
-            class="material-icons text-3xl cursor-pointer"
-            >delete_outline</span
-          >
+         
+          
         </div>
       </div>
       <div class="flex flex-col justify-center items-center my-2 gap-2">
