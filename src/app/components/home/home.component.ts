@@ -1,7 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { AuthService } from '@auth0/auth0-angular';
-import { ThemesService } from 'src/app/themes.service';
-import { TodoService } from 'src/app/todo.service';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-home',
