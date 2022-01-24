@@ -18,16 +18,15 @@
       <button
         type="button"
         (click)="onAuth()"
-        class="bg-secondaryColor hover:bg-tertiaryColor transition-all ease-in text-xl text-lightColor font-bold py-2 px-20 rounded-2xl my-8"
+        class="bg-secondaryColor hover:bg-lightSecondaryColor transition-all ease-in text-xl text-lightColor font-bold py-2 px-20 rounded-2xl my-8"
       >
         Get Started
       </button>
     </div>
   </div>
-  <div class="bg-quaternaryColor md:flex justify-center items-center hidden">
-    <img
-      src="../../../assets/images/login/{{ currentTheme | async }}.svg"
-      alt=""
-    />
+  <div
+    class="bg-mainTodo-50 md:flex flex-col justify-center items-center hidden"
+  >
+    <app-sign-in-svg></app-sign-in-svg>
   </div>
 </div>

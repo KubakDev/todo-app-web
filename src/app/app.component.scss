@@ -1,0 +1,15 @@
+::ng-deep router-outlet + * > * {
+  animation: fade 1s;
+}
+
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+.background {
+  min-height: 100vh;
+}

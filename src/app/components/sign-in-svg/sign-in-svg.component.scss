@@ -1,0 +1,29 @@
+::ng-deep {
+  #ball {
+    animation: ball 2s ease-in-out infinite alternate;
+  }
+
+  #card,
+  #card-content {
+    animation: card 2s ease-in-out infinite alternate;
+    transform-origin: center;
+  }
+
+  @keyframes ball {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(50px);
+    }
+  }
+
+  @keyframes card {
+    from {
+      transform: rotateZ(0deg);
+    }
+    to {
+      transform: rotateZ(2deg);
+    }
+  }
+}

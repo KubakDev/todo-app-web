@@ -9,6 +9,7 @@ import {
 } from '@angular/core';
 import { Todo } from 'src/app/backend/models';
 import { TodosService } from 'src/app/backend/services';
+
 import { TodoService } from 'src/app/todo.service';
 
 @Component({
@@ -19,6 +20,9 @@ import { TodoService } from 'src/app/todo.service';
 export class TodayTasksComponent implements OnChanges {
   isLoading: boolean = false;
   tasks: Todo[] | undefined;
+
+  errorOccur: boolean = false;
+
   isOpen: boolean = false;
   currentDate: Date | undefined = new Date();
   isCompleteCondition: boolean | undefined;
@@ -76,21 +80,32 @@ export class TodayTasksComponent implements OnChanges {
     const day = date.getDate();
     const fromDate = new Date(`${year}-${month + 1}-${day}`);
     const toDate = new Date(`${year}-${month + 1}-${day}`);
-    const response = this.todoService
+
+
+    this.todoService
       .todosGet({
         From: fromDate.toJSON(),
         To: toDate.toJSON(),
         IsComplete: isComplete,
       })
-      .subscribe((data) => {
-        this.tasks = data;
-        if (data.length === 0) {
-          this.CheckTask = true;
+      .subscribe(
+        (data) => {
+          this.tasks = data;
+          if (data.length === 0) {
+            this.CheckTask = true;
+            this.isLoading = false;
+            this.errorOccur = false;
+          } else {
+            this.isLoading = false;
+            this.CheckTask = false;
+            this.errorOccur = false;
+          }
+        },
+        () => {
           this.isLoading = false;
-        } else {
-          this.isLoading = false;
-          this.CheckTask = false;
+          this.errorOccur = true;
         }
-      });
+      );
+
   }
 }

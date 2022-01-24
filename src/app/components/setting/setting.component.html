@@ -3,19 +3,19 @@
     class="bg-quatenaryColor w-5/6 h-5/6 grid lg:grid-cols-2 sm:grid-cols-1 rounded-sm"
   >
     <div class="bg-lightColor rounded-tr-lg rounded-bl-lg">
-      <h1 class="text-primaryColor text-xmd font-bold mt-10 ml-12 ">
-        Hello, {{userName}}
+      <h1 class="text-primaryColor text-xmd font-bold mt-10 ml-12 break-words">
+        Hello, {{ userName }}
       </h1>
       <div class="w-full h-5/6 flex justify-center items-center">
         <div class="bg-quatenaryColor w-10/12 h-3/5 rounded-sm">
-          <h1 class="text-md ml-6 mt-6 text-foregroundColor">Setting</h1>
+          <h1 class="text-md p-8 text-foregroundColor">Setting</h1>
           <div class="w-full h-1/3 flex justify-center items-end mb-5">
             <div
               (click)="onToggle()"
               class="w-11/12 h-20 bg-lightColor rounded-sm flex items-center"
             >
               <div>
-                <h1 class="text-xsm  font-bold ml-2">Choose theme</h1>
+                <h1 class="text-xsm font-bold ml-2">Choose theme</h1>
               </div>
               <div class="w-7/12 float-right">
                 <div
@@ -49,11 +49,7 @@
       </div>
     </div>
     <div class="flex justify-center items-center hidden lg:flex">
-      <img
-        src="./assets/images/todo.png"
-        alt="todo image"
-        class="w-2/5 h-1/2"
-      />
+      <img src="./assets/images/todo.png" alt="todo image" class="w-2/5" />
     </div>
   </div>
 </div>

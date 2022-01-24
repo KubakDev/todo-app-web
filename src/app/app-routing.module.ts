@@ -8,11 +8,16 @@ import { SettingComponent } from './components/setting/setting.component';
 import { SignInComponent } from './components/sign-in/sign-in.component';
 
 const routes: Routes = [
-  { path: '', component: SignInComponent, pathMatch: 'full' },
-  { path: 'home', component: HomeComponent },
-  { path: '404', component: ErrorPageComponent },
-  { path: 'profile', component: ProfileComponent, canActivate: [] },
-  { path: 'settings', component: SettingComponent },
+  {
+    path: '',
+    component: HomeComponent,
+    canActivate: [AuthGuard],
+    pathMatch: 'full',
+  },
+  { path: 'sign-in', component: SignInComponent },
+  { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
+  { path: 'settings', component: SettingComponent, canActivate: [AuthGuard] },
+  { path: '**', component: ErrorPageComponent, pathMatch: 'full' },
 ];
 
 @NgModule({

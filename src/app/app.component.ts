@@ -1,9 +1,8 @@
 import { Component } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ThemesService } from './themes.service';
+import { AuthService } from '@auth0/auth0-angular';
 import '@themesberg/flowbite';
-import { TodosService } from './backend/services';
-import { TodoService } from './todo.service';
 
 @Component({
   selector: 'app-root',
@@ -11,14 +10,11 @@ import { TodoService } from './todo.service';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  constructor(
-    private themeservice: ThemesService,
-    private todoService: TodosService,
-    private taskservice: TodoService
-  ) {}
-  title = 'todoAppWeb';
-
-  weatherItems: any = [];
+  get user(): Observable<boolean> {
+    return this.auth.isAuthenticated$;
+  }
+  constructor(private themeservice: ThemesService, private auth: AuthService) {}
+  title = 'Todo App';
 
   get currentTheme(): Observable<string> {
     return this.themeservice.themeName$;

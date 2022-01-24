@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Observable } from 'rxjs';
 import { AuthService } from '@auth0/auth0-angular';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-side-nav',
@@ -8,13 +9,20 @@ import { AuthService } from '@auth0/auth0-angular';
   styleUrls: ['./side-nav.component.scss'],
 })
 export class SideNavComponent {
+  isOpen?: boolean = false;
   get loggedIn(): Observable<boolean> {
     return this.auth.isAuthenticated$;
   }
-  constructor(private auth: AuthService) {}
+  constructor(private auth: AuthService, private router: Router) {}
 
   onLogout() {
-    localStorage.clear();
-    this.auth.logout();
+    try {
+      this.auth.logout();
+      this.router.navigate(['/sign-in']);
+    } catch (error) {}
+  }
+
+  onOpenNav() {
+    this.isOpen = !this.isOpen;
   }
 }

@@ -1,6 +1,6 @@
 {
   "/api": {
-    "target": "http://c380-62-201-232-11.ngrok.io",
+    "target": "https://kubak-todo.loca.lt",
     "changeOrigin": true,
     "secure": true,
     "pathRewrite": {
