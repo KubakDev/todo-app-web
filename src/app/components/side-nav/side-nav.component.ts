@@ -23,7 +23,6 @@ export class SideNavComponent {
   }
 
   onOpenNav() {
-    console.log(this.isOpen);
     this.isOpen = !this.isOpen;
   }
 }
