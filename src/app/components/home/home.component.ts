@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from '@auth0/auth0-angular';
 import { ThemesService } from 'src/app/themes.service';
 import { TodoService } from 'src/app/todo.service';
 
@@ -9,17 +10,23 @@ import { TodoService } from 'src/app/todo.service';
 })
 export class HomeComponent {
   task = {
-    name: '',
-    isCompleted: false,
-    notes: '',
+    title: '',
+    isComplete: false,
+    note: '',
     date: '',
     time: '',
+    id: '',
+    isTimeAvailable: false,
+    userId: '',
   };
   index = 0;
-
-  constructor(private taskservice: TodoService) {}
+  date: any;
+  userName: string | undefined;
+  constructor() {}
   onTaskSelected(task: any) {
     this.task = task.task;
-    this.index = task.index;
+  }
+  getMontheTasks(day: any) {
+    this.date = day.day;
   }
 }

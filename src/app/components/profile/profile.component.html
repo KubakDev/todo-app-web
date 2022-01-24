@@ -79,19 +79,24 @@
       </div>
       <div class="flex flex-col justify-center items-center my-2 gap-2">
         <div
+
           *ngFor="let todo of prevTodos"
           class="flex items-center gap-4 bg-quatenaryColor py-4 w-11/12 rounded-full px-4"
+
         >
           <span
             class="material-icons text-lightColor bg-primaryColor rounded-full p-1"
             >done</span
           >
+
           <span
             [ngClass]="{ 'line-through': todo.isComplete }"
             class="font-bold text-xl"
             >{{ todo.title }}</span
           >
         </div>
+      
+       
       </div>
     </div>
   </div>

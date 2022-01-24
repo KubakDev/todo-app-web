@@ -1,89 +1,80 @@
-import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { firstValueFrom } from 'rxjs';
+import { Todo } from 'src/app/backend/models';
+import { TodosService } from 'src/app/backend/services';
 import { TodoService } from 'src/app/todo.service';
-
 @Component({
   selector: 'app-create-task',
   templateUrl: './create-task.component.html',
   styleUrls: ['./create-task.component.scss'],
 })
-export class CreateTaskComponent implements OnChanges {
+export class CreateTaskComponent {
   @Input() index = 0;
-  @Input() editTask = {
-    name: '',
-    isCompleted: false,
-    notes: '',
-    date: '',
-    time: '',
-  };
-  startAdding: boolean = false;
-  task: string = '';
-  notes: string = '';
-  date: string = '';
-  time: string = '';
-  tasks: any = [];
-  constructor(private todoservice: TodoService) {
-    this.todoservice.allTasks$.subscribe((data) => {
-      this.tasks = data;
-    });
+  @Input() set editTask(task: Todo | undefined | null) {
+    this.title = task?.title ?? '';
+    this.notes = task?.note ?? '';
+    this.date = task?.date;
+    this._editTask = task;
+    if (task?.title) {
+      this.editMode = true;
+      this.onClickInput();
+    } else this.editMode = false;
+
   }
+  editMode: boolean = false;
+  startAdding: boolean = false;
+  title: undefined | string = '';
+  notes: undefined | string = '';
+  date: undefined | string = '';
+  time: undefined | string = '';
+
+  private _editTask: Todo | undefined | null;
+  constructor(
+    private todosService: TodosService,
+    private taskService: TodoService
+  ) {}
 
   onClickInput() {
     this.startAdding = true;
   }
-  onSubmit() {
-    if (!this.editTask.name) {
-      this.todoservice.Tasks.next([
-        ...this.tasks,
-        {
-          id: 4,
-          name: this.task,
-          isCompleted: false,
-          notes: this.notes,
-          date: this.date,
-          time: this.time,
-        },
-      ]);
-      this.date = '';
-      this.task = '';
-      this.time = '';
-      this.notes = '';
+  async onSubmit() {
+    if (!this.editMode) {
+      const response = await firstValueFrom(
+        this.todosService.todosPost({
+          body: {
+            date: this.date,
+            note: this.notes,
+            title: this.title,
+            isComplete: false,
+          },
+        })
+      );
+      this.taskService.setTask(undefined);
     } else {
-      this.tasks[this.index] = {
-        id: 4,
-        name: this.task,
-        isCompleted: false,
-        notes: this.notes,
-        date: this.date,
-        time: this.time,
-      };
-      this.todoservice.Tasks.next(this.tasks);
-      this.editTask = {
-        name: '',
-        isCompleted: false,
-        notes: '',
-        date: '',
-        time: '',
-      };
-      this.date = '';
-      this.task = '';
-      this.time = '';
-      this.notes = '';
+      if (!this._editTask?.id) return;
+      const response = await firstValueFrom(
+        this.todosService.todosIdPut({
+          id: this._editTask.id,
+          body: {
+            date: this.date,
+            isComplete: this._editTask.isComplete,
+            note: this.notes,
+            title: this.title,
+          },
+        })
+      );
+      this.taskService.setTask(undefined);
     }
+    this.date = '';
+    this.title = '';
+    this.time = '';
+    this.notes = '';
   }
   onClick() {
     this.date = '';
-    this.task = '';
+    this.title = '';
     this.time = '';
     this.notes = '';
     this.startAdding = false;
-    this.task = '';
-  }
-  ngOnChanges(): void {
-    if (this.editTask.name) {
-      this.task = this.editTask.name;
-      this.notes = this.editTask.notes;
-      this.date = this.editTask.date;
-      this.time = this.editTask.time;
-    }
   }
 }

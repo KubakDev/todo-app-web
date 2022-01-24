@@ -36,7 +36,6 @@ import { ApiModule } from './backend/api.module';
     SideNavComponent,
     ErrorPageComponent,
     ProfileComponent,
-    ToggleComponent,
     SignInComponent,
     SettingComponent,
     TaskComponent,

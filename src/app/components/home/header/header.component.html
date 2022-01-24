@@ -5,18 +5,18 @@
         class="grid grid-col-4 bg-lightColor rounded-bl-lg rounded-tr-lg flex justify-center content-center">
 
         <div>
-            <h1 class="sm:text-md lg:text-lg font-bold text-primaryColor ">
-                Hello, {{UserName}}
+            <h1 class="text-md font-bold text-primaryColor ">
+                Hello, {{userName}}
             </h1>
-            <p class="sm:text-xsm lg:text-sm text-primaryColor" *ngIf="unfinishedTasks">
+            <p class="text-xsm text-primaryColor" *ngIf="unfinishedTasks">
                 you have {{unfinishedTasks}} unfinished tasks
             </p>
 
         </div>
     </div>
     <div class="grid grid-cols-3 flex items-center hidden lg:flex ">
-        <img src="./assets/images/note.png " class="xl:-ml-40 lg:-ml-28 w-1/4">
-        <p class="text-md text-lightPrimaryColor font-bold col-span-2 mr-20" >“All our dreams can come true, if we have the courage to pursue them.</p>
+        <img src="./assets/images/note.png " class="xl:-ml-30 -ml-24 w-1/4">
+        <p class="text-sm text-lightPrimaryColor font-bold col-span-2 mr-20 leading-10" >All our dreams can come true, if we have the courage to pursue them.</p>
      </div>
 </div>
 </div>

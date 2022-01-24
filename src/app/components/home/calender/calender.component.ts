@@ -1,14 +1,15 @@
 import { formatDate } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
+import { TodoService } from 'src/app/todo.service';
 @Component({
   selector: 'app-calender',
   templateUrl: './calender.component.html',
   styleUrls: ['./calender.component.scss'],
 })
 export class CalenderComponent implements OnInit {
+  @Output() getMontheTasks = new EventEmitter<any>();
   Calender: Array<any> | undefined;
-
   thisDay: any;
   isOpen = false;
   Months = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
@@ -27,10 +28,13 @@ export class CalenderComponent implements OnInit {
     'December',
   ];
   thisMonth = +formatDate(new Date(), 'MM', 'en-US');
+  current = +formatDate(new Date(), 'MM', 'en-US');
+
   SelectedMonth = this.monthNames[+formatDate(new Date(), 'MM', 'en-US') - 1];
   currentDate = formatDate(new Date(), 'dd/MM/YYYY', 'en-US');
   numberOfDayPerMonth = 0;
-  constructor(private router: Router) {}
+  ischangeMonth: boolean = false;
+  constructor(private taskService: TodoService) {}
   ngOnInit(): void {
     this.calenderSetup();
     this.scrollToCurrentDate();
@@ -38,12 +42,24 @@ export class CalenderComponent implements OnInit {
   openCalender() {
     this.isOpen = !this.isOpen;
   }
-  scrollToCurrentDate() {
-    const index = this.Calender?.findIndex((i) => i.date === this.currentDate);
-
+  scrollToCurrentDate(index?: number) {
+    if (
+      index == undefined &&
+      this.thisMonth == +formatDate(new Date(), 'MM', 'en-US')
+    ) {
+      index = this.Calender?.findIndex(
+        (i) => i.selectedDate === this.currentDate
+      );
+    }
     setTimeout(() => {
       if (index && index > -1) {
         document.getElementById(`${index}`)?.scrollIntoView({
+          behavior: 'smooth',
+          block: 'nearest',
+          inline: 'start',
+        });
+      } else {
+        document.getElementById(`${0}`)?.scrollIntoView({
           behavior: 'smooth',
           block: 'nearest',
           inline: 'start',
@@ -52,14 +68,20 @@ export class CalenderComponent implements OnInit {
     }, 1000);
   }
   changeMonth(month: number) {
-    this.thisMonth = 0 + month;
+    this.thisMonth = month;
     this.isOpen = false;
     this.calenderSetup();
     this.SelectedMonth = this.monthNames[month - 1];
-    let thismonth = '0' + month + '';
+    let thismonth = month + '';
     if (thismonth === formatDate(new Date(), 'MM', 'en-US')) {
-      this.scrollToCurrentDate();
+      this.scrollToCurrentDate(0);
     }
+    let date = new Date(`${2022}-${this.thisMonth}-${1}`);
+    this.currentDate = formatDate(date, 'dd/MM/YYYY', 'en-US');
+
+    this.getMontheTasks.emit({ day: date });
+
+    this.scrollToCurrentDate();
   }
   calenderSetup() {
     let monthDays = [];
@@ -72,13 +94,25 @@ export class CalenderComponent implements OnInit {
         'EEE',
         'en-US'
       );
-      let date = formatDate(
+      let date = new Date(`${2022}-${this.thisMonth}-${i}`);
+
+      let selectedDate = formatDate(
         '2022-' + this.thisMonth + '-' + i,
         'dd/MM/YYYY',
         'en-US'
       );
-      monthDays.push({ day: i, week: weekday, isTask: false, date: date });
+      monthDays.push({
+        day: i,
+        week: weekday,
+        isTask: false,
+        date: date,
+        selectedDate: selectedDate,
+      });
     }
     this.Calender = monthDays;
+  }
+  changeAchtiveMonth(day: any) {
+    this.currentDate = day.selectedDate;
+    this.getMontheTasks.emit({ day: day.date });
   }
 }
