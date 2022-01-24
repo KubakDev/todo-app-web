@@ -5,7 +5,7 @@
     <div
       class="flex flex-col justify-evenly gap-3 h-full profile-left-container rounded-3xl bg-quatenaryColor py-12 px-8"
     >
-      <h1 class="text-4xl font-bold text-primaryColor">
+      <h1 class="text-4xl font-bold text-primaryColor break-words">
         Hello
         <ng-container *ngIf="user?.name"
           >, {{ user?.name ? user?.name : "" }}</ng-container
@@ -20,11 +20,10 @@
           src="{{ user?.picture }}"
           alt="Profile image"
         />
-
-        <h1 *ngIf="!editMode" class="text-2xl font-bold">
+        <h1 class="text-2xl font-bold break-words">
           {{ user?.name ? user?.name : "" }}
         </h1>
-        <h1 *ngIf="!editMode" class="text-lg font-bold">
+        <h1 class="text-xl font-bold break-words">
           {{ user?.nickname ? user?.nickname : "" }}
         </h1>
       </div>
@@ -36,22 +35,26 @@
         </div>
 
         <h1
-          class="text-xl font-bold bg-quatenaryColor w-11/12 py-4 pl-5 m-4 rounded-3xl"
+          class="text-xl font-bold bg-quatenaryColor w-11/12 py-4 pl-5 m-4 rounded-3xl break-words"
         >
           {{ user?.name ? user?.name : " " }}
         </h1>
         <h1
-          class="text-xl font-bold bg-quatenaryColor w-11/12 py-4 pl-5 m-4 rounded-3xl"
+          class="text-xl font-bold bg-quatenaryColor w-11/12 py-4 pl-5 m-4 rounded-3xl break-words"
         >
           {{ user?.email ?? "" }}
         </h1>
       </div>
     </div>
-    <div class="flex flex-col justify-center bg-white rounded-3xl py-8">
+    <div
+      class="flex flex-col justify-center bg-white rounded-3xl py-8 tasks-container overflow-y-auto"
+    >
       <div class="flex justify-between items-center px-10 py-3">
         <h1 class="font-bold text-black text-2xl">Tasks</h1>
       </div>
-      <div class="flex flex-col justify-center items-center my-2 gap-2">
+      <div
+        class="flex flex-col justify-center items-center my-2 gap-2 h-full overflow-y-auto"
+      >
         <div
           *ngIf="prevTodos?.length === 0"
           class="flex items-center gap-4 bg-mainTodo-400 py-4 w-11/12 rounded-full px-4 font-bold text-xl"
