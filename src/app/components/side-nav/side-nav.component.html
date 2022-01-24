@@ -7,14 +7,20 @@
   <ul class="flex flex-col justify-around gap-5 py-4 px-10">
     <li>
       <a
-        routerLink="/home"
-        class="flex flex-row items-center gap-3 cursor-pointer h-12 transform hover:translate-x-2 transition-transform ease-in duration-200 text-black hover:text-primaryColor"
+        routerLink=""
+        class="flex flex-row items-center gap-3 text-lightPrimaryColor cursor-pointer h-12 transform hover:translate-x-2 transition-transform ease-in duration-200 text-black hover:text-primaryColor"
       >
-        <i routerLinkActive="text-primaryColor" class="material-icons text-xl"
+        <i
+          [routerLinkActiveOptions]="{ exact: true }"
+          routerLinkActive="text-primaryColor"
+          class="material-icons text-xl"
           >home</i
         >
 
-        <span routerLinkActive="text-primaryColor" class="text-xl font-medium"
+        <span
+          [routerLinkActiveOptions]="{ exact: true }"
+          routerLinkActive="text-primaryColor"
+          class="text-xl font-medium"
           >Home</span
         >
       </a>
@@ -22,7 +28,7 @@
     <li>
       <a
         routerLink="/profile"
-        class="flex flex-row items-center gap-3 cursor-pointer h-12 transform hover:translate-x-2 transition-transform ease-in duration-200 text-black hover:text-primaryColor"
+        class="flex flex-row items-center gap-3 text-lightPrimaryColor cursor-pointer h-12 transform hover:translate-x-2 transition-transform ease-in duration-200 text-black hover:text-primaryColor"
       >
         <i routerLinkActive="text-primaryColor" class="material-icons text-xl"
           >account_circle</i
@@ -35,7 +41,7 @@
     <li>
       <a
         routerLink="/settings"
-        class="flex flex-row items-center gap-3 cursor-pointer h-12 transform hover:translate-x-2 transition-transform ease-in duration-200 text-black hover:text-primaryColor"
+        class="flex flex-row items-center gap-3 text-lightPrimaryColor cursor-pointer h-12 transform hover:translate-x-2 transition-transform ease-in duration-200 text-black hover:text-primaryColor"
       >
         <i routerLinkActive="text-primaryColor" class="material-icons text-xl"
           >settings</i
@@ -52,7 +58,7 @@
   <a
     *ngIf="loggedIn | async; else division"
     (click)="onLogout()"
-    class="flex flex-row items-center cursor-pointer gap-3 h-12 transform hover:translate-x-2 transition-transform ease-in duration-200 text-black hover:text-primaryColor"
+    class="flex flex-row items-center cursor-pointer gap-3 h-12 transform hover:translate-x-2 transition-transform ease-in duration-200 text-lightPrimaryColor hover:text-primaryColor"
   >
     <i class="material-icons text-xl">logout</i>
     <span class="text-xl font-medium">Logout</span>
@@ -75,21 +81,21 @@
       <li>
         <a
           routerLink=""
-          class="block cursor-pointer py-2 px-4 text-xl text-black hover:bg-mainTodo-400 hover:text-primaryColor"
+          class="block cursor-pointer py-2 px-4 text-xl text-black hover:bg-mainTodo-400 hover:text-lightPrimaryColor"
           >Home</a
         >
       </li>
       <li>
         <a
           routerLink="/profile"
-          class="block cursor-pointer py-2 px-4 text-xl text-black hover:bg-mainTodo-400 hover:text-primaryColor"
+          class="block cursor-pointer py-2 px-4 text-xl text-black hover:bg-mainTodo-400 hover:text-lightPrimaryColor"
           >Profile</a
         >
       </li>
       <li>
         <a
           routerLink="/settings"
-          class="block cursor-pointer py-2 px-4 text-xl text-black hover:bg-mainTodo-400 hover:text-primaryColor"
+          class="block cursor-pointer py-2 px-4 text-xl text-black hover:bg-mainTodo-400 hover:text-lightPrimaryColor"
           >Settings</a
         >
       </li>
@@ -97,7 +103,7 @@
     <div class="py-1">
       <a
         (click)="onLogout()"
-        class="block cursor-pointer py-2 px-4 text-xl text-black hover:bg-mainTodo-400 hover:text-primaryColor"
+        class="block cursor-pointer py-2 px-4 text-xl text-black hover:bg-mainTodo-400 hover:text-lightPrimaryColor"
         >Logout</a
       >
     </div>

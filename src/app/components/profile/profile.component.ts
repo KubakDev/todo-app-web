@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '@auth0/auth0-angular';
+import { firstValueFrom } from 'rxjs';
+import { Todo } from 'src/app/backend/models';
 import { TodosService } from 'src/app/backend/services';
 import { TodoService } from 'src/app/todo.service';
 
@@ -10,7 +12,9 @@ import { TodoService } from 'src/app/todo.service';
 })
 export class ProfileComponent implements OnInit {
   editMode?: boolean = false;
-  tasks: any;
+
+  prevTodos: Todo[] = [];
+
 
   user:
     | {
@@ -35,9 +39,9 @@ export class ProfileComponent implements OnInit {
       };
     });
 
-    this.todoService.todosGet({ IsComplete: true }).subscribe((data) => {
-      this.tasks = data;
-    });
+
+    this.prevTodos = await firstValueFrom(this.todoService.todosGet());
+
   }
 
   onEdit() {

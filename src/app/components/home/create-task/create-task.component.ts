@@ -19,6 +19,7 @@ export class CreateTaskComponent {
       this.editMode = true;
       this.onClickInput();
     } else this.editMode = false;
+
   }
   editMode: boolean = false;
   startAdding: boolean = false;

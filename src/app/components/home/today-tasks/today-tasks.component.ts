@@ -1,3 +1,4 @@
+
 import { formatDate } from '@angular/common';
 import { HttpErrorResponse } from '@angular/common/http';
 import {
@@ -9,6 +10,7 @@ import {
 } from '@angular/core';
 import { Todo } from 'src/app/backend/models';
 import { TodosService } from 'src/app/backend/services';
+
 import { TodoService } from 'src/app/todo.service';
 
 @Component({
@@ -19,6 +21,8 @@ import { TodoService } from 'src/app/todo.service';
 export class TodayTasksComponent implements OnChanges {
   isLoading: boolean = false;
   tasks: Todo[] | undefined;
+
+
   isOpen: boolean = false;
   currentDate: Date | undefined = new Date();
   isCompleteCondition: boolean | undefined;

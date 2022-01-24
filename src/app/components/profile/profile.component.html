@@ -72,22 +72,28 @@
     </div>
     <div class="flex flex-col justify-center bg-white rounded-3xl py-8">
       <div class="flex justify-between items-center px-10 py-3">
-        <h1 class="font-bold text-black text-2xl">Previous Tasks</h1>
+        <h1 class="font-bold text-black text-2xl">Tasks</h1>
         <button type="button">
           <span class="material-icons text-3xl">delete_outline</span>
         </button>
       </div>
       <div class="flex flex-col justify-center items-center my-2 gap-2">
         <div
-          class="flex items-center gap-4 bg-quatenaryColor py-4 w-11/12 rounded-full px-4 font-bold text-xl"
-          *ngFor="let task of tasks"
+
+          *ngFor="let todo of prevTodos"
+          class="flex items-center gap-4 bg-quatenaryColor py-4 w-11/12 rounded-full px-4"
+
         >
           <span
             class="material-icons text-lightColor bg-primaryColor rounded-full p-1"
             >done</span
           >
 
-          {{task.title}}
+          <span
+            [ngClass]="{ 'line-through': todo.isComplete }"
+            class="font-bold text-xl"
+            >{{ todo.title }}</span
+          >
         </div>
       
        

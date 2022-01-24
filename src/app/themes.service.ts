@@ -1,16 +1,14 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, Subject } from 'rxjs';
 import { ThemeName } from './models/theme.model';
-
 @Injectable({
   providedIn: 'root',
 })
 export class ThemesService {
-  localTheme = localStorage.getItem('themeName')
-    ? localStorage.getItem('themeName')
-    : 'main-theme';
+  localTheme: ThemeName =
+    (localStorage.getItem('themeName') as ThemeName) ?? 'main-theme';
 
-  private themeName = new BehaviorSubject<any>('main-theme');
+  private themeName = new BehaviorSubject<ThemeName>('main-theme');
 
   themeName$ = this.themeName.asObservable();
   constructor() {
