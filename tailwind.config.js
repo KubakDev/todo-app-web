@@ -1,11 +1,11 @@
 
 module.exports = {
-  plugins: [require("@themesberg/flowbite/plugin")],
   prefix: "",
   purge: {
     content: ["./src/**/*.{html,js}"],
   },
   content: ["./node_modules/@themesberg/flowbite/**/*.js"],
+
   darkMode: "class", // or 'media' or 'class'
   theme: {
     fontSize: {
@@ -40,25 +40,22 @@ module.exports = {
         
         greyTextBtn:"#B7B5B5",
         greyBackgroundBtn:"#EBEBEB",
-   
         primaryColor: "var(--color-primary)",
         secondaryColor: "var(--color-secondary)",
         backgroundColor: "var(--color-background)",
         quatenaryColor: "var(--color-quatenary)",
         lightPrimaryColor: "var(--color-light-primary)",
-        lightSecondaryColor: "var(--color-light-secondary)",
         lightColor: "var(--color-light)",
         cardBackgroundColor: "var( --color-card-background)",
         TextBoldColor: "var(--color-text-bold)",
         btnLightBgColor: "var(--color-btn-light-bg)",
         textPrimaryColor: "var(--color-text-primary)",
-        DayBackgroundColor: "var(--color-day-background)",
-        calenderBackgroundColor: "var(--color-calender-background)"
       },
     },
   },
   variants: {
     extend: {},
   },
+
   plugins: [require("@themesberg/flowbite/plugin")],
 };

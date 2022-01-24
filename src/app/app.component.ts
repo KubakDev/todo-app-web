@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ThemesService } from './themes.service';
-import '@themesberg/flowbite';
 import { AuthService } from '@auth0/auth0-angular';
+import '@themesberg/flowbite';
 
 @Component({
   selector: 'app-root',
