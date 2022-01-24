@@ -1,6 +1,6 @@
 {
   "/api": {
-    "target": "http://82ca-62-201-232-11.ngrok.io",
+    "target": "http://53e0-62-201-232-11.ngrok.io/",
     "changeOrigin": true,
     "secure": true,
     "pathRewrite": {

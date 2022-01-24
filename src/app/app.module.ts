@@ -22,6 +22,7 @@ import { SignInSvgComponent } from './components/sign-in-svg/sign-in-svg.compone
 import { SafeHtmlPipe } from './pipes/safeHtml.pipe';
 import { SideNavComponent } from './components/side-nav/side-nav.component';
 import { ApiModule } from './backend/api.module';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -50,6 +51,7 @@ import { ApiModule } from './backend/api.module';
     HttpClientModule,
     ReactiveFormsModule,
     FormsModule,
+    ToastrModule.forRoot(),
     AuthModule.forRoot({
       domain: 'dev-lmrxa-v2.eu.auth0.com',
       clientId: 'wnMlcJ2Cy414JOsjMLPjNTVEVpiFExCV',

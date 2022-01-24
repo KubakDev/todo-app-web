@@ -1,5 +1,4 @@
 module.exports = {
-  plugins: [require("@themesberg/flowbite/plugin")],
   prefix: "",
   purge: {
     content: ["./src/**/*.{html,js}"],
@@ -87,7 +86,7 @@ module.exports = {
         btnLightBgColor: "var(--color-btn-light-bg)",
         textPrimaryColor: "var(--color-text-primary)",
         DayBackgroundColor: "var(--color-day-background)",
-        calenderBackgroundColor: "var(--color-calender-background)"
+        calenderBackgroundColor: "var(--color-calender-background)",
       },
     },
   },

@@ -30,6 +30,8 @@ export class CalenderComponent implements OnInit {
   SelectedMonth = this.monthNames[+formatDate(new Date(), 'MM', 'en-US') - 1];
   currentDate = formatDate(new Date(), 'dd/MM/YYYY', 'en-US');
   numberOfDayPerMonth = 0;
+  widgetContent: any;
+  widgetsContent: any;
   constructor(private router: Router) {}
   ngOnInit(): void {
     this.calenderSetup();
@@ -80,5 +82,12 @@ export class CalenderComponent implements OnInit {
       monthDays.push({ day: i, week: weekday, isTask: false, date: date });
     }
     this.Calender = monthDays;
+  }
+
+  onWheel(event: WheelEvent): void {
+    event.preventDefault();
+    if (event.deltaY > 0)
+      document.getElementById('container')!.scrollLeft += 400;
+    else document.getElementById('container')!.scrollLeft -= 400;
   }
 }

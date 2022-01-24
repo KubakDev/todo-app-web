@@ -1,4 +1,5 @@
 import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
 import { TodoService } from 'src/app/todo.service';
 
 @Component({
@@ -21,7 +22,7 @@ export class CreateTaskComponent implements OnChanges {
   date: string = '';
   time: string = '';
   tasks: any = [];
-  constructor(private todoservice: TodoService) {
+  constructor(private todoservice: TodoService, private toastr: ToastrService) {
     this.todoservice.allTasks$.subscribe((data) => {
       this.tasks = data;
     });
@@ -43,6 +44,8 @@ export class CreateTaskComponent implements OnChanges {
           time: this.time,
         },
       ]);
+
+      this.toastr.success('Todo Added Successfully');
       this.date = '';
       this.task = '';
       this.time = '';
@@ -64,6 +67,8 @@ export class CreateTaskComponent implements OnChanges {
         date: '',
         time: '',
       };
+      this.toastr.success('Todo Edited Successfully');
+
       this.date = '';
       this.task = '';
       this.time = '';
