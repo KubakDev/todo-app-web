@@ -15,6 +15,8 @@ export class ProfileComponent implements OnInit {
   editMode?: boolean = false;
   todos?: [] | any;
   profileFrom?: FormGroup;
+  isLoading: boolean | undefined = false;
+  isError: boolean | undefined = false;
 
   prevTodos: Todo[] = [];
 
@@ -40,7 +42,13 @@ export class ProfileComponent implements OnInit {
         picture: u?.picture ?? '',
       };
     });
-
-    this.prevTodos = await firstValueFrom(this.todoService.todosGet());
+    this.isLoading = true;
+    try {
+      this.prevTodos = await firstValueFrom(this.todoService.todosGet());
+      this.isLoading = false;
+    } catch (error) {
+      this.isError = true;
+      this.isLoading = false;
+    }
   }
 }
