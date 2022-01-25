@@ -28,6 +28,7 @@ export class TodayTasksComponent implements OnChanges {
   isCompleteCondition: boolean | undefined;
   CheckTask: boolean = false;
   activeButton: number = 0;
+  taskInfo: string = "today's Tasks";
   @Output() selectedTask = new EventEmitter<any>();
   @Input() date: Date = new Date();
   constructor(
@@ -70,6 +71,14 @@ export class TodayTasksComponent implements OnChanges {
     let date = new Date();
     if (this.date) {
       date = this.date;
+      if (
+        formatDate(date, 'dd/MM/YYY', 'en') ==
+        formatDate(new Date(), 'dd/MM/YYY', 'en')
+      ) {
+        this.taskInfo = "Today's Tasks";
+      } else {
+        this.taskInfo = formatDate(this.date, 'dd/MM/YYY', 'en') + ' Tasks';
+      }
     }
 
     if (this.isLoading) {
@@ -80,7 +89,6 @@ export class TodayTasksComponent implements OnChanges {
     const day = date.getDate();
     const fromDate = new Date(`${year}-${month + 1}-${day}`);
     const toDate = new Date(`${year}-${month + 1}-${day}`);
-
 
     this.todoService
       .todosGet({
@@ -106,6 +114,5 @@ export class TodayTasksComponent implements OnChanges {
           this.errorOccur = true;
         }
       );
-
   }
 }
