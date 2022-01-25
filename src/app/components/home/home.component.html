@@ -1,14 +1,15 @@
-<div class="flex flex-col items-center h-screen">
+<div class="flex flex-col items-center">
   <div class="w-11/12">
     <app-header></app-header>
 
-    <div class="grid sm:grid-cols-1 lg:grid-cols-2 mt-10 mb-0">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-5 mt-10">
       <div>
-        <app-calender></app-calender>
-        <div class="mt-14 flex justify-center">
+        <app-calender (getMontheTasks)="getMontheTasks($event)"></app-calender>
+        <div class="mt-20 flex justify-center">
           <app-today-tasks
             class="w-full"
             (selectedTask)="onTaskSelected($event)"
+            [date]="date"
           ></app-today-tasks>
         </div>
       </div>

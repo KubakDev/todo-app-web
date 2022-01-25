@@ -1,4 +1,4 @@
-<div class="w-full flex justify-between">
+<div class="w-full flex justify-between mb-6">
   <h1 class="text-md lg:text-lg ml-5 text-textPrimaryColor">Today's Tasks</h1>
   <div>
     <button>
@@ -6,7 +6,6 @@
         class="bg-cardBackgroundColor h-16 w-16 rounded-lg flex justify-center items-center"
         (click)="openFilter()"
       >
-        <!-- <img src="./assets/images/fillter.png " class="h-5 w-5 lg:h-10 lg:w-10"> -->
         <span class="material-icons text-xmd text-primaryColor"
           >filter_list</span
         >
@@ -14,16 +13,33 @@
     </button>
 
     <div
-      class="flex flex-col justify-center items-center absolute -ml-60 lg:-ml-32 w-80 my-6 py-6 bg-lightColor mt-5 rounded-sm shadow-lg"
+      class="flex flex-col justify-center items-center absolute -ml-60 lg:-ml-32 w-80 h-80 bg-lightColor mt-5 rounded-sm shadow-lg"
       *ngIf="isOpen"
     >
-      <button class="button-style" (click)="filtter(true)">
+      <button
+        class="button-style {{
+          activeButton === 2 ? 'both' : ''
+        }} hover:bg-TextBoldColor hover:text-white"
+        (click)="filtter(true)"
+      >
         Show Finished Tasks
       </button>
-      <button class="button-style" (click)="filtter(false)">
+      <button
+        class="button-style {{
+          activeButton === 1 ? 'both' : ''
+        }} hover:bg-TextBoldColor hover:text-white"
+        (click)="filtter(false)"
+      >
         Show UnFinished Tasks
       </button>
-      <button class="button-style both" (click)="both()">Show Both</button>
+      <button
+        class="button-style {{
+          activeButton === 0 ? 'both' : ''
+        }} hover:bg-TextBoldColor hover:text-white  "
+        (click)="both()"
+      >
+        Show Both
+      </button>
     </div>
   </div>
 </div>
@@ -34,4 +50,25 @@
     [index]="i"
     (editEvent)="addEdit(task)"
   ></app-task>
+</div>
+<app-task
+  *ngFor="let task of tasks; let i = index"
+  [task]="task"
+  [index]="i"
+  (editEvent)="addEdit(task)"
+></app-task>
+<div
+  *ngIf="CheckTask && isLoading === false"
+  class="w-full h-60 bg-calenderBackgroundColor rounded-sm flex justify-center items-center"
+>
+  <h1 class="text-md text-primaryColor">You dont have any Task this Day</h1>
+</div>
+<div class="flex justify-center mt-3">
+  <div *ngIf="isLoading" class="lds-dual-ring"></div>
+</div>
+<div
+  *ngIf="errorOccur"
+  class="w-full h-60 rounded-sm flex justify-center items-center errordiv"
+>
+  <h1 class="text-md">an error occured</h1>
 </div>

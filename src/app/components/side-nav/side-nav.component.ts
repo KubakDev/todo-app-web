@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./side-nav.component.scss'],
 })
 export class SideNavComponent {
+  isOpen?: boolean = false;
   get loggedIn(): Observable<boolean> {
     return this.auth.isAuthenticated$;
   }
@@ -19,5 +20,9 @@ export class SideNavComponent {
       this.auth.logout();
       this.router.navigate(['/sign-in']);
     } catch (error) {}
+  }
+
+  onOpenNav() {
+    this.isOpen = !this.isOpen;
   }
 }

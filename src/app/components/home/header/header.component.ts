@@ -1,18 +1,37 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from '@auth0/auth0-angular';
+import { firstValueFrom } from 'rxjs';
+import { TodosService } from 'src/app/backend/services';
+import { TodoService } from 'src/app/todo.service';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
 })
-export class HeaderComponent implements OnInit {
-  UserName: string | undefined;
+export class HeaderComponent {
+  userName: string | undefined;
   unfinishedTasks: number = 0;
 
-  constructor() {}
+  constructor(
+    authService: AuthService,
+    private todoService: TodosService,
+    private tasks: TodoService
+  ) {
+    authService.user$.subscribe((u) => {
+      this.userName = u?.name;
+    });
 
-  ngOnInit(): void {
-    this.UserName = 'Przha';
-    this.unfinishedTasks = 4;
+    this.updateUnfinishedTasks();
+
+    this.tasks.AllTasks$.subscribe(async () => {
+      this.updateUnfinishedTasks();
+    });
+  }
+
+  private async updateUnfinishedTasks(): Promise<void> {
+    this.unfinishedTasks = (
+      await firstValueFrom(this.todoService.todosGet({ IsComplete: false }))
+    ).length;
   }
 }
