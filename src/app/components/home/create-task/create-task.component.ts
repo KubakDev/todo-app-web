@@ -40,7 +40,6 @@ export class CreateTaskComponent {
     this.startAdding = true;
   }
   async onSubmit() {
-    console.log(this.taskForm?.value);
     if (!this.editMode) {
       const response = await firstValueFrom(
         this.todosService.todosPost({
@@ -54,7 +53,7 @@ export class CreateTaskComponent {
       );
       this.taskService.setTask(undefined);
     } else {
-      console.log(this.taskForm?.value);
+      console.log(this._editTask);
       if (!this._editTask?.id) return;
       const response = await firstValueFrom(
         this.todosService.todosIdPut({
