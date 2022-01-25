@@ -35,8 +35,12 @@ export class TodayTasksComponent implements OnChanges {
     private todoService: TodosService,
     private taskService: TodoService
   ) {
-    this.taskService.AllTasks$.subscribe((data) => {
-      this.getData(this.isCompleteCondition);
+    this.taskService.AllTasks$.subscribe((todo) => {
+      const index = this.tasks?.findIndex((i) => i.id === todo!.id);
+
+      if (index !== undefined && index > -1 && this.tasks)
+        this.tasks[index] = Object.assign(this.tasks[index], todo);
+      else if (todo) this.tasks?.push(todo);
     });
   }
 
@@ -109,9 +113,6 @@ export class TodayTasksComponent implements OnChanges {
         }
       }
 
-      if (this.isLoading) {
-        this.tasks = [];
-      }
       const year = this.currentDate.getFullYear();
       const month = this.currentDate.getMonth();
       const day = this.currentDate.getDate();

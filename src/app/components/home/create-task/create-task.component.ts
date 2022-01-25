@@ -1,5 +1,5 @@
 import { Component, ElementRef, Input, ViewChild } from '@angular/core';
-import { FormGroup, NgForm } from '@angular/forms';
+import { FormGroup, NgForm, FormControl, Validators } from '@angular/forms';
 import { firstValueFrom } from 'rxjs';
 import { Todo } from 'src/app/backend/models';
 import { TodosService } from 'src/app/backend/services';
@@ -10,16 +10,11 @@ import { TodoService } from 'src/app/todo.service';
   styleUrls: ['./create-task.component.scss'],
 })
 export class CreateTaskComponent {
-  @ViewChild('f') taskForm: NgForm | undefined;
   @Input() index = 0;
-  defaultTitle: string | undefined;
-  defaultDate: string | undefined;
-  defaultNotes: string | undefined;
+  isLoading: boolean | undefined = false;
 
   @Input() set editTask(task: Todo | undefined | null) {
-    this.defaultTitle = task?.title ?? '';
-    this.defaultDate = task?.date ?? '';
-    this.defaultNotes = task?.note ?? '';
+    if (task) this.taskForm.patchValue(task);
 
     this._editTask = task;
     if (task?.title) {
@@ -30,47 +25,69 @@ export class CreateTaskComponent {
   editMode: boolean = false;
   startAdding: boolean = false;
 
+  private _submitted = false;
   private _editTask: Todo | undefined | null;
+
+  get submitted(): boolean {
+    return this._submitted;
+  }
+
   constructor(
     private todosService: TodosService,
     private taskService: TodoService
   ) {}
 
+  taskForm = new FormGroup({
+    title: new FormControl('', Validators.required),
+    note: new FormControl(''),
+    date: new FormControl('', Validators.required),
+  });
+
   onClickInput() {
     this.startAdding = true;
   }
+
   async onSubmit() {
-    if (!this.editMode) {
-      const response = await firstValueFrom(
-        this.todosService.todosPost({
-          body: {
-            date: this.taskForm?.value.date,
-            note: this.taskForm?.value.notes,
-            title: this.taskForm?.value.title,
-            isComplete: false,
-          },
-        })
-      );
-      this.taskService.setTask(undefined);
-    } else {
-      console.log(this._editTask);
-      if (!this._editTask?.id) return;
-      const response = await firstValueFrom(
-        this.todosService.todosIdPut({
-          id: this._editTask.id,
-          body: {
-            date: this.taskForm?.value.date,
-            isComplete: this._editTask.isComplete,
-            note: this.taskForm?.value.note,
-            title: this.taskForm?.value.title,
-          },
-        })
-      );
-      this.taskService.setTask(undefined);
-    }
+    this._submitted = true;
+
+    if (this.taskForm.invalid) return;
+    try {
+      if (!this.editMode) {
+        this.isLoading = true;
+        const response = await firstValueFrom(
+          this.todosService.todosPost({
+            body: {
+              date: this.taskForm?.value.date,
+              note: this.taskForm?.value.notes,
+              title: this.taskForm?.value.title,
+              isComplete: false,
+            },
+          })
+        );
+        this.taskService.setTask(response);
+      } else {
+        if (!this._editTask?.id) return;
+        this.isLoading = true;
+        const response = await firstValueFrom(
+          this.todosService.todosIdPut({
+            id: this._editTask.id,
+            body: {
+              date: this.taskForm?.value.date,
+              isComplete: this._editTask.isComplete,
+              note: this.taskForm?.value.note,
+              title: this.taskForm?.value.title,
+            },
+          })
+        );
+        this.taskService.setTask(response);
+      }
+    } catch (error) {}
+
+    this._submitted = false;
     this.taskForm?.reset();
+    this.isLoading = false;
   }
-  onClick() {
+  onCancel() {
     this.taskForm?.reset();
     this.startAdding = false;
   }
