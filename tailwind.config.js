@@ -50,6 +50,9 @@ module.exports = {
         TextBoldColor: "var(--color-text-bold)",
         btnLightBgColor: "var(--color-btn-light-bg)",
         textPrimaryColor: "var(--color-text-primary)",
+        DayBackgroundColor:"var(--color-day-background)",
+        calenderBackgroundColor:"var(--color-calender-background)",
+
       },
     },
   },
