@@ -12,12 +12,6 @@ import { TodoService } from 'src/app/todo.service';
 export class CreateTaskComponent {
   @ViewChild('f') taskForm: NgForm | undefined;
   @Input() index = 0;
-  startAdding: boolean = false;
-  task: string = '';
-  notes: string = '';
-  date: string = '';
-  time: string = '';
-  tasks: any = [];
   defaultTitle: string | undefined;
   defaultDate: string | undefined;
   defaultNotes: string | undefined;
@@ -34,6 +28,7 @@ export class CreateTaskComponent {
     } else this.editMode = false;
   }
   editMode: boolean = false;
+  startAdding: boolean = false;
 
   private _editTask: Todo | undefined | null;
   constructor(
@@ -45,7 +40,6 @@ export class CreateTaskComponent {
     this.startAdding = true;
   }
   async onSubmit() {
-    console.log(this.taskForm?.value);
     if (!this.editMode) {
       const response = await firstValueFrom(
         this.todosService.todosPost({
@@ -59,7 +53,7 @@ export class CreateTaskComponent {
       );
       this.taskService.setTask(undefined);
     } else {
-      console.log(this.taskForm?.value);
+      console.log(this._editTask);
       if (!this._editTask?.id) return;
       const response = await firstValueFrom(
         this.todosService.todosIdPut({

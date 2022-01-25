@@ -8,9 +8,19 @@ import { TodoService } from 'src/app/todo.service';
   styleUrls: ['./calender.component.scss'],
 })
 export class CalenderComponent implements OnInit {
-  @Output() getMontheTasks = new EventEmitter<any>();
-  Calender: Array<any> | undefined;
-  thisDay: any;
+  @Output() getMontheTasks = new EventEmitter<{
+    day: Date;
+    secoundClick?: boolean;
+  }>();
+  calendar:
+    | Array<{
+        day: number;
+        week: string;
+        date: Date;
+        selectedDate: string;
+      }>
+    | undefined;
+  thisDay: number | undefined;
   isOpen = false;
   Months = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
   monthNames = [
@@ -32,8 +42,10 @@ export class CalenderComponent implements OnInit {
   currentYear = 2022;
   SelectedMonth = this.monthNames[+formatDate(new Date(), 'MM', 'en-US') - 1];
   currentDate = formatDate(new Date(), 'dd/MM/YYYY', 'en-US');
-  numberOfDayPerMonth = 0;
+  numberOfDayPerMonth: number = 0;
   ischangeMonth: boolean = false;
+  savedDay: Date | undefined;
+  secondClick: boolean = false;
   constructor(private taskService: TodoService) {}
 
   ngOnInit(): void {
@@ -48,7 +60,7 @@ export class CalenderComponent implements OnInit {
       index == undefined &&
       this.thisMonth == +formatDate(new Date(), 'MM', 'en-US')
     ) {
-      index = this.Calender?.findIndex(
+      index = this.calendar?.findIndex(
         (i) => i.selectedDate === this.currentDate
       );
     }
@@ -88,7 +100,7 @@ export class CalenderComponent implements OnInit {
   calenderSetup() {
     let monthDays = [];
     let day = formatDate(new Date(), 'dd', 'en-us');
-    this.thisDay = day;
+    this.thisDay = +day;
     this.numberOfDayPerMonth = new Date(
       this.currentYear,
       this.thisMonth,
@@ -111,11 +123,11 @@ export class CalenderComponent implements OnInit {
         day: i,
         week: weekday,
         isTask: false,
-        date: date,
-        selectedDate: selectedDate,
+        date,
+        selectedDate,
       });
     }
-    this.Calender = monthDays;
+    this.calendar = monthDays;
   }
 
   onWheel(event: WheelEvent): void {
@@ -129,8 +141,25 @@ export class CalenderComponent implements OnInit {
     if (condition == 'sub') this.currentYear--;
   }
 
-  changeAchtiveMonth(day: any) {
-    this.currentDate = day.selectedDate;
-    this.getMontheTasks.emit({ day: day.date });
+  changeActiveDay(selectedDay: {
+    day: number;
+    week: string;
+    date: Date;
+    selectedDate: string;
+  }) {
+    if (this.currentDate === selectedDay.selectedDate) {
+      this.secondClick = !this.secondClick;
+    } else {
+      if (selectedDay.date == this.savedDay)
+        this.secondClick = !this.secondClick;
+      else this.secondClick = false;
+    }
+
+    this.currentDate = selectedDay.selectedDate;
+    this.savedDay = selectedDay.date;
+    this.getMontheTasks.emit({
+      day: selectedDay.date,
+      secoundClick: this.secondClick,
+    });
   }
 }
