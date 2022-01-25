@@ -11,6 +11,7 @@ import { TodoService } from 'src/app/todo.service';
 })
 export class TaskComponent {
   completed: boolean = true;
+  isLoading: boolean | undefined = false;
   @Input() task: Todo | undefined;
   @Input() index: number = 0;
   @Output() editEvent = new EventEmitter<Todo | undefined>();
@@ -21,7 +22,7 @@ export class TaskComponent {
   ) {}
   async complete() {
     if (!this.task || !this.task.id) return;
-
+    this.isLoading = true;
     const response = await firstValueFrom(
       this.todoService.todosIdPut({
         id: this.task.id,
@@ -33,9 +34,12 @@ export class TaskComponent {
         },
       })
     );
-
-    this.taskService.setTask(undefined);
+    if (response) {
+      this.isLoading = false;
+    }
+    this.taskService.setTask(response);
   }
+
   editTask() {
     this.editEvent.emit(this.task);
   }

@@ -33,7 +33,6 @@ import { ToastrModule } from 'ngx-toastr';
     CalenderComponent,
     TodayTasksComponent,
     CreateTaskComponent,
-    AppComponent,
     SideNavComponent,
     ErrorPageComponent,
     ProfileComponent,
