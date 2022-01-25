@@ -60,23 +60,33 @@
                 >Please enter a titile for your task</span
               >
             </div>
-
             <div class="w-full centering">
-              <div class="flex justify-center flex-wrap">
-                <button
-                  class="btn mr-5 lg:mr-10 bg-greyBackgroundBtn text-greyTextBtn mb-10"
-                  type="button"
-                  (click)="onClick()"
-                >
-                  Cancel
-                </button>
-                <button
-                  class="btn mr-5 bg-TextBoldColor text-white hover:bg-lightPrimaryColor saveBtn"
-                  type="submit"
-                  [disabled]="!f.valid"
-                >
-                  {{ editMode ? "Update Task" : "Save" }}
-                </button>
+              <div class="w-11/12 h-32 flex">
+                <div class="h-20 w-20 bg-white rounded-lg centering">
+                  <span
+                    class="material-icons text-lightPrimaryColor rounded-full p-1 px-2 text-xmd"
+                    >access_time</span
+                  >
+                </div>
+
+                <div class="w-full centering">
+                  <div class="flex justify-center flex-wrap">
+                    <button
+                      class="btn mr-5 lg:mr-10 bg-greyBackgroundBtn text-greyTextBtn mb-10"
+                      type="button"
+                      (click)="onClick()"
+                    >
+                      Cancel
+                    </button>
+                    <button
+                      class="btn mr-5 bg-TextBoldColor text-white hover:bg-lightPrimaryColor saveBtn"
+                      type="submit"
+                      [disabled]="!f.valid"
+                    >
+                      {{ editMode ? "Update Task" : "Save" }}
+                    </button>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -84,8 +94,10 @@
       </form>
     </div>
   </div>
-
-  <div *ngIf="!startAdding" class="w-full flex justify-center">
-    <img src="assets/images/todo.png" class="h-3/4 w-3/4" />
-  </div>
+  <img
+    *ngIf="!startAdding"
+    src="../../../../assets/images/todo.png"
+    class="w-2/5"
+    alt=""
+  />
 </div>
