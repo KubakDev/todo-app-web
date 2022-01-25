@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Todo } from 'src/app/backend/models';
 
 @Component({
   selector: 'app-home',
@@ -6,24 +7,17 @@ import { Component } from '@angular/core';
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent {
-  task = {
-    title: '',
-    isComplete: false,
-    note: '',
-    date: '',
-    time: '',
-    id: '',
-    isTimeAvailable: false,
-    userId: '',
-  };
+  task: Todo | undefined;
   index = 0;
-  date: any;
+  date: Date | undefined;
   userName: string | undefined;
+  secoundClick: boolean = false;
   constructor() {}
-  onTaskSelected(task: any) {
+  onTaskSelected(task: { task: Todo }) {
     this.task = task.task;
   }
-  getMontheTasks(day: any) {
+  getMontheTasks(day: { day: Date; secoundClick: boolean }) {
     this.date = day.day;
+    this.secoundClick = day.secoundClick;
   }
 }

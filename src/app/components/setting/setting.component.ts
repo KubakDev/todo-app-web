@@ -11,7 +11,7 @@ import { ThemesService } from 'src/app/themes.service';
 })
 export class SettingComponent implements OnInit {
   isOpen?: boolean = false;
-  currentTheme: any = 'blue-theme';
+  currentTheme: 'main-theme' | 'blue-theme' = 'blue-theme';
   userName: String | undefined;
   constructor(
     private themeService: ThemesService,

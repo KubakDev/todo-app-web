@@ -20,17 +20,17 @@ import { TodoService } from 'src/app/todo.service';
 export class TodayTasksComponent implements OnChanges {
   isLoading: boolean = false;
   tasks: Todo[] | undefined;
-
   errorOccur: boolean = false;
-
   isOpen: boolean = false;
-  currentDate: Date | undefined = new Date();
+  currentDate: Date = new Date();
   isCompleteCondition: boolean | undefined;
   CheckTask: boolean = false;
   activeButton: number = 0;
   taskInfo: string = "today's Tasks";
+
   @Output() selectedTask = new EventEmitter<any>();
-  @Input() date: Date = new Date();
+  @Input() date: Date | undefined = new Date();
+  @Input() secoundClick: boolean = false;
   constructor(
     private todoService: TodosService,
     private taskService: TodoService
@@ -59,7 +59,7 @@ export class TodayTasksComponent implements OnChanges {
     this.getData(condition);
     this.isOpen = false;
   }
-  addEdit(task: any) {
+  addEdit(task: Todo) {
     this.selectedTask.emit({ task });
   }
   ngOnChanges(): void {
@@ -68,51 +68,80 @@ export class TodayTasksComponent implements OnChanges {
   }
   getData(isComplete: boolean | undefined) {
     this.isLoading = true;
-    let date = new Date();
-    if (this.date) {
-      date = this.date;
-      if (
-        formatDate(date, 'dd/MM/YYY', 'en') ==
-        formatDate(new Date(), 'dd/MM/YYY', 'en')
-      ) {
-        this.taskInfo = "Today's Tasks";
-      } else {
-        this.taskInfo = formatDate(this.date, 'dd/MM/YYY', 'en') + ' Tasks';
-      }
-    }
-
     if (this.isLoading) {
       this.tasks = [];
     }
-    const year = date.getFullYear();
-    const month = date.getMonth();
-    const day = date.getDate();
-    const fromDate = new Date(`${year}-${month + 1}-${day}`);
-    const toDate = new Date(`${year}-${month + 1}-${day}`);
-
-    this.todoService
-      .todosGet({
-        From: fromDate.toJSON(),
-        To: toDate.toJSON(),
-        IsComplete: isComplete,
-      })
-      .subscribe(
-        (data) => {
-          this.tasks = data;
-          if (data.length === 0) {
-            this.CheckTask = true;
+    if (this.secoundClick === true) {
+      this.isLoading = true;
+      this.taskInfo = 'All Tasks';
+      this.todoService
+        .todosGet({
+          IsComplete: isComplete,
+        })
+        .subscribe(
+          (data) => {
+            this.tasks = data;
+            if (data.length === 0) {
+              this.CheckTask = true;
+              this.isLoading = false;
+              this.errorOccur = false;
+            } else {
+              this.isLoading = false;
+              this.CheckTask = false;
+              this.errorOccur = false;
+            }
+          },
+          () => {
             this.isLoading = false;
-            this.errorOccur = false;
-          } else {
-            this.isLoading = false;
-            this.CheckTask = false;
-            this.errorOccur = false;
+            this.errorOccur = true;
           }
-        },
-        () => {
-          this.isLoading = false;
-          this.errorOccur = true;
+        );
+    } else {
+      if (this.date) {
+        this.currentDate = this.date;
+        if (
+          formatDate(this.currentDate + '', 'dd/MM/YYY', 'en') ==
+          formatDate(new Date(), 'dd/MM/YYY', 'en')
+        ) {
+          this.taskInfo = "Today's Tasks";
+        } else {
+          this.taskInfo = formatDate(this.date, 'dd/MM/YYY', 'en') + ' Tasks';
         }
-      );
+      }
+
+      if (this.isLoading) {
+        this.tasks = [];
+      }
+      const year = this.currentDate.getFullYear();
+      const month = this.currentDate.getMonth();
+      const day = this.currentDate.getDate();
+      const fromDate = new Date(`${year}-${month + 1}-${day}`);
+      const toDate = new Date(`${year}-${month + 1}-${day}`);
+
+      this.todoService
+        .todosGet({
+          From: fromDate.toJSON(),
+          To: toDate.toJSON(),
+          IsComplete: isComplete,
+        })
+        .subscribe(
+          (data) => {
+            this.tasks = data;
+            if (data.length === 0) {
+              this.CheckTask = true;
+              this.isLoading = false;
+              this.errorOccur = false;
+            } else {
+              this.isLoading = false;
+              this.CheckTask = false;
+              this.errorOccur = false;
+            }
+          },
+          () => {
+            this.isLoading = false;
+            this.errorOccur = true;
+          }
+        );
+    }
   }
 }
