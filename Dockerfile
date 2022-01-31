@@ -1,12 +1,28 @@
-FROM node:16-alpine as build
-WORKDIR /app
+# Stage 1: Compile and Build angular codebase
 
-RUN npm install -g @angular/cli
+# Use official node image as the base image
+FROM node:16 as build
 
-COPY ./package.json .
-RUN npm install
-COPY . .
+# Set the working directory
+WORKDIR /usr/local/app
+
+COPY package*.json .
+
+# Install all the dependencies
+RUN npm ci
+
+# Add the source code to app
+COPY ./ /usr/local/app/
+
+# Generate the build of the application
 RUN npm run build
 
-FROM nginx:alpine as runtime
-COPY --from=build /app/dist/todo-app-web /usr/share/nginx/html
+
+# Stage 2: Serve app with nginx server
+
+# Use official nginx image as the base image
+FROM nginx:1.20-alpine
+
+# Copy the build output to replace the default nginx contents.
+COPY --from=build /usr/local/app/dist/kubak-landing /usr/share/nginx/html
+
