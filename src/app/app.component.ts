@@ -3,6 +3,7 @@ import { Observable } from 'rxjs';
 import { ThemesService } from './themes.service';
 import { AuthService } from '@auth0/auth0-angular';
 import '@themesberg/flowbite';
+import { GlobalAuthService } from './auth.service';
 
 @Component({
   selector: 'app-root',
@@ -11,9 +12,12 @@ import '@themesberg/flowbite';
 })
 export class AppComponent {
   get user(): Observable<boolean> {
-    return this.auth.isAuthenticated$;
+    return this.auth.isAuthenticated();
   }
-  constructor(private themeservice: ThemesService, private auth: AuthService) {}
+  constructor(
+    private themeservice: ThemesService,
+    private auth: GlobalAuthService
+  ) {}
   title = 'Todo App';
 
   get currentTheme(): Observable<string> {
