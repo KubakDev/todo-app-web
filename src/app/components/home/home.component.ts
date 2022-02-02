@@ -10,9 +10,8 @@ export class HomeComponent {
   task: Todo | undefined;
   index = 0;
   date: Date | undefined;
-  userName: string | undefined;
   secoundClick: boolean = false;
-  constructor() {}
+  constructor() { }
   onTaskSelected(task: { task: Todo }) {
     this.task = task.task;
   }

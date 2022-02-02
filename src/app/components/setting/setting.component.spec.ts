@@ -1,25 +1,59 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { GlobalAuthService } from 'src/app/auth.service';
+import { ThemesService } from 'src/app/themes.service';
 
 import { SettingComponent } from './setting.component';
 
+
 describe('SettingComponent', () => {
+
   let component: SettingComponent;
   let fixture: ComponentFixture<SettingComponent>;
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      declarations: [ SettingComponent ]
-    })
-    .compileComponents();
-  });
+  const serviceStub = {
+    user: () => { return { subscribe: () => { } }; },
+  };
 
   beforeEach(() => {
+    TestBed.configureTestingModule({
+      declarations: [SettingComponent],
+      providers: [
+        { provide: GlobalAuthService, useValue: serviceStub },
+        { provide: ThemesService },
+      ],
+    });
+
     fixture = TestBed.createComponent(SettingComponent);
+
     component = fixture.componentInstance;
     fixture.detectChanges();
+
   });
 
   it('should create', () => {
-    expect(component).toBeTruthy();
+    expect(component).toBeDefined();
   });
+  it(' on toggle isOPen be true ', () => {
+    component.isOpen = false;
+    component.onToggle();
+    expect(component.isOpen).toBe(true);
+
+  })
+  it(' on toggle isOPen be false ', () => {
+    component.isOpen = true;
+    component.onToggle();
+    expect(component.isOpen).toBe(false);
+
+  })
+
+  it('themeChange to blue-theme', () => {
+    component.currentTheme = 'main-theme';
+    component.changeTheme('blue-theme');
+    expect(component.currentTheme).toBe('blue-theme')
+  })
+  it('themeChange work to main-theme', () => {
+    component.currentTheme = 'blue-theme';
+    component.changeTheme('main-theme');
+    expect(component.currentTheme).toBe('main-theme')
+  })
 });

@@ -14,11 +14,11 @@ export class CalenderComponent implements OnInit {
   }>();
   calendar:
     | Array<{
-        day: number;
-        week: string;
-        date: Date;
-        selectedDate: string;
-      }>
+      day: number;
+      week: string;
+      date: Date;
+      selectedDate: string;
+    }>
     | undefined;
   thisDay: number | undefined;
   isOpen = false;
@@ -46,7 +46,7 @@ export class CalenderComponent implements OnInit {
   ischangeMonth: boolean = false;
   savedDay: Date | undefined;
   secondClick: boolean = false;
-  constructor(private taskService: TodoService) {}
+  constructor() { }
 
   ngOnInit(): void {
     this.calenderSetup();

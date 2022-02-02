@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { TodosService } from 'src/app/backend/services';
 
 import { TaskComponent } from './task.component';
 
@@ -8,16 +9,19 @@ describe('TaskComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ TaskComponent ]
+      declarations: [TaskComponent],
+      providers: [
+        {
+          provide: TodosService, useValue: TodosService
+        }
+      ]
     })
-    .compileComponents();
-  });
-
-  beforeEach(() => {
     fixture = TestBed.createComponent(TaskComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
+
+
 
   it('should create', () => {
     expect(component).toBeTruthy();

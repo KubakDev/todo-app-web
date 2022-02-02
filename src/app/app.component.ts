@@ -17,7 +17,7 @@ export class AppComponent {
   constructor(
     private themeservice: ThemesService,
     private auth: GlobalAuthService
-  ) {}
+  ) { }
   title = 'Todo App';
 
   get currentTheme(): Observable<string> {

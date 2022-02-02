@@ -24,7 +24,6 @@ export class TodayTasksComponent implements OnChanges {
   isOpen: boolean = false;
   currentDate: Date = new Date();
   isCompleteCondition: boolean | undefined;
-  CheckTask: boolean = false;
   activeButton: number = 0;
   taskInfo: string = "today's Tasks";
 
@@ -86,12 +85,10 @@ export class TodayTasksComponent implements OnChanges {
           (data) => {
             this.tasks = data;
             if (data.length === 0) {
-              this.CheckTask = true;
               this.isLoading = false;
               this.errorOccur = false;
             } else {
               this.isLoading = false;
-              this.CheckTask = false;
               this.errorOccur = false;
             }
           },
@@ -129,12 +126,10 @@ export class TodayTasksComponent implements OnChanges {
           (data) => {
             this.tasks = data;
             if (data.length === 0) {
-              this.CheckTask = true;
               this.isLoading = false;
               this.errorOccur = false;
             } else {
               this.isLoading = false;
-              this.CheckTask = false;
               this.errorOccur = false;
             }
           },
