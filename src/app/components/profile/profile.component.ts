@@ -1,8 +1,9 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { AuthService } from '@auth0/auth0-angular';
+import { AuthService, User } from '@auth0/auth0-angular';
 
 import { firstValueFrom, Observable } from 'rxjs';
+import { GlobalAuthService } from 'src/app/auth.service';
 import { Todo } from 'src/app/backend/models';
 import { TodosService } from 'src/app/backend/services';
 
@@ -12,35 +13,23 @@ import { TodosService } from 'src/app/backend/services';
   styleUrls: ['./profile.component.scss'],
 })
 export class ProfileComponent implements OnInit {
-  editMode?: boolean = false;
-  todos?: [] | any;
+  editMode: boolean = false;
+  todos: undefined | Todo[];
   profileFrom?: FormGroup;
-  isLoading: boolean | undefined = false;
-  isError: boolean | undefined = false;
+  isLoading: boolean = false;
+  isError: boolean = false;
 
   prevTodos: Todo[] = [];
 
-  user:
-    | {
-        email: string;
-        name: string;
-        nickname: string;
-        picture: string;
-      }
-    | undefined;
+  user: User | undefined;
   constructor(
-    private authService: AuthService,
+    private authService: GlobalAuthService,
     private todoService: TodosService
   ) {}
 
   async ngOnInit(): Promise<void> {
-    this.authService.user$.subscribe((u) => {
-      this.user = {
-        email: u?.email ?? '',
-        name: u?.name ?? '',
-        nickname: u?.nickname ?? '',
-        picture: u?.picture ?? '',
-      };
+    this.authService.getUser().subscribe((u) => {
+      if (u) this.user = u;
     });
     this.isLoading = true;
     try {

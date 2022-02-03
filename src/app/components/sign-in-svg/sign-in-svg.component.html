@@ -1,1 +1,5 @@
-<div *ngIf="innerHtml?.length" [innerHTML]="innerHtml ?? '' | safeHtml"></div>
+<div
+  id="sign-in-svg"
+  *ngIf="innerHtml?.length"
+  [innerHTML]="innerHtml ?? '' | safeHtml"
+></div>
