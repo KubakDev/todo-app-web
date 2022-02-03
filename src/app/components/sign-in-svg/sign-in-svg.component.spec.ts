@@ -17,7 +17,6 @@ describe('sign-in-svg', () => {
   });
   it('should be defined', () => {
     const svg = fixture.debugElement.nativeElement.querySelector('div');
-    console.log(svg);
     expect(svg).toBeDefined();
   });
 });
