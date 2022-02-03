@@ -52,6 +52,7 @@ describe('App Component', () => {
     const sideNav = fixture.debugElement.query(
       By.css('app-side-nav')
     ).nativeElement;
+    console.log(sideNav);
     expect(sideNav).toBeDefined();
   });
 
