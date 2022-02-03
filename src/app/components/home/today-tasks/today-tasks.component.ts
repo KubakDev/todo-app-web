@@ -7,6 +7,7 @@ import {
   OnChanges,
   Output,
 } from '@angular/core';
+import { firstValueFrom } from 'rxjs';
 import { Todo } from 'src/app/backend/models';
 import { TodosService } from 'src/app/backend/services';
 
@@ -69,7 +70,7 @@ export class TodayTasksComponent implements OnChanges {
     this.activeButton = 0;
     this.getData(this.isCompleteCondition);
   }
-  getData(isComplete: boolean | undefined) {
+  async getData(isComplete?: boolean): Promise<void> {
     this.isLoading = true;
     if (this.isLoading) {
       this.tasks = [];
@@ -77,26 +78,28 @@ export class TodayTasksComponent implements OnChanges {
     if (this.secoundClick === true) {
       this.isLoading = true;
       this.taskInfo = 'All Tasks';
-      this.todoService
-        .todosGet({
-          IsComplete: isComplete,
-        })
-        .subscribe(
-          (data) => {
-            this.tasks = data;
-            if (data.length === 0) {
-              this.isLoading = false;
-              this.errorOccur = false;
-            } else {
-              this.isLoading = false;
-              this.errorOccur = false;
-            }
-          },
-          () => {
-            this.isLoading = false;
-            this.errorOccur = true;
-          }
-        );
+
+      try {
+        const response = await firstValueFrom(this.todoService
+          .todosGet({
+            IsComplete: isComplete,
+          }));
+        this.tasks = response;
+        if (response.length === 0) {
+          this.isLoading = false;
+          this.errorOccur = false;
+        } else {
+          this.isLoading = false;
+          this.errorOccur = false;
+        }
+
+
+      } catch (error) {
+
+        this.isLoading = false;
+        this.errorOccur = true;
+      }
+
     } else {
       if (this.date) {
         this.currentDate = this.date;
@@ -116,28 +119,28 @@ export class TodayTasksComponent implements OnChanges {
       const fromDate = new Date(`${year}-${month + 1}-${day}`);
       const toDate = new Date(`${year}-${month + 1}-${day}`);
 
-      this.todoService
-        .todosGet({
-          From: fromDate.toJSON(),
-          To: toDate.toJSON(),
-          IsComplete: isComplete,
-        })
-        .subscribe(
-          (data) => {
-            this.tasks = data;
-            if (data.length === 0) {
-              this.isLoading = false;
-              this.errorOccur = false;
-            } else {
-              this.isLoading = false;
-              this.errorOccur = false;
-            }
-          },
-          () => {
-            this.isLoading = false;
-            this.errorOccur = true;
-          }
-        );
+      try {
+        const response = await firstValueFrom(this.todoService
+          .todosGet({
+            From: fromDate.toJSON(),
+            To: toDate.toJSON(),
+            IsComplete: isComplete,
+          }));
+        this.tasks = response;
+        if (response.length === 0) {
+          this.isLoading = false;
+          this.errorOccur = false;
+        } else {
+          this.isLoading = false;
+          this.errorOccur = false;
+        }
+
+      } catch (error) {
+
+        this.isLoading = false;
+        this.errorOccur = true;
+      }
+
     }
   }
 }

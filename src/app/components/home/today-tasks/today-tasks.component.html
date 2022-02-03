@@ -38,7 +38,7 @@
 <div class="flex justify-center mt-3">
   <div *ngIf="isLoading" class="lds-dual-ring"></div>
 </div>
-<div *ngIf="errorOccur" class="w-full h-60 rounded-sm flex justify-center items-center errordiv">
+<div *ngIf="errorOccur && !isLoading" class="w-full h-60 rounded-sm flex justify-center items-center errordiv">
   <h1 class="text-md">an error occured</h1>
 
 

@@ -10,7 +10,6 @@ import { TodoService } from 'src/app/todo.service';
   styleUrls: ['./task.component.scss'],
 })
 export class TaskComponent {
-  completed: boolean = true;
   isLoading: boolean | undefined = false;
   @Input() task: Todo | undefined;
   @Input() index: number = 0;
@@ -19,8 +18,9 @@ export class TaskComponent {
   constructor(
     private todoService: TodosService,
     private taskService: TodoService
-  ) {}
+  ) { }
   async complete() {
+
     if (!this.task || !this.task.id) return;
     this.isLoading = true;
     const response = await firstValueFrom(
@@ -35,6 +35,7 @@ export class TaskComponent {
       })
     );
     if (response) {
+
       this.isLoading = false;
     }
     this.taskService.setTask(response);

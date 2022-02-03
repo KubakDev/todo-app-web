@@ -1,4 +1,4 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
 import { GlobalAuthService } from 'src/app/auth.service';
 import { ThemesService } from 'src/app/themes.service';
 
@@ -11,7 +11,7 @@ describe('SettingComponent', () => {
   let fixture: ComponentFixture<SettingComponent>;
 
   const serviceStub = {
-    user: () => { return { subscribe: () => { } }; },
+    user: () => { return { subscribe: (e: string) => { component.userName = e } }; },
   };
 
   beforeEach(() => {
@@ -31,7 +31,12 @@ describe('SettingComponent', () => {
   });
 
   it('should create', () => {
-    expect(component).toBeDefined();
+
+    expect(component).toBeTruthy();
+  });
+  it('userName initialized', () => {
+
+    expect(component.userName).toBeTruthy();
   });
   it(' on toggle isOPen be true ', () => {
     component.isOpen = false;
