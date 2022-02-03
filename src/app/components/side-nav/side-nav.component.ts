@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Observable } from 'rxjs';
 import { AuthService } from '@auth0/auth0-angular';
 import { Router } from '@angular/router';
+import { GlobalAuthService } from 'src/app/auth.service';
 
 @Component({
   selector: 'app-side-nav',
@@ -13,7 +14,7 @@ export class SideNavComponent {
   get loggedIn(): Observable<boolean> {
     return this.auth.isAuthenticated$;
   }
-  constructor(private auth: AuthService, private router: Router) {}
+  constructor(private auth: GlobalAuthService, private router: Router) {}
 
   onLogout() {
     try {

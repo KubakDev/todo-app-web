@@ -4,7 +4,7 @@ import { ThemesService } from './themes.service';
 import { AuthService } from '@auth0/auth0-angular';
 import '@themesberg/flowbite';
 import { GlobalAuthService } from './auth.service';
-
+import '../../string-extension';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
