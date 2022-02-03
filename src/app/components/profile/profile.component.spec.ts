@@ -1,3 +1,4 @@
+
 import {
   ComponentFixture,
   fakeAsync,
@@ -11,7 +12,9 @@ import { GlobalAuthService } from 'src/app/auth.service';
 import { Todo } from 'src/app/backend/models';
 import { TodosService } from 'src/app/backend/services';
 
-import { ProfileComponent } from './profile.component';
+
+// import { ProfileComponent } from './profile.component';
+
 
 describe('ProfileComponent', () => {
   let component: ProfileComponent;
