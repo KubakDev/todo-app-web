@@ -1,24 +1,65 @@
+import { CommonModule } from '@angular/common';
+import { Component, Input } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { Todo } from 'src/app/backend/models';
+import { ProfileComponent } from '../profile/profile.component';
+import { CalenderComponent } from './calender/calender.component';
+import { CreateTaskComponent } from './create-task/create-task.component';
+import { HeaderComponent } from './header/header.component';
 
 import { HomeComponent } from './home.component';
+import { TodayTasksComponent } from './today-tasks/today-tasks.component';
 
+@Component({
+  selector: 'app-header',
+  template: '<p>Mock Product Editor Component</p>'
+})
+class MockHeaderComponent {
+}
+@Component({
+  selector: 'app-calender',
+  template: '<p>Mock Product Editor Component</p>'
+})
+class MockCalenderComponent {
+
+}
+@Component({
+  selector: 'app-today-tasks',
+  template: '<p>Mock Product Editor Component</p>'
+})
+class MockTodayTasksComponent {
+  @Input() secoundClick: boolean = false;
+  @Input() date: Date | undefined;
+
+}
+@Component({
+  selector: 'app-create-task',
+  template: '<p>Mock Product Editor Component</p>'
+})
+class MockCreateTaskComponent {
+  @Input() index = 0;
+
+  @Input() editTask: Todo | undefined;;
+}
 describe('HomeComponent', () => {
   let component: HomeComponent;
   let fixture: ComponentFixture<HomeComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [HomeComponent]
-    })
-      .compileComponents();
-  });
+      declarations: [HomeComponent, MockHeaderComponent, MockCalenderComponent, MockTodayTasksComponent, MockCreateTaskComponent],
+      imports: [
+        CommonModule,
 
-  beforeEach(() => {
+      ]
+
+    })
     fixture = TestBed.createComponent(HomeComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
+
+
 
   it('should create', () => {
     expect(component).toBeTruthy();

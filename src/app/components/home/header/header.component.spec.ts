@@ -1,4 +1,5 @@
 
+import { CommonModule } from '@angular/common';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { GlobalAuthService } from 'src/app/auth.service';
 import { TodosService } from 'src/app/backend/services';
@@ -17,6 +18,9 @@ describe('HeaderComponent', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       declarations: [HeaderComponent],
+      imports: [
+        CommonModule,
+      ],
       providers: [
         { provide: GlobalAuthService, useValue: serviceStub },
         { provide: TodosService, useValue: TodosService },

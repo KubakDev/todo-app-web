@@ -10,6 +10,7 @@ describe('sign-in-svg', () => {
   let fixture: ComponentFixture<SignInSvgComponent>;
   beforeEach(() => {
     TestBed.configureTestingModule({
+      declarations: [SignInSvgComponent],
       imports: [HttpClientModule, CommonModule, BrowserModule],
     });
     fixture = TestBed.createComponent(SignInSvgComponent);

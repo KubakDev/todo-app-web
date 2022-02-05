@@ -35,7 +35,7 @@ export class CreateTaskComponent {
   constructor(
     private todosService: TodosService,
     private taskService: TodoService
-  ) {}
+  ) { }
 
   taskForm = new FormGroup({
     title: new FormControl('', Validators.required),
@@ -81,7 +81,7 @@ export class CreateTaskComponent {
         );
         this.taskService.setTask(response);
       }
-    } catch (error) {}
+    } catch (error) { }
 
     this._submitted = false;
     this.taskForm?.reset();

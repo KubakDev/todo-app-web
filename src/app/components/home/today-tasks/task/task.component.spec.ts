@@ -1,4 +1,5 @@
 
+import { CommonModule } from '@angular/common';
 import { async, ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
 import { of } from 'rxjs';
 import { Todo } from 'src/app/backend/models';
@@ -24,6 +25,9 @@ describe('TaskComponent', () => {
 
     await TestBed.configureTestingModule({
       declarations: [TaskComponent],
+      imports: [
+        CommonModule,
+      ],
       providers: [
         {
           provide: TodosService, useValue: spy

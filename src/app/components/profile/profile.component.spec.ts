@@ -1,4 +1,5 @@
 
+import { CommonModule } from '@angular/common';
 import {
   ComponentFixture,
   fakeAsync,
@@ -11,6 +12,7 @@ import { firstValueFrom, of } from 'rxjs';
 import { GlobalAuthService } from 'src/app/auth.service';
 import { Todo } from 'src/app/backend/models';
 import { TodosService } from 'src/app/backend/services';
+import { ProfileComponent } from './profile.component';
 
 
 // import { ProfileComponent } from './profile.component';
@@ -30,6 +32,10 @@ describe('ProfileComponent', () => {
     const todoSpy = jasmine.createSpyObj('TodosService', ['todosGet']);
 
     TestBed.configureTestingModule({
+      declarations: [ProfileComponent],
+      imports: [
+        CommonModule,
+      ],
       providers: [
         { provide: GlobalAuthService, useValue: authSpy },
         { provide: TodosService, useValue: todoSpy },

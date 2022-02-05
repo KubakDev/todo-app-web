@@ -4,9 +4,11 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { AuthService } from '@auth0/auth0-angular';
 import { Auth0Client } from '@auth0/auth0-spa-js';
 import { BehaviorSubject, Observable, ReplaySubject, of } from 'rxjs';
+import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { GlobalAuthService } from './auth.service';
 import { TodosService } from './backend/services';
+import { SideNavComponent } from './components/side-nav/side-nav.component';
 import { ThemeName } from './models/theme.model';
 import { ThemesService } from './themes.service';
 
@@ -28,11 +30,12 @@ describe('App Component', () => {
   beforeEach(() => {
     const spy = jasmine.createSpyObj('MyAuthService', ['isAuthenticated']);
     TestBed.configureTestingModule({
-      declarations: [AppComponent],
+      declarations: [AppComponent, SideNavComponent],
       providers: [
         { provide: GlobalAuthService, useValue: spy },
         { provide: ThemesService, useValue: MockThemeService },
       ],
+      imports: [AppRoutingModule]
     });
 
     authServiceSpy = TestBed.inject(

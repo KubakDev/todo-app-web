@@ -1,10 +1,12 @@
 
+import { CommonModule } from '@angular/common';
 import { ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
 import { map, Observable, of } from 'rxjs';
 import { Todo } from 'src/app/backend/models';
 import { TodosService } from 'src/app/backend/services';
 import { StrictHttpResponse } from 'src/app/backend/strict-http-response';
 import { TodoService } from 'src/app/todo.service';
+import { TaskComponent } from './task/task.component';
 
 import { TodayTasksComponent } from './today-tasks.component';
 
@@ -27,6 +29,9 @@ describe('TodayTasksComponent', () => {
 
     await TestBed.configureTestingModule({
       declarations: [TodayTasksComponent],
+      imports: [
+        CommonModule,
+      ],
       providers: [TodoService, {
         provide: TodosService, useValue: spy
       }]
