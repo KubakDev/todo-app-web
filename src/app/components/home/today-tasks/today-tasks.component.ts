@@ -85,13 +85,10 @@ export class TodayTasksComponent implements OnChanges {
             IsComplete: isComplete,
           }));
         this.tasks = response;
-        if (response.length === 0) {
-          this.isLoading = false;
-          this.errorOccur = false;
-        } else {
-          this.isLoading = false;
-          this.errorOccur = false;
-        }
+
+        this.isLoading = false;
+        this.errorOccur = false;
+
 
 
       } catch (error) {
@@ -127,13 +124,10 @@ export class TodayTasksComponent implements OnChanges {
             IsComplete: isComplete,
           }));
         this.tasks = response;
-        if (response.length === 0) {
-          this.isLoading = false;
-          this.errorOccur = false;
-        } else {
-          this.isLoading = false;
-          this.errorOccur = false;
-        }
+
+        this.isLoading = false;
+        this.errorOccur = false;
+
 
       } catch (error) {
 

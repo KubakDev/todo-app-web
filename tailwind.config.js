@@ -37,11 +37,9 @@ module.exports = {
         secondaryColor: "var(--color-secondary)",
         secondaryColorShade: "var(--color-secondary-shade)",
         secondaryColorTint: "var(--color-secondary-tint)",
-        
-        greyTextBtn:"#B7B5B5",
-        greyBackgroundBtn:"#EBEBEB",
-        primaryColor: "var(--color-primary)",
-        secondaryColor: "var(--color-secondary)",
+
+        greyTextBtn: "#B7B5B5",
+        greyBackgroundBtn: "#EBEBEB",
         backgroundColor: "var(--color-background)",
         quatenaryColor: "var(--color-quatenary)",
         lightPrimaryColor: "var(--color-light-primary)",
@@ -50,8 +48,8 @@ module.exports = {
         TextBoldColor: "var(--color-text-bold)",
         btnLightBgColor: "var(--color-btn-light-bg)",
         textPrimaryColor: "var(--color-text-primary)",
-        DayBackgroundColor:"var(--color-day-background)",
-        calenderBackgroundColor:"var(--color-calender-background)",
+        DayBackgroundColor: "var(--color-day-background)",
+        calenderBackgroundColor: "var(--color-calender-background)",
 
       },
     },
