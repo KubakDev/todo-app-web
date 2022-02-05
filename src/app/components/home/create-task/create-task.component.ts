@@ -35,8 +35,10 @@ export class CreateTaskComponent {
   constructor(
     private todosService: TodosService,
     private taskService: TodoService
-  ) { }
+  ) {
 
+
+  }
   taskForm = new FormGroup({
     title: new FormControl('', Validators.required),
     note: new FormControl(''),
@@ -57,7 +59,7 @@ export class CreateTaskComponent {
         const response = await firstValueFrom(
           this.todosService.todosPost({
             body: {
-              date: this.taskForm?.value.date,
+              date: new Date(this.taskForm?.value.date).toJSON(),
               note: this.taskForm?.value.notes,
               title: this.taskForm?.value.title,
               isComplete: false,
@@ -72,7 +74,7 @@ export class CreateTaskComponent {
           this.todosService.todosIdPut({
             id: this._editTask.id,
             body: {
-              date: this.taskForm?.value.date,
+              date: new Date(this.taskForm?.value.date).toJSON(),
               isComplete: this._editTask.isComplete,
               note: this.taskForm?.value.note,
               title: this.taskForm?.value.title,
@@ -88,6 +90,7 @@ export class CreateTaskComponent {
     this.isLoading = false;
   }
   onCancel() {
+    this.editMode = false;
     this.taskForm?.reset();
     this.startAdding = false;
   }

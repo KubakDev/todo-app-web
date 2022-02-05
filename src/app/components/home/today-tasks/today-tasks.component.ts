@@ -117,7 +117,7 @@ export class TodayTasksComponent implements OnChanges {
       const month = this.currentDate.getMonth();
       const day = this.currentDate.getDate();
       const fromDate = new Date(`${year}-${month + 1}-${day}`);
-      const toDate = new Date(`${year}-${month + 1}-${day}`);
+      const toDate = new Date(`${year}-${month + 1}-${day + 1} `);
 
       try {
         const response = await firstValueFrom(this.todoService
