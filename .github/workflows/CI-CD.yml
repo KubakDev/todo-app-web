@@ -63,6 +63,6 @@ jobs:
           docker-compose pull
 
           # Run a new container from a new image
-          docker-compose up -e MongoDB__ConnectionString=$connection_string
+          docker-compose up -e MongoDB__ConnectionString=$connection_string -d
 
 
