@@ -2,7 +2,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { HttpClientModule } from '@angular/common/http';
 import { SignInSvgComponent } from './sign-in-svg.component';
-import { BrowserModule, By } from '@angular/platform-browser';
+import { BrowserModule } from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';
 
 describe('sign-in-svg', () => {
@@ -14,7 +14,6 @@ describe('sign-in-svg', () => {
       imports: [HttpClientModule, CommonModule, BrowserModule],
     });
     fixture = TestBed.createComponent(SignInSvgComponent);
-    component = fixture.componentInstance;
     fixture.detectChanges();
   });
   it('should be defined', () => {

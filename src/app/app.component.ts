@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ThemesService } from './themes.service';
-import { AuthService } from '@auth0/auth0-angular';
 import '@themesberg/flowbite';
 import { GlobalAuthService } from './auth.service';
 import '../../string-extension';

@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
-import { map, tap } from 'rxjs';
+import { Component } from '@angular/core';
+import { map } from 'rxjs';
 import { ThemesService } from 'src/app/themes.service';
 
 @Component({

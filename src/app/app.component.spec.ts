@@ -1,15 +1,10 @@
-import { ComponentFixture, inject, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
-import { RouterTestingModule } from '@angular/router/testing';
-import { AuthService } from '@auth0/auth0-angular';
-import { Auth0Client } from '@auth0/auth0-spa-js';
-import { BehaviorSubject, Observable, ReplaySubject, of } from 'rxjs';
+import { of } from 'rxjs';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { GlobalAuthService } from './auth.service';
-import { TodosService } from './backend/services';
 import { SideNavComponent } from './components/side-nav/side-nav.component';
-import { ThemeName } from './models/theme.model';
 import { ThemesService } from './themes.service';
 
 class MockThemeService extends ThemesService {
@@ -48,8 +43,7 @@ describe('App Component', () => {
   it('should render side-nav', () => {
     authServiceSpy.isAuthenticated.and.returnValue(of(true));
 
-    // spyOnProperty(authServiceSpy, 'isAuthenticated$').and.returnValue(of(true));
-    // mockService.delete.and.returnValue(of({id: 1}));
+
 
     fixture.detectChanges();
     const sideNav = fixture.debugElement.query(

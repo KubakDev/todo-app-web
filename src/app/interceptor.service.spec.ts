@@ -8,7 +8,6 @@ import {
   HttpTestingController,
 } from '@angular/common/http/testing';
 import { of } from 'rxjs';
-import { CommonModule } from '@angular/common';
 
 let authServiceSpy: jasmine.SpyObj<GlobalAuthService>;
 

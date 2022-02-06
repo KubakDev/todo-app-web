@@ -2,20 +2,18 @@
 import { CommonModule } from '@angular/common';
 import {
   ComponentFixture,
-  fakeAsync,
+
   TestBed,
-  tick,
 } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { User } from '@auth0/auth0-spa-js';
-import { firstValueFrom, of } from 'rxjs';
+import { of } from 'rxjs';
 import { GlobalAuthService } from 'src/app/auth.service';
 import { Todo } from 'src/app/backend/models';
 import { TodosService } from 'src/app/backend/services';
 import { ProfileComponent } from './profile.component';
 
 
-// import { ProfileComponent } from './profile.component';
 
 
 describe('ProfileComponent', () => {

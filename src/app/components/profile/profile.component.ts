@@ -1,8 +1,8 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { AuthService, User } from '@auth0/auth0-angular';
+import { Component, OnInit } from '@angular/core';
+import { FormGroup } from '@angular/forms';
+import { User } from '@auth0/auth0-angular';
 
-import { firstValueFrom, Observable } from 'rxjs';
+import { firstValueFrom } from 'rxjs';
 import { GlobalAuthService } from 'src/app/auth.service';
 import { Todo } from 'src/app/backend/models';
 import { TodosService } from 'src/app/backend/services';
@@ -25,7 +25,7 @@ export class ProfileComponent implements OnInit {
   constructor(
     private authService: GlobalAuthService,
     private todoService: TodosService
-  ) {}
+  ) { }
 
   async ngOnInit(): Promise<void> {
     this.authService.getUser().subscribe((u) => {
