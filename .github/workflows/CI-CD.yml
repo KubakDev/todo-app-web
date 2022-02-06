@@ -40,11 +40,14 @@ jobs:
     name: Pull the new images and restart docker-compose
     runs-on: ubuntu-20.04
     needs: build-and-push-to-docker-hub
-     
+    env:
+     connection_string: ${{ secrets.CONNECTION_STRING }}
+
     steps:
     - name: Deploy to Digital Ocean droplet via SSH action
       uses: appleboy/ssh-action@v0.1.3
       with:
+        envs: connection_string
         host: ${{ secrets.SSH_HOST }}
         username: ${{ secrets.SSH_USERNAME }}
         key: ${{ secrets.SSH_KEY }}
@@ -56,6 +59,6 @@ jobs:
           docker-compose rm -f
 
           # Run a new container from a new image
-          docker-compose up -e MongoDB__ConnectionString={{ secrets.CONNECTION_STRING }}
+          docker-compose up -e MongoDB__ConnectionString=$connection_string
 
 
