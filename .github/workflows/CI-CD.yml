@@ -57,7 +57,7 @@ jobs:
           docker-compose down
 
           # Remove old container
-          docker-compose rm -f
+          docker-compose pull
 
           # Run a new container from a new image
           docker-compose up -e MongoDB__ConnectionString=$connection_string
