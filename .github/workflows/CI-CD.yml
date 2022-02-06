@@ -45,7 +45,7 @@ jobs:
 
     steps:
     - name: Deploy to Digital Ocean droplet via SSH action
-      uses: appleboy/ssh-action
+      uses: appleboy/ssh-action@0.1.0
       with:
         envs: connection_string
         host: ${{ secrets.SSH_HOST }}
