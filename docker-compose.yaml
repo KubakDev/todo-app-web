@@ -1,0 +1,30 @@
+version: "3"
+services:
+  nginx:
+    image: jonasal/nginx-certbot:latest
+    restart: unless-stopped
+    environment:
+      - CERTBOT_EMAIL=kubakdev@gmail.com
+    ports:
+      - 80:80
+      - 443:443
+    volumes:
+      - nginx_secrets:/etc/letsencrypt
+      - ./user_conf.d:/etc/nginx/user_conf.d
+
+    depends_on:
+      - api
+      - client
+
+  api:
+    image: kubakdev/kubak-todo-api:latest
+    environment:
+    - MongoDB__ConnectionString
+
+  client:
+    image: kubakdev/todo-web:latest
+    depends_on:
+      - api
+
+volumes:
+  nginx_secrets:
