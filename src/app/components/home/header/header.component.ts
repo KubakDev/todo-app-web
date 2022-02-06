@@ -1,5 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { AuthService } from '@auth0/auth0-angular';
+import { Component } from '@angular/core';
 import { firstValueFrom } from 'rxjs';
 import { GlobalAuthService } from 'src/app/auth.service';
 import { TodosService } from 'src/app/backend/services';
@@ -8,7 +7,6 @@ import { TodoService } from 'src/app/todo.service';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent {
   userName: string | undefined;

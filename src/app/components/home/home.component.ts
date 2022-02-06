@@ -11,7 +11,6 @@ export class HomeComponent {
   index = 0;
   date: Date | undefined;
   secoundClick: boolean = false;
-  constructor() { }
   onTaskSelected(task: { task: Todo }) {
     this.task = task.task;
   }

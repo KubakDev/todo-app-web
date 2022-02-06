@@ -5,8 +5,7 @@ import {
   HttpEvent,
   HttpInterceptor,
 } from '@angular/common/http';
-import { AuthService } from '@auth0/auth0-angular';
-import { Observable, throwError } from 'rxjs';
+import { Observable, ObservableInput, throwError } from 'rxjs';
 import { mergeMap, catchError } from 'rxjs/operators';
 import { GlobalAuthService } from './auth.service';
 
@@ -14,7 +13,7 @@ import { GlobalAuthService } from './auth.service';
   providedIn: 'root',
 })
 export class InterceptorService implements HttpInterceptor {
-  constructor(private auth: GlobalAuthService) {}
+  constructor(private auth: GlobalAuthService) { }
 
   intercept(
     req: HttpRequest<any>,
@@ -33,7 +32,10 @@ export class InterceptorService implements HttpInterceptor {
         });
         return next.handle(tokenReq);
       }),
-      catchError((err) => throwError(err))
+      catchError((): ObservableInput<any> => {
+        const err = new Error('error')
+        return throwError(() => err)
+      })
     );
   }
 }

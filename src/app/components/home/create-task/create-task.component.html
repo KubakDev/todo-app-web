@@ -2,57 +2,30 @@
   <div class="h-auto w-full flex lg:justify-end justify-center mb-10">
     <div class="w-full bg-cardBackgroundColor rounded-sm shadow-lg">
       <h1 class="text-md font-bold ml-10 mt-10 text-primaryColor mb-10">
-        {{ editTask?.title ? "Edit  a new Task" : "Create a new Task" }}
+        {{ editMode ? "Edit Task" : "Create a new Task" }}
       </h1>
       <form class="w-full" (ngSubmit)="onSubmit()" [formGroup]="taskForm">
         <div class="pb-20 centering">
-          <input
-            formControlName="title"
-            type="text"
-            class="h-28 w-11/12 inputs"
-            placeholder="What is on your Mind....."
-            (click)="onClickInput()"
-            required
-            name="title"
-          />
-          <span
-            *ngIf="taskForm.controls['title'].invalid && submitted"
-            class="text-xsm mt-4 text-left w-10/12 text-red-800"
-            >Please enter a title for your task</span
-          >
+          <input formControlName="title" type="text" class="h-28 w-11/12 inputs" placeholder="What is on your Mind....."
+            (click)="onClickInput()" required name="title" />
+          <span *ngIf="taskForm.controls['title'].invalid && submitted"
+            class="text-xsm mt-4 text-left w-10/12 text-red-800">Please enter a title for your task</span>
           <div class="w-full centering mt-10" *ngIf="startAdding">
-            <input
-              formControlName="note"
-              type="text"
-              class="w-11/12 inputs"
-              placeholder="Notes....."
-              name="notes"
-            />
+            <input formControlName="note" type="text" class="w-11/12 inputs" placeholder="Notes....." name="notes" />
             <div class="w-full centering mt-10">
               <div class="w-11/12 h-32 flex">
                 <div class="h-20 w-20 bg-white rounded-lg">
                   <div class="h-20 w-20 bg-white rounded-lg centering">
                     <span
-                      class="material-icons text-lightPrimaryColor rounded-full p-1 px-2 text-xmd"
-                      >calendar_month</span
-                    >
+                      class="material-icons text-lightPrimaryColor rounded-full p-1 px-2 text-xmd">calendar_month</span>
                   </div>
                 </div>
                 <div class="w-10/12 ml-10 inputs">
-                  <input
-                    formControlName="date"
+                  <input formControlName="date"
                     class="input placeholder:text-sm placeholder:font-bold placeholder:text-TextBoldColor placeholder:text-center rounded-sm"
-                    placeholder="Date"
-                    type="text"
-                    onfocus="(this.type='date')"
-                    required
-                    name="date"
-                  />
-                  <span
-                    *ngIf="taskForm.controls['date'].invalid && submitted"
-                    class="text-xsm -mt-6 mb-6 text-left w-10/12 text-red-800"
-                    >Please enter a date for your task</span
-                  >
+                    placeholder="Date" type="text" onfocus="(this.type='date')" required name="date" />
+                  <span *ngIf="taskForm.controls['date'].invalid && submitted"
+                    class="text-xsm -mt-6 mb-6 text-left w-10/12 text-red-800">Please enter a date for your task</span>
                 </div>
               </div>
             </div>
@@ -60,18 +33,12 @@
               <div class="w-11/12 h-32 flex">
                 <div class="w-full centering">
                   <div class="flex justify-center flex-wrap">
-                    <button
-                      class="btn mr-5 lg:mr-10 bg-greyBackgroundBtn text-greyTextBtn mb-10"
-                      type="button"
-                      (click)="onCancel()"
-                    >
+                    <button class="btn mr-5 lg:mr-10 bg-greyBackgroundBtn text-greyTextBtn mb-10" type="button"
+                      (click)="onCancel()">
                       Cancel
                     </button>
-                    <button
-                      class="btn mr-5 bg-TextBoldColor text-white hover:bg-lightPrimaryColor saveBtn"
-                      type="submit"
-                      [disabled]="!taskForm.valid && submitted"
-                    >
+                    <button class="btn mr-5 bg-TextBoldColor text-white hover:bg-lightPrimaryColor saveBtn"
+                      type="submit" [disabled]="!taskForm.valid && submitted">
                       <div *ngIf="isLoading" class="lds-ellipsis m-0">
                         <div></div>
                         <div></div>
@@ -80,7 +47,7 @@
                       </div>
                       <ng-container *ngIf="!isLoading">{{
                         editMode ? "Update Task" : "Save"
-                      }}</ng-container>
+                        }}</ng-container>
                     </button>
                   </div>
                 </div>
@@ -91,10 +58,5 @@
       </form>
     </div>
   </div>
-  <img
-    *ngIf="!startAdding"
-    src="../../../../assets/images/todo.png"
-    class="w-2/5"
-    alt=""
-  />
+  <img *ngIf="!startAdding" src="../../../../assets/images/todo.png" class="w-2/5" alt="" />
 </div>

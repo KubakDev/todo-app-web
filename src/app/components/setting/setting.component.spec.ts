@@ -1,5 +1,5 @@
 
-import { ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { GlobalAuthService } from 'src/app/auth.service';
 import { ThemesService } from 'src/app/themes.service';
 

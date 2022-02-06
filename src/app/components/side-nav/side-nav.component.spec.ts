@@ -1,12 +1,11 @@
-import { Component, NO_ERRORS_SCHEMA } from '@angular/core';
+import { Component } from '@angular/core';
 import {
   ComponentFixture,
   fakeAsync,
   TestBed,
   tick,
 } from '@angular/core/testing';
-import { By } from '@angular/platform-browser';
-import { Route, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
 import { of } from 'rxjs';
 import { GlobalAuthService } from '../../auth.service';
@@ -14,7 +13,7 @@ import { GlobalAuthService } from '../../auth.service';
 import { SideNavComponent } from './side-nav.component';
 
 @Component({ selector: 'app-profile', template: '' })
-class ProfileStubComponent {}
+class ProfileStubComponent { }
 
 let authServiceSpy: jasmine.SpyObj<GlobalAuthService>;
 let router: Router;

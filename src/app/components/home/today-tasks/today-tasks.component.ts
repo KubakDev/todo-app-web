@@ -1,5 +1,4 @@
 import { formatDate } from '@angular/common';
-import { HttpErrorResponse } from '@angular/common/http';
 import {
   Component,
   EventEmitter,
@@ -85,13 +84,10 @@ export class TodayTasksComponent implements OnChanges {
             IsComplete: isComplete,
           }));
         this.tasks = response;
-        if (response.length === 0) {
-          this.isLoading = false;
-          this.errorOccur = false;
-        } else {
-          this.isLoading = false;
-          this.errorOccur = false;
-        }
+
+        this.isLoading = false;
+        this.errorOccur = false;
+
 
 
       } catch (error) {
@@ -117,7 +113,7 @@ export class TodayTasksComponent implements OnChanges {
       const month = this.currentDate.getMonth();
       const day = this.currentDate.getDate();
       const fromDate = new Date(`${year}-${month + 1}-${day}`);
-      const toDate = new Date(`${year}-${month + 1}-${day}`);
+      const toDate = new Date(`${year}-${month + 1}-${day + 1} `);
 
       try {
         const response = await firstValueFrom(this.todoService
@@ -127,13 +123,10 @@ export class TodayTasksComponent implements OnChanges {
             IsComplete: isComplete,
           }));
         this.tasks = response;
-        if (response.length === 0) {
-          this.isLoading = false;
-          this.errorOccur = false;
-        } else {
-          this.isLoading = false;
-          this.errorOccur = false;
-        }
+
+        this.isLoading = false;
+        this.errorOccur = false;
+
 
       } catch (error) {
 

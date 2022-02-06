@@ -1,7 +1,6 @@
 
-import { async, ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
-import { of } from 'rxjs';
-import { Todo } from 'src/app/backend/models';
+import { CommonModule } from '@angular/common';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { TodosService } from 'src/app/backend/services';
 
 import { TaskComponent } from './task.component';
@@ -10,20 +9,16 @@ describe('TaskComponent', () => {
   let component: TaskComponent;
   let fixture: ComponentFixture<TaskComponent>;
   let mockTodosService: jasmine.SpyObj<TodosService>;
-  let todos: Todo = {
-    date: '',
-    id: '',
-    isComplete: false,
-    note: '',
-    title: 'string',
-    userId: '',
 
-  }
-  beforeEach(async () => {
+  beforeEach(() => {
     const spy = jasmine.createSpyObj('TodosService', ['todosIdPut']);
 
-    await TestBed.configureTestingModule({
+
+    TestBed.configureTestingModule({
       declarations: [TaskComponent],
+      imports: [
+        CommonModule,
+      ],
       providers: [
         {
           provide: TodosService, useValue: spy

@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { firstValueFrom } from 'rxjs';
 import { Todo } from 'src/app/backend/models';
 import { TodosService } from 'src/app/backend/services';
@@ -7,7 +7,6 @@ import { TodoService } from 'src/app/todo.service';
 @Component({
   selector: 'app-task',
   templateUrl: './task.component.html',
-  styleUrls: ['./task.component.scss'],
 })
 export class TaskComponent {
   isLoading: boolean | undefined = false;

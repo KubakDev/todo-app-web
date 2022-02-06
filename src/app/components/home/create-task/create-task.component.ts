@@ -1,5 +1,5 @@
-import { Component, ElementRef, Input, ViewChild } from '@angular/core';
-import { FormGroup, NgForm, FormControl, Validators } from '@angular/forms';
+import { Component, Input } from '@angular/core';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { firstValueFrom } from 'rxjs';
 import { Todo } from 'src/app/backend/models';
 import { TodosService } from 'src/app/backend/services';
@@ -35,8 +35,10 @@ export class CreateTaskComponent {
   constructor(
     private todosService: TodosService,
     private taskService: TodoService
-  ) {}
+  ) {
 
+
+  }
   taskForm = new FormGroup({
     title: new FormControl('', Validators.required),
     note: new FormControl(''),
@@ -57,7 +59,7 @@ export class CreateTaskComponent {
         const response = await firstValueFrom(
           this.todosService.todosPost({
             body: {
-              date: this.taskForm?.value.date,
+              date: new Date(this.taskForm?.value.date).toJSON(),
               note: this.taskForm?.value.notes,
               title: this.taskForm?.value.title,
               isComplete: false,
@@ -72,7 +74,7 @@ export class CreateTaskComponent {
           this.todosService.todosIdPut({
             id: this._editTask.id,
             body: {
-              date: this.taskForm?.value.date,
+              date: new Date(this.taskForm?.value.date).toJSON(),
               isComplete: this._editTask.isComplete,
               note: this.taskForm?.value.note,
               title: this.taskForm?.value.title,
@@ -81,13 +83,14 @@ export class CreateTaskComponent {
         );
         this.taskService.setTask(response);
       }
-    } catch (error) {}
+    } catch (error) { }
 
     this._submitted = false;
     this.taskForm?.reset();
     this.isLoading = false;
   }
   onCancel() {
+    this.editMode = false;
     this.taskForm?.reset();
     this.startAdding = false;
   }

@@ -12,7 +12,7 @@
 
 # profiling files
 chrome-profiler-events*.json
-
+.scannerwork
 # IDEs and editors
 /.idea
 .project
