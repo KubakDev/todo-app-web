@@ -26,7 +26,6 @@ export class TodayTasksComponent implements OnChanges {
   isCompleteCondition: boolean | undefined;
   activeButton: number = 0;
   taskInfo: string = "today's Tasks";
-
   @Output() selectedTask = new EventEmitter<any>();
   @Input() date: Date | undefined = new Date();
   @Input() secoundClick: boolean = false;
@@ -37,9 +36,25 @@ export class TodayTasksComponent implements OnChanges {
     this.taskService.AllTasks$.subscribe((todo) => {
       const index = this.tasks?.findIndex((i) => i.id === todo!.id);
 
-      if (index !== undefined && index > -1 && this.tasks)
+      if (index !== undefined && index > -1 && this.tasks) {
+
         this.tasks[index] = Object.assign(this.tasks[index], todo);
-      else if (todo) this.tasks?.push(todo);
+
+      }
+      if (this.tasks && this.tasks.length !== 0) {
+
+
+        if (this.tasks[this.tasks?.length - 1].date === todo?.date) {
+
+          if (todo) this.tasks?.push(todo);
+        }
+
+      }
+      if (this.tasks?.length === 0 && formatDate(this.currentDate, 'dd/MM/YYY', 'en') === formatDate(todo?.date + '', 'dd/MM/YYY', 'en')) {
+        if (todo) this.tasks?.push(todo);
+
+      }
+
     });
   }
 
@@ -62,8 +77,8 @@ export class TodayTasksComponent implements OnChanges {
     this.getData(condition);
     this.isOpen = false;
   }
-  addEdit(task: Todo) {
-    this.selectedTask.emit({ task });
+  addEdit(task: Todo | undefined) {
+    this.selectedTask.emit(task);
   }
   ngOnChanges(): void {
     this.activeButton = 0;

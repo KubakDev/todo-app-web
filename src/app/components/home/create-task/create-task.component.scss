@@ -15,9 +15,7 @@ input {
 .saveBtn[disabled] {
   @apply bg-greyBackgroundBtn  text-greyTextBtn;
 }
-input.ng-invalid.ng-touched {
-  @apply border-solid border-2 border-red-800;
-}
+
 
 .lds-ellipsis {
   display: inline-block;

@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
 import { GlobalAuthService } from 'src/app/auth.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-side-nav',
@@ -16,8 +17,9 @@ export class SideNavComponent {
 
   onLogout() {
     try {
-      this.auth.logout();
-      this.router.navigate(['/sign-in']);
+      this.auth.logout({
+        returnTo: environment.production ? 'todo.kubak.dev' : 'http://localhost:4201'
+      });
     } catch (error) { }
   }
 

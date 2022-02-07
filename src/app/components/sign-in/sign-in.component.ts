@@ -28,7 +28,7 @@ export class SignInComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.auth.isAuthenticated$.subscribe((user: any) => {
+    this.auth.user$.subscribe((user: any) => {
       if (user) this.navigateToProfile();
     });
   }
@@ -38,6 +38,7 @@ export class SignInComponent implements OnInit, OnDestroy {
   }
 
   private async navigateToProfile(): Promise<void> {
-    await this.router.navigateByUrl('/profile');
+
+    await this.router.navigateByUrl('/');
   }
 }

@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { firstValueFrom } from 'rxjs';
 import { Todo } from 'src/app/backend/models';
@@ -14,14 +14,20 @@ export class CreateTaskComponent {
   isLoading: boolean | undefined = false;
 
   @Input() set editTask(task: Todo | undefined | null) {
+
+
     if (task) this.taskForm.patchValue(task);
 
     this._editTask = task;
-    if (task?.title) {
+
+    if (task) {
       this.editMode = true;
       this.onClickInput();
+
     } else this.editMode = false;
+
   }
+
   editMode: boolean = false;
   startAdding: boolean = false;
 
@@ -39,6 +45,7 @@ export class CreateTaskComponent {
 
 
   }
+
   taskForm = new FormGroup({
     title: new FormControl('', Validators.required),
     note: new FormControl(''),
@@ -81,8 +88,12 @@ export class CreateTaskComponent {
             },
           })
         );
+        this.editMode = false;
+        this.startAdding = false;
+
         this.taskService.setTask(response);
       }
+
     } catch (error) { }
 
     this._submitted = false;

@@ -11,8 +11,12 @@ export class HomeComponent {
   index = 0;
   date: Date | undefined;
   secoundClick: boolean = false;
-  onTaskSelected(task: { task: Todo }) {
-    this.task = task.task;
+  onTaskSelected(task: Todo) {
+    if (task.id === this.task?.id) {
+      this.task = Object.assign({}, this.task);
+      return
+    }
+    this.task = task;
   }
   getMontheTasks(day: { day: Date; secoundClick: boolean }) {
     this.date = day.day;
