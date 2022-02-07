@@ -107,6 +107,7 @@
   },
   "defaultProject": "todoAppWeb",
   "cli": {
+    "analytics": "21cb4296-ce40-4b55-bc0c-7bc0812b1cb0",
     "defaultCollection": "@angular-eslint/schematics"
   }
 }

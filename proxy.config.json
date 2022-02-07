@@ -1,6 +1,6 @@
 {
   "/api": {
-    "target": "https://kubak-todo.loca.lt",
+    "target": "https://todo.kubak.dev/api",
     "changeOrigin": true,
     "secure": true,
     "pathRewrite": {

@@ -3,13 +3,12 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve --proxy-config proxy.config.json --configuration development",
+    "start": "ng serve --port 4201 --proxy-config proxy.config.json --configuration development --disable-host-check --host 0.0.0.0",
     "build": "ng build --configuration production",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "lint": "ng lint",
-    "pull-swagger": "ng-openapi-gen -i https://kubak-todo.loca.lt/swagger/v1/swagger.json -o src/app/backend"
-
+    "pull-swagger": "ng-openapi-gen -i https://todo.kubak.dev/api/swagger/v1/swagger.json -o src/app/backend"
   },
   "private": true,
   "dependencies": {

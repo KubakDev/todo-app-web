@@ -1,7 +1,5 @@
 import { formatDate } from '@angular/common';
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { Router } from '@angular/router';
-import { TodoService } from 'src/app/todo.service';
 @Component({
   selector: 'app-calender',
   templateUrl: './calender.component.html',
@@ -14,11 +12,11 @@ export class CalenderComponent implements OnInit {
   }>();
   calendar:
     | Array<{
-        day: number;
-        week: string;
-        date: Date;
-        selectedDate: string;
-      }>
+      day: number;
+      week: string;
+      date: Date;
+      selectedDate: string;
+    }>
     | undefined;
   thisDay: number | undefined;
   isOpen = false;
@@ -46,7 +44,6 @@ export class CalenderComponent implements OnInit {
   ischangeMonth: boolean = false;
   savedDay: Date | undefined;
   secondClick: boolean = false;
-  constructor(private taskService: TodoService) {}
 
   ngOnInit(): void {
     this.calenderSetup();

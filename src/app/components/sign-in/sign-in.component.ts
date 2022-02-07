@@ -20,7 +20,7 @@ export class SignInComponent implements OnInit, OnDestroy {
     private auth: AuthService,
     private themeService: ThemesService,
     private router: Router
-  ) {}
+  ) { }
 
   ngOnDestroy(): void {
     this.destroy.next(undefined);
@@ -28,16 +28,17 @@ export class SignInComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.auth.isAuthenticated$.subscribe((user: any) => {
+    this.auth.user$.subscribe((user: any) => {
       if (user) this.navigateToProfile();
     });
   }
 
-  async onAuth() {
-    await this.auth.loginWithRedirect({ audience: 'http://localhost:5000' });
+  onAuth() {
+    this.auth.loginWithRedirect({ audience: 'http://localhost:5000' });
   }
 
   private async navigateToProfile(): Promise<void> {
-    await this.router.navigateByUrl('/profile');
+
+    await this.router.navigateByUrl('/');
   }
 }

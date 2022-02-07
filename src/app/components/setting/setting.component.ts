@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '@auth0/auth0-angular';
-import { Observable } from 'rxjs';
+import { GlobalAuthService } from 'src/app/auth.service';
 import { ThemeName } from 'src/app/models/theme.model';
 import { ThemesService } from 'src/app/themes.service';
 
@@ -12,20 +11,22 @@ import { ThemesService } from 'src/app/themes.service';
 export class SettingComponent implements OnInit {
   isOpen?: boolean = false;
   currentTheme: 'main-theme' | 'blue-theme' = 'blue-theme';
-  userName: String | undefined;
+  userName: string | undefined;
+
   constructor(
     private themeService: ThemesService,
-    private authService: AuthService
-  ) {}
+    private authService: GlobalAuthService
+  ) { }
   ngOnInit(): void {
     if (this.themeService.localTheme) {
       this.currentTheme = this.themeService.localTheme;
       this.currentTheme =
         this.currentTheme === 'main-theme' ? 'blue-theme' : 'main-theme';
     }
-    this.authService.user$.subscribe((u) => {
+    this.authService.user().subscribe((u) => {
       this.userName = u?.name;
     });
+
   }
 
   onToggle() {

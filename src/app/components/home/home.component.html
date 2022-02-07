@@ -4,16 +4,10 @@
 
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-5 mt-10">
       <div>
-        <app-calender
-          (getMontheTasks)="getMontheTasks($any($event))"
-        ></app-calender>
+        <app-calender (getMontheTasks)="getMontheTasks($any($event))"></app-calender>
         <div class="mt-20 flex justify-center">
-          <app-today-tasks
-            class="w-full"
-            (selectedTask)="onTaskSelected($event)"
-            [date]="date"
-            [secoundClick]="secoundClick"
-          ></app-today-tasks>
+          <app-today-tasks class="w-full" (selectedTask)="onTaskSelected($event)" [date]="date"
+            [secoundClick]="secoundClick"></app-today-tasks>
         </div>
       </div>
       <div>

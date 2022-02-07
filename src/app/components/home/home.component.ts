@@ -10,11 +10,13 @@ export class HomeComponent {
   task: Todo | undefined;
   index = 0;
   date: Date | undefined;
-  userName: string | undefined;
   secoundClick: boolean = false;
-  constructor() {}
-  onTaskSelected(task: { task: Todo }) {
-    this.task = task.task;
+  onTaskSelected(task: Todo) {
+    if (task.id === this.task?.id) {
+      this.task = Object.assign({}, this.task);
+      return
+    }
+    this.task = task;
   }
   getMontheTasks(day: { day: Date; secoundClick: boolean }) {
     this.date = day.day;
