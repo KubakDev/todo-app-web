@@ -23,6 +23,9 @@ RUN npm run build
 # Use official nginx image as the base image
 FROM nginx:1.20-alpine
 
+COPY user_conf.d/todo.conf /etc/nginx/nginx.conf
+
+
 # Copy the build output to replace the default nginx contents.
 COPY --from=build /usr/local/app/dist/todo-app-web /usr/share/nginx/html
 
