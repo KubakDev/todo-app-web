@@ -40,9 +40,6 @@ jobs:
     name: Pull the new images and restart docker-compose
     runs-on: ubuntu-20.04
     needs: build-and-push-to-docker-hub
-    env:
-     connection_string: ${{ secrets.CONNECTION_STRING }}
-
     steps:
     - name: Deploy to Digital Ocean droplet via SSH action
       uses: appleboy/ssh-action@v0.1.3
