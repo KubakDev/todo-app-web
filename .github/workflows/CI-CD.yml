@@ -62,6 +62,6 @@ jobs:
           docker-compose pull
 
           # Run a new container from a new image
-          docker-compose -d up
+          docker-compose up -d
 
 
